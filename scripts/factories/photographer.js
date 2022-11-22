@@ -11,8 +11,8 @@ function photographerFactory(data) {
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
 
-        const town = document.createElement( 'h3' );
-        town.textContent = city + ', ' + country;
+        const location = document.createElement( 'h3' );
+        location.textContent = city + ', ' + country;
 
         const tag = document.createElement( 'p' );
         tag.textContent = tagline;
@@ -22,7 +22,7 @@ function photographerFactory(data) {
 
         article.appendChild(img);
         article.appendChild(h2);
-        article.appendChild(town);
+        article.appendChild(location);
         article.appendChild(tag);
         article.appendChild(prices);
         return (article);
