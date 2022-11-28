@@ -14,10 +14,11 @@ function photographerFactory(data) {
                 element.setAttribute(key, value[key]);
             }
         }
-        setAttributes(img, {"id" : "photo", "src" : picture, "alt" : "Photographer", "aria-label" : "Photographer"});
+        setAttributes(img, {"id" : "photo", "src" : picture, "alt" : name, "aria-label" : "Photographer"});
 
         const link = document.createElement("a");
-        link.setAttribute("href", id);
+        link.setAttribute("href", "photographer.html/" + id);
+        //Add img as child
         link.appendChild(img);
         
         const h2 = document.createElement("h2");
