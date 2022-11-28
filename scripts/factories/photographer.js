@@ -34,7 +34,6 @@ function photographerFactory(data) {
 
         //Add element as child
         article.appendChild(link);
-        article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(location);
         article.appendChild(tag);
