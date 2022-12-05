@@ -68,3 +68,10 @@ h1 {
     color: rgb(156, 156, 156);
     font-size: 0.8rem;
 }
+
+.photograph-header article img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100px;
+}
