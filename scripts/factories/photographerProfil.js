@@ -1,5 +1,5 @@
 function photographerFactoryProfil(data) {
-    const {name, city, country, tagline, portrait} = data;
+    const {name, city, country, tagline, price, portrait} = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -25,14 +25,18 @@ function photographerFactoryProfil(data) {
         const tag = document.createElement("p");
         tag.textContent = tagline;
 
+        const prices = document.createElement( "span" );
+        prices.textContent = price + "€" +" /jour";
+
         //Add element as child
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(location);
         article.appendChild(tag);
+        article.appendChild(prices);
 
         return (article);
     }
     
-    return {name, city, country, tagline, picture, getUserCardDOMProfil}
+    return {name, city, country, tagline, price, picture, getUserCardDOMProfil}
 }

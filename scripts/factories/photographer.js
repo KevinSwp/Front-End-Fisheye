@@ -17,7 +17,7 @@ function photographerFactory(data) {
         setAttributes(img, {"id" : "photo", "src" : picture, "alt" : name, "aria-label" : "Photographer"});
 
         const link = document.createElement("a");
-        link.setAttribute("href", "photographer.html" + "?" + id);
+        link.setAttribute("href", "photographer.html" + "?" + "id=" + id);
         //Add img as child
         link.appendChild(img);
         

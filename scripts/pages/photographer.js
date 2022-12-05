@@ -1,24 +1,37 @@
-function displayDataProfil(photographers) {
+/*function displayDataProfil(photographers) {
     const photographersSection = document.querySelector(".photograph-header");
 
-    const photographerModel = photographerFactoryProfil(photographers);
-    const userCardDOM = photographerModel.getUserCardDOMProfil();
-    photographersSection.appendChild(userCardDOM);
-};
+    photographers.forEach((photographer) => {
+        const photographerModel = photographerFactoryProfil(photographer);
+        const userCardDOM = photographerModel.getUserCardDOMProfil();
+        photographersSection.appendChild(userCardDOM);
+    });
+};*/
 
+//Fetch ID within URL
+function fetchIDbyURL() {
+    const params = (new URL (document.location)).searchParams;
+    const id = parseInt(params.get("id"));
+
+    return id;
+}
+
+//Fetch and display data photographers
 function initProfil() {
     //Fetch data json
     fetch ("data/photographers.json")
 
-    //Makes response
+    //Makes a promise
     .then((response) => response.json())
 
-    //Display property photographers
+    //Display property photographers and media
     .then(
         (data) => {
-            const {photographers} = data;
-            console.log(photographers);
-            displayDataProfil(photographers);
+            const {photographers, media} = data;
+            console.log(photographers, media);
+            fetchIDbyURL();
+            console.log(fetchIDbyURL());
+            // displayDataProfil(photographers);
         }
     )
     
