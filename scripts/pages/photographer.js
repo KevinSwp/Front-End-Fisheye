@@ -9,7 +9,7 @@ function displayDataProfil([photographers]) {
 };
 
 //Fetch ID within URL
-function fetchIDbyURL() {
+function findIDbyURL() {
     const params = (new URL (document.location)).searchParams;
     const id = parseInt(params.get("id"));
 
@@ -29,8 +29,8 @@ function initProfil() {
         (data) => {
             const {photographers, media} = data;
             console.log(photographers, media);
-            fetchIDbyURL();
-            console.log(fetchIDbyURL());
+            findIDbyURL();
+            console.log(findIDbyURL());
             // console.log(Object.values(photographers[0]));
             
             displayDataProfil(photographers);
