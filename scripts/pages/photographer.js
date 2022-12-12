@@ -1,14 +1,14 @@
-function displayDataProfil([photographers]) {
+//Display photographer
+function displayDataProfil(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
-
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactoryProfil(photographer);
+    photographer.filter((personne) => {
+        const photographerModel = photographerFactoryProfil(personne);
         const userCardDOM = photographerModel.getUserCardDOMProfil();
         photographersSection.appendChild(userCardDOM);
     });
 };
 
-//Fetch ID within URL
+//Get ID from URL
 function findIDbyURL() {
     const params = (new URL (document.location)).searchParams;
     const id = parseInt(params.get("id"));
@@ -28,12 +28,12 @@ function initProfil() {
     .then(
         (data) => {
             const {photographers, media} = data;
-            console.log(photographers, media);
-            findIDbyURL();
-            console.log(findIDbyURL());
-            // console.log(Object.values(photographers[0]));
-            
-            displayDataProfil(photographers);
+            console.log(media);
+
+            const findID = findIDbyURL();
+            const idPhotographer = photographers.filter(photographer => photographer.id === findID);
+
+            displayDataProfil(idPhotographer);
         }
     )
     
