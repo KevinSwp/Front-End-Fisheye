@@ -1,10 +1,20 @@
 //Display photographer
-function displayDataProfil(photographer) {
+function displayDataPhotographer(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
-    photographer.filter((personne) => {
-        const photographerModel = photographerFactoryProfil(personne);
+    photographer.filter((person) => {
+        const photographerModel = photographerFactoryProfil(person);
         const userCardDOM = photographerModel.getUserCardDOMProfil();
         photographersSection.appendChild(userCardDOM);
+    });
+};
+
+//Display media
+function displayDataMedia(media) {
+    const mediaSection = document.querySelector(".photograph-header");
+    media.filter((photo) => {
+        const mediaModel = photographerFactoryMedia(photo);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaSection.appendChild(mediaCardDOM);
     });
 };
 
@@ -16,7 +26,7 @@ function findIDbyURL() {
     return id;
 }
 
-//Fetch and display data photographers
+//Fetch and display data photographer
 function initProfil() {
     //Fetch data json
     fetch ("data/photographers.json")
@@ -28,12 +38,14 @@ function initProfil() {
     .then(
         (data) => {
             const {photographers, media} = data;
-            console.log(media);
-
             const findID = findIDbyURL();
-            const idPhotographer = photographers.filter(photographer => photographer.id === findID);
 
-            displayDataProfil(idPhotographer);
+            //Check same ID
+            const idPhotographer = photographers.filter(photographer => photographer.id === findID);
+            const idMedia = media.filter(medias => medias.photographerId === findID);
+
+            displayDataPhotographer(idPhotographer);
+            displayDataMedia(idMedia);
         }
     )
     
