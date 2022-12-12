@@ -1,4 +1,4 @@
-/*function displayDataProfil(photographers) {
+function displayDataProfil([photographers]) {
     const photographersSection = document.querySelector(".photograph-header");
 
     photographers.forEach((photographer) => {
@@ -6,7 +6,7 @@
         const userCardDOM = photographerModel.getUserCardDOMProfil();
         photographersSection.appendChild(userCardDOM);
     });
-};*/
+};
 
 //Fetch ID within URL
 function fetchIDbyURL() {
@@ -31,7 +31,9 @@ function initProfil() {
             console.log(photographers, media);
             fetchIDbyURL();
             console.log(fetchIDbyURL());
-            // displayDataProfil(photographers);
+            // console.log(Object.values(photographers[0]));
+            
+            displayDataProfil(photographers);
         }
     )
     
