@@ -1,6 +1,6 @@
 //Display photographer
 function photographerFactoryProfil(data) {
-    const {name, city, country, tagline, price, portrait} = data;
+    const {name, city, country, tagline, portrait} = data;
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOMProfil() {
@@ -25,31 +25,36 @@ function photographerFactoryProfil(data) {
         const tag = document.createElement("p");
         tag.textContent = tagline;
 
-        const prices = document.createElement( "span" );
-        prices.textContent = price + "€" +" /jour";
-
         //Add element as child
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(location);
         article.appendChild(tag);
-        article.appendChild(prices);
 
         return (article);
     }
     
-    return {name, city, country, tagline, price, picture, getUserCardDOMProfil}
+    return {name, city, country, tagline, picture, getUserCardDOMProfil}
 }
 
 //Display media
 function photographerFactoryMedia(data) {
-    const {title, image, date} = data;
-    const photo = `assets/samplePhotos/${image}`;
+    const {title, image, video, date} = data;
+    const photo = `assets/samplePhotos/Rhode/${image}`;
+    const clip = `assets/samplePhotos/Rhode/${video}`;
 
     function getMediaCardDOM() {
+        const contact = document.querySelector(".contact_button");
+        const header = document.querySelector(".photograph-header :nth-child(2)");
+        header.appendChild(contact);
+
         const article = document.createElement("article");
 
         const img = document.createElement("img");
+
+        const mp4 = document.createElement("video");
+        mp4.src = clip;
+        mp4.controls = true;
 
         //function add multiple attribute
         function setAttributes(element, value) {
@@ -57,7 +62,9 @@ function photographerFactoryMedia(data) {
                 element.setAttribute(key, value[key]);
             }
         }
-        setAttributes(img, {"id" : "photo", "src" : photo, "alt" : title, "aria-label" : "Photo"});
+        setAttributes(img, {"class" : "photo", "src" : photo, "alt" : title, "aria-label" : "Photo"});
+        setAttributes(mp4, {"class" : "video", "alt" : title, "aria-label" : "Video"});
+       
 
         const h2 = document.createElement("h2");
         h2.textContent = title;
@@ -65,9 +72,10 @@ function photographerFactoryMedia(data) {
         //Add element as child
         article.appendChild(img);
         article.appendChild(h2);
+        article.appendChild(mp4);
 
         return (article);
     }
     
-    return {title, photo, date, getMediaCardDOM}
+    return {title, photo, clip, date, getMediaCardDOM}
 }
