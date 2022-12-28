@@ -1,3 +1,10 @@
+//function add multiple attribute
+function setAttributes(element, value) {
+    for (const key in value) {
+        element.setAttribute(key, value[key]);
+    }
+}
+
 //Display photographer
 function photographerFactoryProfil(data) {
     const {name, city, country, tagline, portrait} = data;
@@ -7,13 +14,7 @@ function photographerFactoryProfil(data) {
         const article = document.createElement("article");
 
         const img = document.createElement("img");
-
-        //function add multiple attribute
-        function setAttributes(element, value) {
-            for (const key in value) {
-                element.setAttribute(key, value[key]);
-            }
-        }
+        
         setAttributes(img, {"id" : "photo", "src" : picture, "alt" : name, "aria-label" : "Photographer"});
 
         const h2 = document.createElement("h2");
@@ -40,12 +41,14 @@ function photographerFactoryProfil(data) {
 //Display media
 function photographerFactoryMedia(data) {
     const {title, image, video, date} = data;
-    const photo = `assets/samplePhotos/Rhode/${image}`;
-    const clip = `assets/samplePhotos/Rhode/${video}`;
+    const photo = `assets/samplePhotos/${image}`;
+    const clip = `assets/samplePhotos/${video}`;
 
     function getMediaCardDOM() {
-        const contact = document.querySelector(".contact_button");
-        const header = document.querySelector(".photograph-header :nth-child(2)");
+        const contact = document.createElement("button");
+        contact.textContent = "Contactez-moi";
+
+        const header = document.querySelector(".photograph-header :nth-child(1)");
         header.appendChild(contact);
 
         const article = document.createElement("article");
@@ -53,17 +56,14 @@ function photographerFactoryMedia(data) {
         const img = document.createElement("img");
 
         const mp4 = document.createElement("video");
+        
         mp4.src = clip;
         mp4.controls = true;
 
-        //function add multiple attribute
-        function setAttributes(element, value) {
-            for (const key in value) {
-                element.setAttribute(key, value[key]);
-            }
-        }
+        
         setAttributes(img, {"class" : "photo", "src" : photo, "alt" : title, "aria-label" : "Photo"});
         setAttributes(mp4, {"class" : "video", "alt" : title, "aria-label" : "Video"});
+        setAttributes(contact, {"class" : "contact_button", "onclick" : "displayModal()"})
        
 
         const h2 = document.createElement("h2");

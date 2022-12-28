@@ -69,10 +69,14 @@ h1 {
     font-size: 0.8rem;
 }
 
+.photograph-header {
+    background-color: transparent;
+}
+
 .photograph-header :nth-child(1) {
     display: flex;
     flex-direction: row-reverse;
-    /* background-color: #FAFAFA; */
+    background-color: #FAFAFA;
 }
 
 .photograph-header :nth-child(2) {
@@ -88,4 +92,8 @@ h1 {
 
 .photograph-header article video{
     width: 200px;
+}
+
+.contact_button {
+    background-color: #901C1C !important;
 }
