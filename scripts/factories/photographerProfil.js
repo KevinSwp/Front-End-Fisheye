@@ -5,17 +5,24 @@ function setAttributes(element, value) {
     }
 }
 
-//Display photographer
+//Display header profil photographer
 function photographerFactoryProfil(data) {
     const {name, city, country, tagline, portrait} = data;
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `./assets/photographers/${portrait}`;
 
     function getUserCardDOMProfil() {
+        const contact = document.createElement("button");
+        contact.textContent = "Contactez-moi";
+
+        const header = document.querySelector(".photograph-header");
+        header.appendChild(contact);
+
         const article = document.createElement("article");
 
         const img = document.createElement("img");
         
         setAttributes(img, {"id" : "photo", "src" : picture, "alt" : name, "aria-label" : "Photographer"});
+        setAttributes(contact, {"class" : "contact_button", "onclick" : "displayModal()"});
 
         const h2 = document.createElement("h2");
         h2.textContent = name;
@@ -25,7 +32,7 @@ function photographerFactoryProfil(data) {
 
         const tag = document.createElement("p");
         tag.textContent = tagline;
-
+        
         //Add element as child
         article.appendChild(img);
         article.appendChild(h2);
@@ -34,7 +41,6 @@ function photographerFactoryProfil(data) {
 
         return (article);
     }
-    
     return {name, city, country, tagline, picture, getUserCardDOMProfil}
 }
 
@@ -43,13 +49,9 @@ function photographerFactoryMedia(data) {
     const {title, image, video, date} = data;
     const photo = `assets/samplePhotos/${image}`;
     const clip = `assets/samplePhotos/${video}`;
+    
 
     function getMediaCardDOM() {
-        const contact = document.createElement("button");
-        contact.textContent = "Contactez-moi";
-
-        const header = document.querySelector(".photograph-header :nth-child(1)");
-        header.appendChild(contact);
 
         const article = document.createElement("article");
 
@@ -63,9 +65,7 @@ function photographerFactoryMedia(data) {
         
         setAttributes(img, {"class" : "photo", "src" : photo, "alt" : title, "aria-label" : "Photo"});
         setAttributes(mp4, {"class" : "video", "alt" : title, "aria-label" : "Video"});
-        setAttributes(contact, {"class" : "contact_button", "onclick" : "displayModal()"})
        
-
         const h2 = document.createElement("h2");
         h2.textContent = title;
 

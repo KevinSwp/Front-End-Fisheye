@@ -70,7 +70,9 @@ h1 {
 }
 
 .photograph-header {
+    display: flex;
     background-color: transparent;
+    height: auto;
 }
 
 .photograph-header :nth-child(1) {
@@ -90,7 +92,11 @@ h1 {
     border-radius: 100px;
 }
 
-.photograph-header article video{
+.photograph-media article video{
+    width: 200px;
+}
+
+.photograph-media article img{
     width: 200px;
 }
 

@@ -1,4 +1,4 @@
-//Display photographer
+//Display header photographer
 function displayDataPhotographer(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
     photographer.filter((person) => {
@@ -10,7 +10,7 @@ function displayDataPhotographer(photographer) {
 
 //Display media
 function displayDataMedia(media) {
-    const mediaSection = document.querySelector(".photograph-header");
+    const mediaSection = document.querySelector(".photograph-media");
     media.filter((photo) => {
         const mediaModel = photographerFactoryMedia(photo);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
