@@ -1,16 +1,26 @@
+/**
+ * Display data photographers
+ */
 function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
+    photographers.forEach((photographerData) => {
+        const photographers = new PhotographerFactory(photographerData, 'JSON_V1');
+        //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
+        const photographerCard = new PhotographerCard(photographers);
+
+        const userCardDOM = photographerCard.getPhotographerCard();
         photographersSection.appendChild(userCardDOM);
     });
 };
 
+/**
+ * qu'es ce que fait la fonction ?
+ */
 function init() {
     //Fetch data json
     fetch ("data/photographers.json")
+    //fetch ("data/photographersV2.json")
 
     //Makes response
     .then((response) => response.json())

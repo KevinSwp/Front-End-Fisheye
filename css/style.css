@@ -102,4 +102,6 @@ h1 {
 
 .contact_button {
     background-color: #901C1C !important;
+    justify-content: center;
+    align-items: center;
 }
