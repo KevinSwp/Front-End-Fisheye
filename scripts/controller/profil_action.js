@@ -20,9 +20,13 @@ function displayDataMedia(media) {
 
 //Get ID from URL
 function findIDbyURL() {
+
+    // document.location = /photographer.html?id=10&toto=a
+    // (new URL (document.location)).searchParams    =>      id=10&toto=a
+    // params.get("id") = "10"
+    // parseInt("10") => 10
     const params = (new URL (document.location)).searchParams;
     const id = parseInt(params.get("id"));
-
     return id;
 }
 
