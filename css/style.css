@@ -1,4 +1,4 @@
-@import url("photographer.css");
+/* @import url("photographer.css"); */
 
 body {
     font-family: "DM Sans", sans-serif;
@@ -40,14 +40,14 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.indexNamePhotographer {
     color: #D3573C;
     font-size: 32px;
     margin-bottom: 0;
 }
 
-.photographer_section article h3 {
-    color: #D3573C;
+.indexLocationPhotographer {
+    color: #901C1C;
     font-size: small;
     margin: 0;
 }
@@ -59,18 +59,18 @@ h1 {
     border-radius: 100px;
 }
 
-.photographer_section article p {
+.indexTagPhotographer {
     margin: 0;
     font-size: 0.8rem;
 }
 
-.photographer_section article span {
+.indexPricePhotographer {
     color: rgb(156, 156, 156);
     font-size: 0.8rem;
 }
 
 .photograph-header {
-    display: flex;
+    /* display: flex; */
     background-color: transparent;
     height: auto;
 }

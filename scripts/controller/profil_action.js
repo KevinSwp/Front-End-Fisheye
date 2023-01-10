@@ -4,6 +4,9 @@
 import PhotographerFactory from '../factories/Photographer_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
 
+//Select element from DOM
+const photographersSection = document.querySelector(".photograph-header");
+
 /**
  * Display all photographers cards to the DOM
  */
@@ -28,16 +31,6 @@ const displayDataPhotographer = (photographers) => {
     });
 };
 
-/*//Display header photographer
-function displayDataPhotographer(photographer) {
-    const photographersSection = document.querySelector(".photograph-header");
-    photographer.filter((person) => {
-        const photographerModel = photographerFactoryProfil(person);
-        const userCardDOM = photographerModel.getUserCardDOMProfil();
-        photographersSection.appendChild(userCardDOM);
-    });
-};*/
-
 /*//Display media
 function displayDataMedia(media) {
     const mediaSection = document.querySelector(".photograph-media");
@@ -53,9 +46,10 @@ function displayDataMedia(media) {
  */
 //Function
 const findIDbyURL = () => {
-    //               document.location   .searchParams
-    //             |                    |     |
-    //Get URL (ex: /photographer.html/?/id=930) 
+    //              document.location  .searchParams
+    //              _________↓_______  __↓__
+    //             |                 ||     |
+    //Get URL (ex: /photographer.html?id=930) 
     const params = (new URL (document.location)).searchParams;
     //Convert string to integer
     const id = parseInt(params.get("id"));
@@ -85,7 +79,7 @@ const initProfil = () => {
             const idMedia = media.filter(medias => medias.photographerId === findID);
 
             displayDataPhotographer(idPhotographer);
-            displayDataMedia(idMedia);
+            // displayDataMedia(idMedia);
         }
     )
     

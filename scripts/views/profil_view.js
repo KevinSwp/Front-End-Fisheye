@@ -10,13 +10,18 @@ export default class PhotographerCardProfil {
     getPhotographerCardProfil = () => {
         //Create article element in the DOM
         const article = document.createElement('article');
+        article.classList.add("profilHeader");
         
         //Fill the DOM
         article.innerHTML = `
-            <img src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
-            <h2>${this._photographer.name}</h2>
-            <h3>${this._photographer.city}, ${this._photographer.country}</h3>
-            <p>${this._photographer.tagline}</p>
+            <img class="profilPicture" src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
+            <button class="contact_button"  onclick="displayModal()">Contactez-moi</button>
+            <div class="profil_info">
+                <h2 class="profilNamePhotographer">${this._photographer.name}</h2>
+                <h3 class="profilLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
+                <p class="profilTagPhotographer">${this._photographer.tagline}</p>
+            </div>
+            
         `;
 
         return article;
