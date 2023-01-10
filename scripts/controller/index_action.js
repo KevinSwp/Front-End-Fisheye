@@ -2,7 +2,7 @@
  * Import file
  */
 import PhotographerFactory from '../factories/Photographer_factory.js';
-import PhotographerCard from '../views/indexCard.js';
+import PhotographersCardIndex from '../views/index_view.js';
 
 //Select element from DOM
 const photographersSection = document.querySelector(".photographer_section");
@@ -10,6 +10,7 @@ const photographersSection = document.querySelector(".photographer_section");
 /**
  * Display all photographers cards to the DOM
  */
+//Function
 const displayData = (photographers) => {
 
     photographers.forEach((photographerDataFromFile) => {
@@ -22,9 +23,9 @@ const displayData = (photographers) => {
          * Display photographer card
          */
         //Get photographer object from model
-        const photographerCard = new PhotographerCard(photographer);
+        const photographerCard = new PhotographersCardIndex(photographer);
         //Get photographer card from view
-        const userCardDOM = photographerCard.getNewPhotographerCard();
+        const userCardDOM = photographerCard.getPhotographerCardIndex();
         //Add "userCardDom" as child
         photographersSection.appendChild(userCardDOM);
     });
@@ -32,8 +33,9 @@ const displayData = (photographers) => {
 
 
 /**
- * initialize data of the index page
+ * Initialize data of the index page
  */
+//Function
 const init = () => {
 
     //Fetch data json

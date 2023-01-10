@@ -4,7 +4,7 @@
 import Photographer from '../models/Photographer_model.js'
 
 /**
- * 
+ * Get JSON type
  */
 export default class PhotographerFactory {
     constructor(data, type) {

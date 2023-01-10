@@ -1,4 +1,37 @@
-//function add multiple attribute
+/**
+ * Photographer card
+ */
+export default class PhotographerCardProfil {
+    constructor (photographer){
+        this._photographer = photographer;
+    }
+
+    //Function
+    getPhotographerCardProfil = () => {
+        //Create article element in the DOM
+        const article = document.createElement('article');
+        
+        //Fill the DOM
+        article.innerHTML = `
+            <img src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
+            <h2>${this._photographer.name}</h2>
+            <h3>${this._photographer.city}, ${this._photographer.country}</h3>
+            <p>${this._photographer.tagline}</p>
+        `;
+
+        return article;
+    }
+
+    get photographer() {
+        return this._photographer;
+    }
+
+    set photographer(value) {
+        this._photographer = value;
+    }
+}
+
+/*//function add multiple attribute
 function setAttributes(element, value) {
     for (const key in value) {
         element.setAttribute(key, value[key]);
@@ -78,4 +111,4 @@ function photographerFactoryMedia(data) {
     }
     
     return {title, photo, clip, date, getMediaCardDOM}
-}
+}*/

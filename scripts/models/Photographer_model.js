@@ -1,9 +1,8 @@
 /**
- * Info photographer
+ * Properties photographer
  */
 export default class Photographer {
     constructor(data){
-        // this.identity = data.identity
         this._id = data.id;
         this._name = data.name;
         this._city = data.city;
@@ -13,9 +12,6 @@ export default class Photographer {
         this._portrait = data.portrait;
     }
 
-    // get identity(){
-    //     return this.identity 
-    // }
     get id () {
         return this._id;
     }

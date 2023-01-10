@@ -1,4 +1,34 @@
-//Display header photographer
+/**
+ * Import file
+ */
+import PhotographerFactory from '../factories/Photographer_factory.js';
+import PhotographersCardProfil from '../views/profil_view.js';
+
+/**
+ * Display all photographers cards to the DOM
+ */
+//Function
+const displayDataPhotographer = (photographers) => {
+
+    photographers.forEach((photographerDataFromFile) => {
+
+        //Get photographer object from factory
+        const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
+        //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
+
+        /**
+         * Display photographer card
+         */
+        //Get photographer object from model
+        const photographerCard = new PhotographersCardProfil(photographer);
+        //Get photographer card from view
+        const userCardDOM = photographerCard.getPhotographerCardProfil();
+        //Add "userCardDom" as child
+        photographersSection.appendChild(userCardDOM);
+    });
+};
+
+/*//Display header photographer
 function displayDataPhotographer(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
     photographer.filter((person) => {
@@ -6,9 +36,9 @@ function displayDataPhotographer(photographer) {
         const userCardDOM = photographerModel.getUserCardDOMProfil();
         photographersSection.appendChild(userCardDOM);
     });
-};
+};*/
 
-//Display media
+/*//Display media
 function displayDataMedia(media) {
     const mediaSection = document.querySelector(".photograph-media");
     media.filter((photo) => {
@@ -16,22 +46,28 @@ function displayDataMedia(media) {
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
     });
-};
+};*/
 
-//Get ID from URL
-function findIDbyURL() {
-
-    // document.location = /photographer.html?id=10&toto=a
-    // (new URL (document.location)).searchParams    =>      id=10&toto=a
-    // params.get("id") = "10"
-    // parseInt("10") => 10
+/**
+ * Get ID from URL
+ */
+//Function
+const findIDbyURL = () => {
+    //               document.location   .searchParams
+    //             |                    |     |
+    //Get URL (ex: /photographer.html/?/id=930) 
     const params = (new URL (document.location)).searchParams;
+    //Convert string to integer
     const id = parseInt(params.get("id"));
+
     return id;
 }
 
-//Fetch and display data photographer
-function initProfil() {
+/**
+ * Fetch and display data photographer
+ */
+//Function
+const initProfil = () => {
     //Fetch data json
     fetch ("data/photographers.json")
 
@@ -44,7 +80,7 @@ function initProfil() {
             const {photographers, media} = data;
             const findID = findIDbyURL();
 
-            //Check same ID
+            //Check if same ID
             const idPhotographer = photographers.filter(photographer => photographer.id === findID);
             const idMedia = media.filter(medias => medias.photographerId === findID);
 
@@ -56,7 +92,7 @@ function initProfil() {
     //Catch error
     .catch(
         (error) => {
-            console.log(`Error fetching data : ${error}`);
+            console.error(`Error fetching data : ${error}`);
             document.querySelector(".photograph-header").innerHTML = "Impossible d'afficher le photographe";
         }
     )
