@@ -46,7 +46,7 @@ const displayDataMedia = (media) => {
             //Get content from view
             const mediaCardDOM = photographerCard.getPhotographerMedia();
             //Add "userCardDom" as child
-            photographerHeader.appendChild(mediaCardDOM);
+            photographerMedia.appendChild(mediaCardDOM);
         }
     )
 }

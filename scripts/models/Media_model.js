@@ -7,6 +7,7 @@ export default class Media {
         this._photographerId = data.photographerId;
         this._title = data.title;
         this._image = data.image;
+        this._video = data.video;
         this._likes = data.likes;
         this._date = data.date;
         this._price = data.price;
@@ -34,7 +35,11 @@ export default class Media {
     }
 
     get image() {
-        return `/assets/samplePhotos${this._image}`;
+        return `/assets/samplePhotos/${this._image}`;
+    }
+
+    get video() {
+        return `/assets/samplePhotos/${this._video}`;
     }
     
     get likes() {

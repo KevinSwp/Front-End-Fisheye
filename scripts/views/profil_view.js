@@ -34,8 +34,13 @@ export default class PhotographerCardProfil {
         article.classList.add("profilMedia");
         //Fill the DOM
         article.innerHTML = `
-            <img class="profilPictureMedia" src="${this._photographer.image}" alt="${this._photographer.title}" aria-label="Media"/>
-            <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+            <div>
+                <img class="profilPictureMedia" src="${this._photographer.image}" alt="${this._photographer.title}" aria-label="Media"/>
+                <!--<video controls class="profilVideo">
+                    <source src="${this._photographer.video}">
+                </video>-->
+                <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+            </div>
         `;
 
         return article;
