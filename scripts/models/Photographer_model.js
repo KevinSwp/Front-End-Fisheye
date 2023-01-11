@@ -12,6 +12,7 @@ export default class Photographer {
         this._portrait = data.portrait;
     }
 
+    //get & set
     get id () {
         return this._id;
     }
@@ -59,5 +60,4 @@ export default class Photographer {
     get portrait() {
         return `/assets/photographers/${this._portrait}`;
     }
-
 }

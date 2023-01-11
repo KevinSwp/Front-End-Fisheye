@@ -14,5 +14,4 @@ class PhotographerV2 {
     get identity(){
         return this.firstname + ' ' + this.lastname 
     }
-    
 }

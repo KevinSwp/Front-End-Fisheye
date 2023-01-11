@@ -1,18 +1,18 @@
 /**
  * Import file
  */
-import Photographer from '../models/Photographer_model.js';
+import Media from '../models/Media_model.js'
 
 /**
  * Get JSON type
  */
-export default class PhotographerFactory {
+export default class MediaFactory {
     constructor(data, type) {
         if (type === 'JSON_V1') {
-            return new Photographer(data);
+            return new Media(data);
   
         } else if (type === 'JSON_V2') {
-            return new PhotographerV2(data);
+            return new MediaV2(data);
 
         } else {
             throw 'Unknown type format';

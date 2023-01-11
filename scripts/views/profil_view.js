@@ -6,12 +6,12 @@ export default class PhotographerCardProfil {
         this._photographer = photographer;
     }
 
-    //Function
-    getPhotographerCardProfil = () => {
+    //Function content header
+    getPhotographerHeader = () => {
         //Create article element in the DOM
         const article = document.createElement('article');
+        //Add class to article
         article.classList.add("profilHeader");
-        
         //Fill the DOM
         article.innerHTML = `
             <img class="profilPicture" src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
@@ -27,6 +27,21 @@ export default class PhotographerCardProfil {
         return article;
     }
 
+    //Function content media
+    getPhotographerMedia = () => {
+        //Create article element in the DOM
+        const article = document.createElement('article');
+        article.classList.add("profilMedia");
+        //Fill the DOM
+        article.innerHTML = `
+            <img class="profilPictureMedia" src="${this._photographer.image}" alt="${this._photographer.title}" aria-label="Media"/>
+            <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+        `;
+
+        return article;
+    }
+
+    //get & set
     get photographer() {
         return this._photographer;
     }
@@ -41,48 +56,9 @@ function setAttributes(element, value) {
     for (const key in value) {
         element.setAttribute(key, value[key]);
     }
-}
+}*/
 
-//Display header profil photographer
-function photographerFactoryProfil(data) {
-    const {name, city, country, tagline, portrait} = data;
-    const picture = `./assets/photographers/${portrait}`;
-
-    function getUserCardDOMProfil() {
-        const contact = document.createElement("button");
-        contact.textContent = "Contactez-moi";
-
-        const header = document.querySelector(".photograph-header");
-        header.appendChild(contact);
-
-        const article = document.createElement("article");
-
-        const img = document.createElement("img");
-        
-        setAttributes(img, {"id" : "photo", "src" : picture, "alt" : name, "aria-label" : "Photographer"});
-        setAttributes(contact, {"class" : "contact_button", "onclick" : "displayModal()"});
-
-        const h2 = document.createElement("h2");
-        h2.textContent = name;
-
-        const location = document.createElement("h3");
-        location.textContent = city + ", " + country;
-
-        const tag = document.createElement("p");
-        tag.textContent = tagline;
-        
-        //Add element as child
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(location);
-        article.appendChild(tag);
-
-        return (article);
-    }
-    return {name, city, country, tagline, picture, getUserCardDOMProfil}
-}
-
-//Display media
+/*//Display media
 function photographerFactoryMedia(data) {
     const {title, image, video, date} = data;
     const photo = `assets/samplePhotos/${image}`;

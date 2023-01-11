@@ -1,16 +1,15 @@
 /**
  * Photographers card
  */
-export default class PhotographersCardIndex {
+export default class PhotographerCardIndex {
     constructor(photographer){
         this._photographer = photographer;
     }
 
-    //Function
+    //Function content home page
     getPhotographerCardIndex = () => {
         //Create article element in the DOM
         const article = document.createElement('article');
-        
         //Fill the DOM
         article.innerHTML = `
             <a href="photographer.html?id=${this._photographer.id}">
@@ -25,6 +24,7 @@ export default class PhotographersCardIndex {
         return article;
     }
 
+    //get & set
     get photographer() {
         return this._photographer;
     }
@@ -32,7 +32,6 @@ export default class PhotographersCardIndex {
     set photographer(value) {
         this._photographer = value;
     }
-    
 }
     /*getOldPhotographerCard = () => {
         const picture = `assets/photographers/${this._photographer.portrait}`;

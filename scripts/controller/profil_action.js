@@ -2,34 +2,54 @@
  * Import file
  */
 import PhotographerFactory from '../factories/Photographer_factory.js';
+import MediaFactory from '../factories/Media_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
 
 //Select element from DOM
-const photographersSection = document.querySelector(".photograph-header");
+const photographerHeader = document.querySelector(".photograph-header");
+const photographerMedia = document.querySelector(".photograph-media");
 
 /**
- * Display all photographers cards to the DOM
+ * Display all data of the photographer to the DOM
  */
-//Function
+//Function display infos photographer at profil page
 const displayDataPhotographer = (photographers) => {
-
     photographers.forEach((photographerDataFromFile) => {
+            //Get photographer object from factory
+            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
+            //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
 
-        //Get photographer object from factory
-        const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
-        //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
+            /**
+             * Display photographer card
+             */
+            //Get object from view
+            const photographerCard = new PhotographersCardProfil(photographer);
+            //Get content from view
+            const photographerCardDOM = photographerCard.getPhotographerHeader();
+            //Add "userCardDom" as child
+            photographerHeader.appendChild(photographerCardDOM);
+        }
+    )
+}
 
-        /**
-         * Display photographer card
-         */
-        //Get photographer object from model
-        const photographerCard = new PhotographersCardProfil(photographer);
-        //Get photographer card from view
-        const userCardDOM = photographerCard.getPhotographerCardProfil();
-        //Add "userCardDom" as child
-        photographersSection.appendChild(userCardDOM);
-    });
-};
+//Function display media at profil page
+const displayDataMedia = (media) => {
+    media.forEach((mediaDataFromFile) => {
+            //Get photographer object from factory
+            const media = new MediaFactory(mediaDataFromFile, 'JSON_V1');
+
+            /**
+             * Display media card
+             */
+            //Get object from view
+            const photographerCard = new PhotographersCardProfil(media);
+            //Get content from view
+            const mediaCardDOM = photographerCard.getPhotographerMedia();
+            //Add "userCardDom" as child
+            photographerHeader.appendChild(mediaCardDOM);
+        }
+    )
+}
 
 /*//Display media
 function displayDataMedia(media) {
@@ -79,7 +99,7 @@ const initProfil = () => {
             const idMedia = media.filter(medias => medias.photographerId === findID);
 
             displayDataPhotographer(idPhotographer);
-            // displayDataMedia(idMedia);
+            displayDataMedia(idMedia);
         }
     )
     
@@ -90,7 +110,8 @@ const initProfil = () => {
             document.querySelector(".photograph-header").innerHTML = "Impossible d'afficher le photographe";
         }
     )
-};
+}
 
+//Call function
 initProfil();
 
