@@ -1,5 +1,5 @@
 /**
- * Import file
+ * Import object from file
  */
 import PhotographerFactory from '../factories/Photographer_factory.js';
 import PhotographerCardIndex from '../views/index_view.js';

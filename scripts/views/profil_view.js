@@ -8,7 +8,7 @@ export default class PhotographerCardProfil {
 
     //Function photographer name on contact form
     getPhotographerNameOnForm = () => {
-        //Create article element in the DOM
+        //Create div element in the DOM
         const div = document.createElement('div');
         //Fill the DOM
         div.innerHTML = `
@@ -86,6 +86,21 @@ export default class PhotographerCardProfil {
         return article;
     }
 
+    //Function content price
+    getPrice = () => {
+        //Create div element in the DOM
+        const div = document.createElement('div');
+        div.classList.add("profilPrice");
+        //Fill the DOM
+        div.innerHTML = `
+            <span>151 034</span>
+            <i class="bi bi-heart-fill"></i>
+            <span class="pricePerDay">${this._photographer.price} € / jour</span>
+        `;
+
+        return div;
+    }
+    
     //get & set
     get photographer() {
         return this._photographer;

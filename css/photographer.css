@@ -16,6 +16,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.627);
+    z-index: 1000;
 }
 
 .photograph-header {
@@ -159,8 +160,12 @@ form input {
     font-size: x-large;
 }
 
-#modal-form input{
+#modal-form input {
     outline: none;
+}
+
+.borderInput p {
+    margin: 0;
 }
 
 .borderInput .border-red {
@@ -172,4 +177,21 @@ form input {
     color: red;
     font-weight: lighter;
     margin-bottom: -16.5px;
-  }
+}
+
+.price{
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    position: fixed;
+    bottom: 0;
+    right: 1.5rem;
+    padding: 1rem 1.5rem
+}
+
+.profilPrice {
+    font-weight: bold;
+}
+
+.pricePerDay {
+    padding-left: 5rem;
+}

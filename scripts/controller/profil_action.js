@@ -1,5 +1,5 @@
 /**
- * Import file
+ * Import object from file
  */
 import PhotographerFactory from '../factories/Photographer_factory.js';
 import MediaFactory from '../factories/Media_factory.js';
@@ -9,6 +9,7 @@ import PhotographersCardProfil from '../views/profil_view.js';
 const contactForm = document.getElementById('contact_modal');
 const photographerHeader = document.querySelector(".photograph-header");
 const photographerMedia = document.querySelector(".photograph-media");
+const photographerPrice = document.querySelector(".price");
 
 /**
  * Display photographer name on contact form
@@ -40,7 +41,7 @@ const displayDataPhotographer = (photographers) => {
             const photographerObject = new PhotographersCardProfil(photographer);
             //Get content from view
             const photographerCardDOM = photographerObject.getPhotographerHeader();
-            //Add "userCardDom" as child
+            //Add as child
             photographerHeader.appendChild(photographerCardDOM);
         }
     )
@@ -59,8 +60,28 @@ const displayDataMedia = (media) => {
             const photographerObject = new PhotographersCardProfil(media);
             //Get content from view
             const mediaCardDOM = photographerObject.getPhotographerMedia();
-            //Add "userCardDom" as child
+            //Add as child
             photographerMedia.appendChild(mediaCardDOM);
+        }
+    )
+}
+
+//Function display price
+const displayPrice = (photographers) => {
+    photographers.forEach((photographerDataFromFile) => {
+            //Get photographer object from factory
+            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
+            //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
+
+            /**
+             * Display photographer card
+             */
+            //Get object from view
+            const photographerObject = new PhotographersCardProfil(photographer);
+            //Get content from view
+            const price = photographerObject.getPrice();
+            //Add as child
+            photographerPrice.appendChild(price);
         }
     )
 }
@@ -105,6 +126,7 @@ const initProfil = () => {
             displayPhotographerNameOnContactForm(idPhotographer);
             displayDataPhotographer(idPhotographer);
             // displayDataMedia(idMedia);
+            displayPrice(idPhotographer);
         }
     )
     

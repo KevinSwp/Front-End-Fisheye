@@ -1,5 +1,5 @@
 /**
- * Import file
+ * Import object from file
  */
 import Photographer from '../models/Photographer_model.js';
 

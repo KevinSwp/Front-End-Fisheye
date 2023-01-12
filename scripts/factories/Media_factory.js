@@ -1,5 +1,5 @@
 /**
- * Import file
+ * Import object from file
  */
 import Media from '../models/Media_model.js'
 
