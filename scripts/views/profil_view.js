@@ -13,17 +13,29 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         div.innerHTML = `
             <div class="modal">
-            <header>
-            <h2 class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
-            </header>
-            <form>
-            <div>
-                <label>Prénom</label>
-                <input />
-            </div>
-            <button class="contact_button">Envoyer</button>
-            </form>
+                <header>
+                    <h2 class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
+                    <img src="assets/icons/close.svg" onclick="closeModal()" />
+                </header>
+                <form id="modal-form" name="contact">
+                <div>
+                    <label for="firstName">Prénom</label>
+                    <input type="text" id="firstName" name="firstName">
+                </div>
+                <div>
+                    <label for="lastName">Nom</label>
+                    <input type="text" id="lastName" name="lastName">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea class="textAera" type="text"></textarea>
+                </div>
+                    <button class="contact_button">Envoyer</button>
+                </form>
             </div>
         `;
 
