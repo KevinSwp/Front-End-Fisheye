@@ -6,8 +6,22 @@ import MediaFactory from '../factories/Media_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
 
 //Select element from DOM
+const contactForm = document.getElementById('contact_modal');
 const photographerHeader = document.querySelector(".photograph-header");
 const photographerMedia = document.querySelector(".photograph-media");
+
+/**
+ * Display photographer name on contact form
+ */
+const displayPhotographerNameOnContactForm = (photographers) => {
+    photographers.forEach((photographerDataFromFile) => {
+            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
+            const photographerObject = new PhotographersCardProfil(photographer);
+            const formName = photographerObject.getPhotographerNameOnForm();
+            contactForm.appendChild(formName);
+        }
+    )
+}
 
 /**
  * Display all data of the photographer to the DOM
@@ -23,9 +37,9 @@ const displayDataPhotographer = (photographers) => {
              * Display photographer card
              */
             //Get object from view
-            const photographerCard = new PhotographersCardProfil(photographer);
+            const photographerObject = new PhotographersCardProfil(photographer);
             //Get content from view
-            const photographerCardDOM = photographerCard.getPhotographerHeader();
+            const photographerCardDOM = photographerObject.getPhotographerHeader();
             //Add "userCardDom" as child
             photographerHeader.appendChild(photographerCardDOM);
         }
@@ -42,24 +56,14 @@ const displayDataMedia = (media) => {
              * Display media card
              */
             //Get object from view
-            const photographerCard = new PhotographersCardProfil(media);
+            const photographerObject = new PhotographersCardProfil(media);
             //Get content from view
-            const mediaCardDOM = photographerCard.getPhotographerMedia();
+            const mediaCardDOM = photographerObject.getPhotographerMedia();
             //Add "userCardDom" as child
             photographerMedia.appendChild(mediaCardDOM);
         }
     )
 }
-
-/*//Display media
-function displayDataMedia(media) {
-    const mediaSection = document.querySelector(".photograph-media");
-    media.filter((photo) => {
-        const mediaModel = photographerFactoryMedia(photo);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        mediaSection.appendChild(mediaCardDOM);
-    });
-};*/
 
 /**
  * Get ID from URL
@@ -98,8 +102,9 @@ const initProfil = () => {
             const idPhotographer = photographers.filter(photographer => photographer.id === findID);
             const idMedia = media.filter(medias => medias.photographerId === findID);
 
+            displayPhotographerNameOnContactForm(idPhotographer);
             displayDataPhotographer(idPhotographer);
-            displayDataMedia(idMedia);
+            // displayDataMedia(idMedia);
         }
     )
     

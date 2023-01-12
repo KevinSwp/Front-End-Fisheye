@@ -6,6 +6,30 @@ export default class PhotographerCardProfil {
         this._photographer = photographer;
     }
 
+    //Function photographer name on contact form
+    getPhotographerNameOnForm = () => {
+        //Create article element in the DOM
+        const div = document.createElement('div');
+        //Fill the DOM
+        div.innerHTML = `
+            <div class="modal">
+            <header>
+            <h2 class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            </header>
+            <form>
+            <div>
+                <label>Prénom</label>
+                <input />
+            </div>
+            <button class="contact_button">Envoyer</button>
+            </form>
+            </div>
+        `;
+
+        return div;
+    }
+
     //Function content header
     getPhotographerHeader = () => {
         //Create article element in the DOM
@@ -15,13 +39,14 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         article.innerHTML = `
             <img class="profilPicture" src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
+
             <button class="contact_button"  onclick="displayModal()">Contactez-moi</button>
+
             <div class="profil_info">
                 <h2 class="profilNamePhotographer">${this._photographer.name}</h2>
                 <h3 class="profilLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
                 <p class="profilTagPhotographer">${this._photographer.tagline}</p>
             </div>
-            
         `;
 
         return article;
