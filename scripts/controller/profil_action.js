@@ -155,6 +155,5 @@ const initProfil = () => {
 
 //Call function
 initProfil();
-
 displayfilter();
 
