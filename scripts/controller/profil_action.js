@@ -8,6 +8,7 @@ import PhotographersCardProfil from '../views/profil_view.js';
 //Select element from DOM
 const contactForm = document.getElementById('contact_modal');
 const photographerHeader = document.querySelector(".photograph-header");
+const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
@@ -45,6 +46,19 @@ const displayDataPhotographer = (photographers) => {
             photographerHeader.appendChild(photographerCardDOM);
         }
     )
+}
+
+//Function display media at profil page
+function displayfilter (){
+    /**
+    * Display photographer card
+    */
+    //Get object from view
+    const photographerObject = new PhotographersCardProfil();
+    //Get content from view
+    const filter = photographerObject.getFilter();
+    //Add as child
+    filterMedia.appendChild(filter);
 }
 
 //Function display media at profil page
@@ -125,7 +139,7 @@ const initProfil = () => {
 
             displayPhotographerNameOnContactForm(idPhotographer);
             displayDataPhotographer(idPhotographer);
-            // displayDataMedia(idMedia);
+            displayDataMedia(idMedia);
             displayPrice(idPhotographer);
         }
     )
@@ -141,4 +155,6 @@ const initProfil = () => {
 
 //Call function
 initProfil();
+
+displayfilter();
 

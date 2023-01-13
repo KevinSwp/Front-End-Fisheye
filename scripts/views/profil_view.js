@@ -86,6 +86,26 @@ export default class PhotographerCardProfil {
         return article;
     }
 
+    //Function content filter
+    getFilter = () => {
+        //Create div element in the DOM
+        const div = document.createElement('div');
+        div.classList.add("filter");
+        //Fill the DOM
+        div.innerHTML = `
+            <label for="filter">Trier par</label>
+
+            <select name="filter" id="filter">
+                <option value="popular">Popularité</option>
+                <option value="date">Date</option>
+                <option value="title">Titre</option>
+            </select>
+
+        `;
+
+        return div;
+    }
+
     //Function content price
     getPrice = () => {
         //Create div element in the DOM

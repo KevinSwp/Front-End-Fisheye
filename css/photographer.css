@@ -4,6 +4,11 @@ body {
     margin-left: 0px;
 }
 
+#main {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+
 .logo {
     height: 50px;
     margin-left: 100px;
@@ -22,7 +27,11 @@ body {
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+}
+
+#profilMedia {
+    margin: 1rem 0 3rem 0;
+    font-weight: bold;
 }
 
 .contact_button {
