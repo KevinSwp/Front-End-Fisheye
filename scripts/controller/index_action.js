@@ -2,40 +2,34 @@
  * Import object from file
  */
 import PhotographerFactory from '../factories/Photographer_factory.js';
+import {PHOTOGRAPHE_TYPES} from '../factories/Photographer_factory.js';
 import PhotographerCardIndex from '../views/index_view.js';
 
 //Select element from DOM
 const photographersSection = document.querySelector(".photographer_section");
 
 /**
- * Display all photographers to the DOM
+ * Display all photographers to the DOM at home page
  */
-//Function display photographers at home page
 const displayPhotographers = (photographers) => {
-    //Array photographers
     photographers.forEach((photographerDataFromFile) => {
-            //Get photographer object from factory
-            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
-            //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
+        // Get photographer object from factory
+        const photographer = new PhotographerFactory(photographerDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
+        //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
 
-            /**
-             * Display photographer card
-             */
-            //Get object from view
-            const photographerCard = new PhotographerCardIndex(photographer);
-            //Get content card from view
-            const photographerCardDOM = photographerCard.getPhotographerCardIndex();
-            //Add "userCardDom" as child
-            photographersSection.appendChild(photographerCardDOM);
-        }
-    )
+        /* Display photographer card */
+        //Get object from view
+        const photographerCard = new PhotographerCardIndex(photographer);
+        //Get content card from view
+        const photographerCardDOM = photographerCard.getPhotographerCardIndex();
+        //Add "userCardDom" as child
+        photographersSection.appendChild(photographerCardDOM);
+    })
 }
-
 
 /**
  * Initialize data of the index page
  */
-//Function
 const init = () => {
     //Fetch data json
     fetch ("data/photographers.json")
@@ -59,6 +53,7 @@ const init = () => {
         }
     )
 }
+
 //Call the function
 init();
     

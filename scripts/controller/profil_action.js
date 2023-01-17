@@ -1,55 +1,63 @@
 /**
  * Import object from file
  */
-import PhotographerFactory from '../factories/Photographer_factory.js';
 import MediaFactory from '../factories/Media_factory.js';
+import PhotographerFactory from '../factories/Photographer_factory.js';
+import {PHOTOGRAPHE_TYPES} from '../factories/Photographer_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
 
 //Select element from DOM
-const contactForm = document.getElementById('contact_modal');
+const modalLightbox = document.querySelector(".modalLightbox");
+const contactForm = document.getElementById("contact_modal");
 const photographerHeader = document.querySelector(".photograph-header");
 const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
 /**
- * Display photographer name on contact form
+ * Display modal lightbox
  */
-const displayPhotographerNameOnContactForm = (photographers) => {
-    photographers.forEach((photographerDataFromFile) => {
-            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
-            const photographerObject = new PhotographersCardProfil(photographer);
-            const formName = photographerObject.getPhotographerNameOnForm();
-            contactForm.appendChild(formName);
-        }
-    )
+const displayModalLightbox = (media) => {
+    media.forEach((mediaDataFromFile) => {
+        //Get photographer object from factory
+        const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
+
+        /**
+         * Display media card
+         */
+        //Get object from view
+        const photographerObject = new PhotographersCardProfil(media);
+        //Get content from view
+        const mediaCardDOM = photographerObject.getLightbox();
+        //Add as child
+        modalLightbox.appendChild(mediaCardDOM);
+
+        // mettre les listeners sur la modal
+    })
+}
+
+/**
+ * Display contact form
+ */
+const manageContactForm = (photographerTemplate) => {
+    const formName = photographerTemplate.getManageContactForm();
+    contactForm.appendChild(formName);
+
+    initEventListeners();
 }
 
 /**
  * Display all data of the photographer to the DOM
  */
-//Function display infos photographer at profil page
-const displayDataPhotographer = (photographers) => {
-    photographers.forEach((photographerDataFromFile) => {
-            //Get photographer object from factory
-            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
-            //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
-
-            /**
-             * Display photographer card
-             */
-            //Get object from view
-            const photographerObject = new PhotographersCardProfil(photographer);
-            //Get content from view
-            const photographerCardDOM = photographerObject.getPhotographerHeader();
-            //Add as child
-            photographerHeader.appendChild(photographerCardDOM);
-        }
-    )
+const displayDataPhotographer = (photographerTemplate) => {
+    //Get content from view
+    const photographerCardDOM = photographerTemplate.getPhotographerHeader();
+    //Add as child
+    photographerHeader.appendChild(photographerCardDOM);
 }
 
-//Function display media at profil page
-function displayfilter (){
+//Function display filter
+const displayfilter = () => {
     /**
     * Display photographer card
     */
@@ -61,43 +69,28 @@ function displayfilter (){
     filterMedia.appendChild(filter);
 }
 
-//Function display media at profil page
+//Function display media
 const displayDataMedia = (media) => {
     media.forEach((mediaDataFromFile) => {
-            //Get photographer object from factory
-            const media = new MediaFactory(mediaDataFromFile, 'JSON_V1');
+        //Get photographer object from factory
+        const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
 
-            /**
-             * Display media card
-             */
-            //Get object from view
-            const photographerObject = new PhotographersCardProfil(media);
-            //Get content from view
-            const mediaCardDOM = photographerObject.getPhotographerMedia();
-            //Add as child
-            photographerMedia.appendChild(mediaCardDOM);
-        }
-    )
+        /* Display media card */
+        //Get object from view
+        const photographerObject = new PhotographersCardProfil(media);
+        //Get content from view
+        const mediaCardDOM = photographerObject.getPhotographerMedia();
+        //Add as child
+        photographerMedia.appendChild(mediaCardDOM);
+    })
 }
 
 //Function display price
-const displayPrice = (photographers) => {
-    photographers.forEach((photographerDataFromFile) => {
-            //Get photographer object from factory
-            const photographer = new PhotographerFactory(photographerDataFromFile, 'JSON_V1');
-            //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
-
-            /**
-             * Display photographer card
-             */
-            //Get object from view
-            const photographerObject = new PhotographersCardProfil(photographer);
-            //Get content from view
-            const price = photographerObject.getPrice();
-            //Add as child
-            photographerPrice.appendChild(price);
-        }
-    )
+const displayPrice = (photographerTemplate) => {
+    //Get content from view
+    const price = photographerTemplate.getPrice();
+    //Add as child
+    photographerPrice.appendChild(price);
 }
 
 /**
@@ -109,7 +102,7 @@ const findIDbyURL = () => {
     //              _________↓_______  __↓__
     //             |                 ||     |
     //Get URL (ex: /photographer.html?id=930) 
-    const params = (new URL (document.location)).searchParams;
+    const params = (new URL(document.location)).searchParams;
     //Convert string to integer
     const id = parseInt(params.get("id"));
 
@@ -122,35 +115,38 @@ const findIDbyURL = () => {
 //Function
 const initProfil = () => {
     //Fetch data json
-    fetch ("data/photographers.json")
+    fetch("data/photographers.json")
 
-    //Makes a promise
-    .then((response) => response.json())
+        //Makes a promise
+        .then((response) => response.json())
 
-    //Display property photographers and media
-    .then(
-        (data) => {
-            const {photographers, media} = data;
-            const findID = findIDbyURL();
+        //Display property photographers and media
+        .then(
+            (data) => {
+                const { photographers, media } = data;
+                const findID = findIDbyURL();
 
-            //Check if same ID
-            const idPhotographer = photographers.filter(photographer => photographer.id === findID);
-            const idMedia = media.filter(medias => medias.photographerId === findID);
+                //Check if same ID
+                const photographer = photographers.find(photographer => photographer.id === findID);
+                const idMedia = media.filter(medias => medias.photographerId === findID);
 
-            displayPhotographerNameOnContactForm(idPhotographer);
-            displayDataPhotographer(idPhotographer);
-            displayDataMedia(idMedia);
-            displayPrice(idPhotographer);
-        }
-    )
-    
-    //Catch error
-    .catch(
-        (error) => {
-            console.error(`Error fetching data : ${error}`);
-            document.querySelector(".photograph-header").innerHTML = "Impossible d'afficher le photographe";
-        }
-    )
+                const photographerTemplate = new PhotographersCardProfil(photographer);
+
+                // displayModalLightbox(idMedia);
+                manageContactForm(photographerTemplate);
+                displayDataPhotographer(photographerTemplate);
+                displayPrice(photographerTemplate);
+                displayDataMedia(idMedia);
+            }
+        )
+
+        //Catch error
+        .catch(
+            (error) => {
+                console.error(`Error fetching data : ${error}`);
+                document.querySelector(".photograph-header").innerHTML = "Impossible d'afficher le photographe";
+            }
+        )
 }
 
 //Call function

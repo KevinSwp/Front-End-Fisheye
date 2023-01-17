@@ -35,10 +35,17 @@ export default class Media {
     }
 
     get image() {
+        if(this._image === undefined ){
+            return undefined
+        }
+
         return `/assets/samplePhotos/${this._image}`;
     }
 
     get video() {
+        if(this._video === undefined ){
+            return undefined
+        }
         return `/assets/samplePhotos/${this._video}`;
     }
     

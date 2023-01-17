@@ -2,12 +2,12 @@
  * Photographer card
  */
 export default class PhotographerCardProfil {
-    constructor (photographer){
+    constructor(photographer) {
         this._photographer = photographer;
     }
 
-    //Function photographer name on contact form
-    getPhotographerNameOnForm = () => {
+    //Function manage contact form
+    getManageContactForm = () => {
         //Create div element in the DOM
         const div = document.createElement('div');
         //Fill the DOM
@@ -35,7 +35,8 @@ export default class PhotographerCardProfil {
                     </div>
                     <div>
                         <label for="message">Message</label>
-                        <textarea class="textAera" type="text" minlength="5" maxlength="150"></textarea>
+                        <textarea id="textAera" class="textAera" type="text" minlength="50" maxlength="200"></textarea>
+                        <p></p>
                     </div>
                         <button type="submit" class="contact_button">Envoyer</button>
                 </form>
@@ -72,16 +73,30 @@ export default class PhotographerCardProfil {
         //Create article element in the DOM
         const article = document.createElement('article');
         article.classList.add("profilMedia");
+
         //Fill the DOM
-        article.innerHTML = `
+        if (this._photographer.video === undefined) {
+            article.innerHTML = `
+                <div>
+                    <div class="divImgMedia">
+                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox()" alt="${this._photographer.title}" aria-label="Media"/>
+                    </div>
+
+                    <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+                </div>
+            `;
+        } else {
+            article.innerHTML = `
             <div>
-                <img class="profilPictureMedia" src="${this._photographer.image}" alt="${this._photographer.title}" aria-label="Media"/>
-                <!--<video controls class="profilVideo">
+                <video class="profilVideo">
                     <source src="${this._photographer.video}">
-                </video>-->
+                </video>
                 <h2 class="profilTitleMedia">${this._photographer.title}</h2>
             </div>
         `;
+        }
+
+
 
         return article;
     }
@@ -120,7 +135,53 @@ export default class PhotographerCardProfil {
 
         return div;
     }
-    
+
+    //Function content lightbox
+    getLightbox = () => {
+        //Create div element in the DOM
+        const div = document.createElement('div');
+        div.classList.add("lightbox");
+        //Fill the DOM
+        div.innerHTML = `
+        <span class="close cursor" onclick="closeLightbox()">&times;</span>
+        <div class="modal-content">
+      
+          <div class="mySlides">
+            <div class="numbertext">1 / 4</div>
+            <img src="${this._photographer.image}" style="width:100%">
+          </div>
+      
+          <!-- Next/previous controls -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      
+          <!-- Caption text -->
+          <div class="caption-container">
+            <p id="caption"></p>
+          </div>
+      
+        <!-- Thumbnail image controls -->
+          <div class="column">
+            <img class="demo" src="img1.jpg" onclick="currentSlide(1)" alt="Nature">
+          </div>
+      
+          <div class="column">
+            <img class="demo" src="img2.jpg" onclick="currentSlide(2)" alt="Snow">
+          </div>
+      
+          <div class="column">
+            <img class="demo" src="img3.jpg" onclick="currentSlide(3)" alt="Mountains">
+          </div>
+      
+          <div class="column">
+            <img class="demo" src="img4.jpg" onclick="currentSlide(4)" alt="Lights">
+          </div>
+        </div>
+        `;
+
+        return div;
+    }
+
     //get & set
     get photographer() {
         return this._photographer;

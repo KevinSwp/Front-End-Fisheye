@@ -50,8 +50,8 @@ body {
     box-shadow: 0px 0px 15px -5px #00000078;
 }
 
-.filterMedia select option {
-    padding: 5rem !important;
+.filter option {
+    font-weight: bold;
 }
 
 .contact_button {
@@ -164,21 +164,37 @@ form input {
     font-size: 18px;
 }
 
-.profilMedia {
-    width: 250px;
+.photograph-media {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.profilPictureMedia {
-    width: 100%;
-    height: 200px;
-    border-radius: 5px;
-    object-fit: cover;
+.profilMedia {
+    width: calc(100% / 3 - 20px);
 }
 
 .profilTitleMedia {
     font-weight: normal;
     color: #901C1C;
     margin-top: 0;
+}
+
+.divImgMedia {
+    position:relative;
+    width:100%;
+    height:250px;
+}
+
+.imgMedia {
+    position:absolute;
+    object-fit:cover;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border-radius: 5px;
 }
 
 .profilVideo {
@@ -208,11 +224,10 @@ form input {
     border: 2px solid red;
 }
 
-.borderInput .text-red{
+.text-red{
     font-size: 0.8rem;
     color: red;
     font-weight: lighter;
-    margin-bottom: -16.5px;
 }
 
 .price{
