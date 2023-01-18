@@ -79,7 +79,7 @@ export default class PhotographerCardProfil {
             article.innerHTML = `
                 <div>
                     <div class="divImgMedia">
-                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(); currentSlide()" alt="${this._photographer.title}" aria-label="Media"/>
+                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
                     </div>
 
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
@@ -87,11 +87,12 @@ export default class PhotographerCardProfil {
             `;
         } else {
             article.innerHTML = `
-            <div>
+            <div class="div_video">
+                <i class="iconPlay"></i>
                 <video class="profilVideo">
                     <source src="${this._photographer.video}">
                 </video>
-                <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+                <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
             </div>
         `;
         }
@@ -143,7 +144,7 @@ export default class PhotographerCardProfil {
         div.classList.add("lightbox");
         //Fill the DOM
         div.innerHTML = `
-            <img src="${this.photographer.image}"  onclick="currentSlide(n)">
+            <img src="${this.photographer.image}">
         `;
 
         return div;
