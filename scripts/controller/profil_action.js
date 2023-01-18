@@ -19,7 +19,7 @@ const photographerPrice = document.querySelector(".price");
  */
 const displayModalLightbox = (media) => {
     media.forEach((mediaDataFromFile) => {
-        //Get photographer object from factory
+        //Get media object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
 
         /**
@@ -132,7 +132,7 @@ const initProfil = () => {
 
                 const photographerTemplate = new PhotographersCardProfil(photographer);
 
-                // displayModalLightbox(idMedia);
+                displayModalLightbox(idMedia);
                 manageContactForm(photographerTemplate);
                 displayDataPhotographer(photographerTemplate);
                 displayPrice(photographerTemplate);

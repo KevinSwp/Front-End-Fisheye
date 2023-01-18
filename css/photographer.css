@@ -4,6 +4,21 @@ body {
     margin-left: 0px;
 }
 
+.modalLightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #312e2ea2;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modalLightbox img {
+    cursor: pointer;
+}
+
 #main {
     margin-left: 90px;
     margin-right: 90px;
@@ -16,8 +31,8 @@ body {
 
 #contact_modal {
     display: none;
-    position: absolute;
-    margin-top: -18px;
+    position: fixed;
+    margin-top: -20px;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.627);
@@ -187,6 +202,15 @@ form input {
     height:250px;
 }
 
+.imgMedia:hover{
+    box-shadow: 0px 0px 15px 0px #00000078;
+    margin-left: -2%;
+    margin-top: -3%;
+    width: 104%;
+    height: 104%;
+    transition: 0.25s;
+}
+
 .imgMedia {
     position:absolute;
     object-fit:cover;
@@ -217,17 +241,25 @@ form input {
 }
 
 .borderInput p {
-    margin: 0;
+    margin-top: 3px;
+    margin-bottom: 0;
 }
 
-.borderInput .border-red {
+.border-red {
     border: 2px solid red;
 }
 
+#textAera-p {
+    margin: 0;
+    margin-top: 5px;
+}
+
 .text-red{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    background-color: wheat;
     color: red;
-    font-weight: lighter;
+    border-radius: 5px;
+    padding-left: 7px;
 }
 
 .price{

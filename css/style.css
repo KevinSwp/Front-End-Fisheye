@@ -52,6 +52,11 @@ h1 {
     margin: 0;
 }
 
+.photographer_section article img:hover {
+    box-shadow: 0px 0px 15px 0px #00000078;
+    transition: 0.2s;
+}
+
 .photographer_section article img {
     height: 200px;
     width: 200px;
