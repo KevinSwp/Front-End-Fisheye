@@ -79,7 +79,7 @@ export default class PhotographerCardProfil {
             article.innerHTML = `
                 <div>
                     <div class="divImgMedia">
-                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox()" alt="${this._photographer.title}" aria-label="Media"/>
+                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(); currentSlide()" alt="${this._photographer.title}" aria-label="Media"/>
                     </div>
 
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
@@ -143,7 +143,7 @@ export default class PhotographerCardProfil {
         div.classList.add("lightbox");
         //Fill the DOM
         div.innerHTML = `
-            test
+            <img src="${this.photographer.image}"  onclick="currentSlide(n)">
         `;
 
         return div;
