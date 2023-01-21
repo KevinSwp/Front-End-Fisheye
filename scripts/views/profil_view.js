@@ -54,7 +54,7 @@ export default class PhotographerCardProfil {
         article.classList.add("profilHeader");
         //Fill the DOM
         article.innerHTML = `
-            <img class="profilPicture" src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
+            <img class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
 
             <button class="contact_button"  onclick="displayModal()">Contactez-moi</button>
 

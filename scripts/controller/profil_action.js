@@ -2,7 +2,6 @@
  * Import object from file
  */
 import MediaFactory from '../factories/Media_factory.js';
-import PhotographerFactory from '../factories/Photographer_factory.js';
 import {PHOTOGRAPHE_TYPES} from '../factories/Photographer_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
 
