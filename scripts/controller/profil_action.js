@@ -85,10 +85,12 @@ const displayDataMedia = (media) => {
 }
 
 //Function display price
-const displayPrice = (photographerTemplate) => {
+const displayTotaleLikes_Price = (photographerTemplate) => {
     //Get content from view
     const price = photographerTemplate.getPrice();
+    const totalLikes = photographerTemplate.getTotalLikes();
     //Add as child
+    photographerPrice.appendChild(totalLikes);
     photographerPrice.appendChild(price);
 }
 
@@ -134,7 +136,7 @@ const initProfil = () => {
                 displayModalLightbox(idMedia);
                 manageContactForm(photographerTemplate);
                 displayDataPhotographer(photographerTemplate);
-                displayPrice(photographerTemplate);
+                displayTotaleLikes_Price(photographerTemplate);
                 displayDataMedia(idMedia);
             }
         )

@@ -145,10 +145,10 @@ export default class PhotographerCardProfil {
     getTotalLikes = () => {
         //Create div element in the DOM
         const div = document.createElement('div');
-        div.classList.add("profilLikes");
+        div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span>151 034</span>
+            <span>XXX</span>
             <i class="bi bi-heart-fill"></i>
         `;
 

@@ -425,6 +425,7 @@ form input {
 }
 
 .price{
+    display: flex;
     background-color: #DB8876;
     border-radius: 5px 5px 0 0;
     position: fixed;
