@@ -1,7 +1,7 @@
 /**
  * Import object from file
  */
-import Media from '../models/Media_model.js'
+import Media from '../models/Media.js'
 
 /**
  * Get JSON type

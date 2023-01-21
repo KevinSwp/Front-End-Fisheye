@@ -3,7 +3,6 @@ body {
     margin-top: 18px;
     margin-left: auto;
     margin-right: auto;
-    width: 85%;
 }
 
 .modalLightbox {
@@ -47,7 +46,7 @@ body {
     display: none;
     position: fixed;
     margin-top: -18px;
-    margin-left: -5%;
+    margin-left: 5%;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.627);
@@ -59,7 +58,7 @@ body {
     height: 300px;
 }
 
-.filterMedia {
+/*.filterMedia {
     margin: 1rem 0 3rem 0;
     font-weight: bold;
 }
@@ -81,6 +80,49 @@ body {
 
 .filter option {
     font-weight: bold;
+}*/
+
+.filter {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+}
+
+.divFilter {
+    padding-left: 20px;
+}
+
+.divOption {
+    display: none;
+}
+
+.selected button {
+    width: 140px;
+    padding: 0.6rem;
+    border: 0;
+    border-radius: 5px 5px 0px 0px;
+    background-color: #901C1C;
+    color: white;
+    font-weight: bold;
+}
+
+.option button {
+    width: 140px;
+    padding: 0.6rem;
+    border: 0;
+    border-top: solid 1px white;
+    background-color: #901C1C;
+    color: white;
+    font-weight: bold;
+}
+
+.option :nth-child(2){
+    border-radius: 0px 0px 5px 5px;
 }
 
 .contact_button {
@@ -201,26 +243,75 @@ form input {
 }
 
 .profilMedia {
-    width: calc(100% / 3 - 20px);
+    width: calc(100% / 3 - 60px);
 }
 
 .div_video {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 280px;
+}
+
+.legendVideo i {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    color: #901C1C;
+}
+
+.likeHeartVideo i:hover{
+    font-size: x-large;
+    margin-right: -5px;
+    margin-bottom: -5px;
+    transition: 0.2s;
+}
+
+.likeHeartVideo span{
+    position: absolute;
+    right: 20px;
+    bottom: -5px;
+    color: #901C1C;
+}
+
+.likeHeart i:hover{
+    font-size: x-large;
+    transition: 0.2s;
+    margin-left: -3px;
+    margin-top: -5px;
+}
+
+.likeHeart i {
+    position: absolute;
+}
+
+.likeHeart span {
+    color: #901C1C;
+    margin-right: 5px;
+}
+
+.legend {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.legend i {
+    color: #901C1C;
 }
 
 .profilTitleMedia {
     font-weight: normal;
     color: #901C1C;
     font-size: unset;
-    margin-top: 0;
+    margin: 0;
 }
 
 .divImgMedia {
     position:relative;
     width:100%;
-    height:250px;
+    height:280px;
 }
 
 .imgMedia:hover{
@@ -248,7 +339,7 @@ form input {
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    top: -17px;
+    top: -25px;
     left: 0;
 }
 
@@ -275,7 +366,7 @@ form input {
 
 .mp4 {
     position: absolute;
-    bottom: -18px;
+    bottom: -5px;
 }
 
 .textAera {
@@ -321,7 +412,8 @@ form input {
     position: fixed;
     bottom: 0;
     right: 1.5rem;
-    padding: 1rem 1.5rem
+    padding: 1rem 1.5rem;
+    z-index: 2;
 }
 
 .profilPrice {

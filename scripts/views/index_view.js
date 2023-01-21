@@ -12,11 +12,10 @@ export default class PhotographerCardIndex {
         const article = document.createElement('article');
         //Fill the DOM
         article.innerHTML = `
-            <a href="photographer.html?id=${this._photographer.id}">
+            <a class="photographerBloc" href="photographer.html?id=${this._photographer.id}">
                 <img src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
+                <h2 class="indexNamePhotographer">${this._photographer.name}</h2>
             </a>
-
-            <h2 class="indexNamePhotographer">${this._photographer.name}</h2>
 
             <h3 class="indexLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
 

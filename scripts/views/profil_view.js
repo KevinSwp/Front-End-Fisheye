@@ -77,13 +77,16 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             article.innerHTML = `
-                <div>
                     <div class="divImgMedia">
                         <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
                     </div>
-
-                    <h2 class="profilTitleMedia">${this._photographer.title}</h2>
-                </div>
+                    <div class="legend">
+                        <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+                        <div class="likeHeart">
+                            <span>${this._photographer.likes}</span>
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                    </div>
             `;
         } else {
             article.innerHTML = `
@@ -92,12 +95,16 @@ export default class PhotographerCardProfil {
                 <video class="profilVideo">
                     <source src="${this._photographer.video}">
                 </video>
-                <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
+                <div class="legendVideo">
+                    <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
+                    <div class="likeHeartVideo">
+                        <span>${this._photographer.likes}</span>
+                        <i class="bi bi-heart-fill"></i>
+                    </div>
+                </div>
             </div>
         `;
         }
-
-
 
         return article;
     }
@@ -109,14 +116,40 @@ export default class PhotographerCardProfil {
         div.classList.add("filter");
         //Fill the DOM
         div.innerHTML = `
-            <label for="filter">Trier par</label>
+            <label>Trier par</label>
 
-            <select name="filter" id="filter">
+            <!--<select name="filter" id="filter">
                 <option value="popular">Popularité</option>
                 <option value="date">Date</option>
                 <option value="title">Titre</option>
-            </select>
+            </select>-->
 
+            <div class="divFilter">
+                <div class="selected" onclick="filter()">
+                    <button value="popular">Popularité</button>
+                </div>
+                <div class="divOption">
+                    <div class="option">
+                        <button value="date">Date</button>
+                        <button value="title">Titre</button>
+                    </div>
+                </div>
+            </div>
+            
+        `;
+
+        return div;
+    }
+
+    //Function content total likes
+    getTotalLikes = () => {
+        //Create div element in the DOM
+        const div = document.createElement('div');
+        div.classList.add("profilLikes");
+        //Fill the DOM
+        div.innerHTML = `
+            <span>151 034</span>
+            <i class="bi bi-heart-fill"></i>
         `;
 
         return div;
@@ -129,8 +162,6 @@ export default class PhotographerCardProfil {
         div.classList.add("profilPrice");
         //Fill the DOM
         div.innerHTML = `
-            <span>151 034</span>
-            <i class="bi bi-heart-fill"></i>
             <span class="pricePerDay">${this._photographer.price} € / jour</span>
         `;
 
