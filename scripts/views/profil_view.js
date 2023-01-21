@@ -119,9 +119,9 @@ export default class PhotographerCardProfil {
             <label>Trier par</label>
 
             <!--<select name="filter" id="filter">
-                <option value="popular">Popularité</option>
-                <option value="date">Date</option>
-                <option value="title">Titre</option>
+                <option><button value="popular">Popularité</button></option>
+                <option><button value="date">Date</button></option>
+                <option><button value="title">Titre</button></option>
             </select>-->
 
             <div class="divFilter">

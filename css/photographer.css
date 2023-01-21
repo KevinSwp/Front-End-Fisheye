@@ -53,6 +53,11 @@ body {
     z-index: 1000;
 }
 
+#modal-form button:hover {
+    background-color: #901C1C;
+    color: white;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -125,8 +130,14 @@ body {
     border-radius: 0px 0px 5px 5px;
 }
 
+.contact_button:hover {
+    background-color: #DB8876;
+    color: black;
+    transition: 0.3s;
+}
+
 .contact_button {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     color: white;
     padding: 11px;
@@ -273,6 +284,10 @@ form input {
     color: #901C1C;
 }
 
+.likeHeartVideo i {
+    cursor: pointer;
+}
+
 .likeHeart i:hover{
     font-size: x-large;
     transition: 0.2s;
@@ -282,6 +297,7 @@ form input {
 
 .likeHeart i {
     position: absolute;
+    cursor: pointer;
 }
 
 .likeHeart span {
@@ -326,6 +342,7 @@ form input {
 .imgMedia {
     position:absolute;
     object-fit:cover;
+    cursor: pointer;
     top:0;
     left:0;
     width:100%;
@@ -337,6 +354,7 @@ form input {
     position: absolute;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
     width: 100%;
     height: 100%;
     top: -25px;
