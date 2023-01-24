@@ -1,5 +1,16 @@
+
+let currentLightboxPosition = 0
+
 // Open the Modal
-function openLightbox() {
+  function openLightbox(position) {
+    
+    // On récupère la position à utiliser
+    currentLightboxPosition = position
+
+    // Affiche la bonne slide
+    showSlides(currentLightboxPosition);
+
+    // Affiche la lightbox
     document.querySelector(".modalLightbox").style.display = "block";
   }
   
@@ -8,26 +19,58 @@ function openLightbox() {
     document.querySelector(".modalLightbox").style.display = "none";
   }
   
-  var slideIndex = 1;
-  showSlides(slideIndex);
+
   
   // Next/previous controls
   function plusSlides(n) {
     showSlides(slideIndex += n);
   }
   
+
+
+
   // Thumbnail image controls
   function currentSlide(n) {
     showSlides(slideIndex = n);
   }
   
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("lightbox");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
+
+
+  /**
+   * 
+   */
+    const goToPreviousSlide = () => {
+      showSlides(currentLightboxPosition - 1)
+    }
+  
+    /**
+     * 
+     */
+    const goToNextSlide = () => {
+      showSlides(currentLightboxPosition + 1)
+    }
+
+  /**
+   * Permet d'afficher la bonne slide dans la lightbox
+   */
+  const showSlides = (newSlidePosition) => {
+    const slides = document.getElementsByClassName("lightbox");
+
+    //
+    if (newSlidePosition >= slides.length) {
+      currentLightboxPosition = 0
+    }
+
+    //
+    if (newSlidePosition < 0) {
+      currentLightboxPosition = slides.length - 1
+    }
+
+    // On masque toutes les slides
+    for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
-    slides[slideIndex-1].style.display = "block";
+
+    // On affiche la bonne slide uniquement
+    slides[currentLightboxPosition].style.display = "block";
   }

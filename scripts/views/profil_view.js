@@ -69,7 +69,7 @@ export default class PhotographerCardProfil {
     }
 
     //Function content media
-    getPhotographerMedia = () => {
+    getPhotographerMedia = (position) => {
         //Create article element in the DOM
         const article = document.createElement('article');
         article.classList.add("profilMedia");
@@ -77,8 +77,8 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             article.innerHTML = `
-                    <div class="divImgMedia">
-                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
+                    <div class="divImgMedia" >
+                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position}); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
                     </div>
                     <div class="legend">
                         <h2 class="profilTitleMedia">${this._photographer.title}</h2>
@@ -126,12 +126,12 @@ export default class PhotographerCardProfil {
 
             <div class="divFilter">
                 <div class="selected" onclick="filter()">
-                    <button value="popular">Popularité</button>
+                    <button id="" value="popular">Popularité</button>
                 </div>
                 <div class="divOption">
                     <div class="option">
-                        <button value="date">Date</button>
-                        <button value="title">Titre</button>
+                        <button id="" value="date">Date</button>
+                        <button id="" value="title">Titre</button>
                     </div>
                 </div>
             </div>

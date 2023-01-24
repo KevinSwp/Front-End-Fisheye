@@ -13,6 +13,8 @@ const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
+let totalLikes = 0
+
 /**
  * Display modal lightbox
  */
@@ -70,7 +72,7 @@ const displayfilter = () => {
 
 //Function display media
 const displayDataMedia = (media) => {
-    media.forEach((mediaDataFromFile) => {
+    media.forEach((mediaDataFromFile, index) => {
         //Get photographer object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
 
@@ -78,13 +80,19 @@ const displayDataMedia = (media) => {
         //Get object from view
         const photographerObject = new PhotographersCardProfil(media);
         //Get content from view
-        const mediaCardDOM = photographerObject.getPhotographerMedia();
+        const mediaCardDOM = photographerObject.getPhotographerMedia(index);
+    
         //Add as child
         photographerMedia.appendChild(mediaCardDOM);
+
+        // Ajout du nombre de like au total de likes
+
+        // Listener sur les likes de CE media qui fait +1 ou -1
+
     })
 }
 
-//Function display price
+//Function display total likes & price
 const displayTotaleLikes_Price = (photographerTemplate) => {
     //Get content from view
     const price = photographerTemplate.getPrice();
@@ -97,7 +105,6 @@ const displayTotaleLikes_Price = (photographerTemplate) => {
 /**
  * Get ID from URL
  */
-//Function
 const findIDbyURL = () => {
     //              document.location  .searchParams
     //              _________↓_______  __↓__
@@ -113,7 +120,6 @@ const findIDbyURL = () => {
 /**
  * Fetch and display data photographer
  */
-//Function
 const initProfil = () => {
     //Fetch data json
     fetch("data/photographers.json")

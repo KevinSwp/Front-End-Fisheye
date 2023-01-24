@@ -9,7 +9,7 @@ export default class Media {
         this._image = data.image;
         this._video = data.video;
         this._likes = data.likes;
-        this._totalLikes = data.totalLikes;
+        this._isLiked = false
         this._date = data.date;
         this._price = data.price;
     }
@@ -56,14 +56,6 @@ export default class Media {
 
     set likes(value){
         this._likes = value;
-    }
-
-    get totalLikes() {
-        return this._likes;
-    }
-
-    set totalLikes(value){
-        this._totalLikes = value;
     }
     
     get date() {
