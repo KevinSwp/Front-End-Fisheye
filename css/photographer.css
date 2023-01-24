@@ -16,18 +16,52 @@ body {
     z-index: 1000;
 }
 
+.previousSlide {
+    position: absolute;
+    color: #901C1C;
+    left: 10%;
+    top: 20rem;
+    font-size: 5rem;
+}
+
+.closeModal {
+    position: absolute;
+    right: 9%;
+    top: 3.5rem;
+}
+
+.nextSlide {
+    position: absolute;
+    color: #901C1C;
+    right: 9.5%;
+    top: 20rem;
+    font-size: 5rem;
+}
+
 .modalLightbox img {
     cursor: pointer;
-    background-color: black;
+}
+
+.figure {
+    height: 41rem;
+}
+
+.figcaption {
+    text-align: initial;
+    padding-left: 12.5%;
+    color: #901C1C;
+    padding-top: 0.4rem;
+    font-size: 1.2rem;
 }
 
 .lightbox {
+    display: flex;
     text-align: center;
 }
 
 .lightbox img{
-    width: 900px !important;
-    height: 700px;
+    width: 75%;
+    height: 100%;
     border-radius: 5px;
     object-fit: cover;
 }

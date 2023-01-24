@@ -13,7 +13,7 @@ const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
-let totalLikes = 0
+let totalLikes = 0;
 
 /**
  * Display modal lightbox

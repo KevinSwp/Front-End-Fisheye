@@ -77,33 +77,34 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             article.innerHTML = `
-                    <div class="divImgMedia" >
-                        <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position}); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
-                    </div>
-                    <div class="legend">
-                        <h2 class="profilTitleMedia">${this._photographer.title}</h2>
-                        <div class="likeHeart">
-                            <span>${this._photographer.likes}</span>
-                            <i class="bi bi-heart-fill"></i>
-                        </div>
-                    </div>
-            `;
-        } else {
-            article.innerHTML = `
-            <div class="div_video">
-                <i class="iconPlay"></i>
-                <video class="profilVideo">
-                    <source src="${this._photographer.video}">
-                </video>
-                <div class="legendVideo">
-                    <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
-                    <div class="likeHeartVideo">
+                <div class="divImgMedia" >
+                    <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position}); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
+                </div>
+                <div class="legend">
+                    <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+                    <div class="likeHeart">
                         <span>${this._photographer.likes}</span>
                         <i class="bi bi-heart-fill"></i>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+        } 
+        else {
+            article.innerHTML = `
+                <div class="div_video">
+                    <i class="iconPlay"></i>
+                    <video class="profilVideo">
+                        <source src="${this._photographer.video}">
+                    </video>
+                    <div class="legendVideo">
+                        <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
+                        <div class="likeHeartVideo">
+                            <span>${this._photographer.likes}</span>
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         return article;
@@ -118,12 +119,6 @@ export default class PhotographerCardProfil {
         div.innerHTML = `
             <label>Trier par</label>
 
-            <!--<select name="filter" id="filter">
-                <option><button value="popular">Popularité</button></option>
-                <option><button value="date">Date</button></option>
-                <option><button value="title">Titre</button></option>
-            </select>-->
-
             <div class="divFilter">
                 <div class="selected" onclick="filter()">
                     <button id="" value="popular">Popularité</button>
@@ -135,7 +130,6 @@ export default class PhotographerCardProfil {
                     </div>
                 </div>
             </div>
-            
         `;
 
         return div;
@@ -175,7 +169,10 @@ export default class PhotographerCardProfil {
         div.classList.add("lightbox");
         //Fill the DOM
         div.innerHTML = `
-            <img src="${this.photographer.image}">
+            <figure class="figure">
+                <img src="${this.photographer.image}">
+                <figcaption class="figcaption">${this.photographer.title}</figcaption>
+            </figure>
         `;
 
         return div;
