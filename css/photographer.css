@@ -19,31 +19,31 @@ body {
 .previousSlide {
     position: absolute;
     color: #901C1C;
-    left: 10%;
-    top: 20rem;
+    left: 8%;
+    top: 24rem;
     font-size: 5rem;
+    cursor: pointer;
 }
 
 .closeModal {
     position: absolute;
     right: 9%;
-    top: 3.5rem;
+    top: 4.5rem;
+    cursor: pointer;
 }
 
 .nextSlide {
     position: absolute;
     color: #901C1C;
-    right: 9.5%;
-    top: 20rem;
+    right: 8%;
+    top: 24rem;
     font-size: 5rem;
-}
-
-.modalLightbox img {
     cursor: pointer;
 }
 
 .figure {
-    height: 41rem;
+    height: 42rem;
+    padding-top: 5vh;
 }
 
 .figcaption {
@@ -59,7 +59,7 @@ body {
     text-align: center;
 }
 
-.lightbox img{
+.lightbox figure img{
     width: 75%;
     height: 100%;
     border-radius: 5px;
@@ -97,31 +97,7 @@ body {
     height: 300px;
 }
 
-/*.filterMedia {
-    margin: 1rem 0 3rem 0;
-    font-weight: bold;
-}
-
-.filterMedia label {
-    padding-right: 1rem;
-}
-
-.filterMedia select {
-    width: 140px;
-    padding: 0.6rem;
-    border: 0;
-    border-radius: 5px;
-    background-color: #901C1C;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0px 0px 15px -5px #00000078;
-}
-
-.filter option {
-    font-weight: bold;
-}*/
-
-.filter {
+/*.filter {
     display: flex;
     margin-top: 20px;
     margin-bottom: 50px;
@@ -162,6 +138,10 @@ body {
 
 .option :nth-child(2){
     border-radius: 0px 0px 5px 5px;
+}*/
+
+.dropdown_content {
+    display: none;
 }
 
 .contact_button:hover {

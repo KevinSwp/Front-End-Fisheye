@@ -20,15 +20,15 @@ const closeLightbox = () => {
   document.querySelector(".modalLightbox").style.display = "none";
 }
 
-// Next/previous controls
-const plusSlides = (n) => {
-  showSlides(slideIndex += n);
-}
+// // Next/previous controls
+// const plusSlides = (n) => {
+//   showSlides(slideIndex += n);
+// }
 
-// Thumbnail image controls
-const currentSlide = (n) => {
-  showSlides(slideIndex = n);
-}
+// // Thumbnail image controls
+// const currentSlide = (n) => {
+//   showSlides(slideIndex = n);
+// }
 
 /**
  * Previous slide

@@ -119,7 +119,17 @@ export default class PhotographerCardProfil {
         div.innerHTML = `
             <label>Trier par</label>
 
-            <div class="divFilter">
+            <div class="dropdown">
+                <button id="btnPrimary" onclick="filter()">Popularité</button>
+
+                <div class="dropdown_content">
+                    <button id="btnPopularity" class="dropdownSelected">Popularité</button>
+                    <button id="btnDate" class="dropdownSelected">Date</button>
+                    <button id="btnTitle" class="dropdownSelected">Titre</button>
+                </div>
+            </div>
+
+            <!--<div class="divFilter">
                 <div class="selected" onclick="filter()">
                     <button id="" value="popular">Popularité</button>
                 </div>
@@ -129,7 +139,7 @@ export default class PhotographerCardProfil {
                         <button id="" value="title">Titre</button>
                     </div>
                 </div>
-            </div>
+            </div>-->
         `;
 
         return div;
@@ -169,10 +179,13 @@ export default class PhotographerCardProfil {
         div.classList.add("lightbox");
         //Fill the DOM
         div.innerHTML = `
+            <button class="previousSlide" onclick="goToNextSlide()">&#60;</button>
             <figure class="figure">
                 <img src="${this.photographer.image}">
                 <figcaption class="figcaption">${this.photographer.title}</figcaption>
             </figure>
+            <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
+            <button class="nextSlide" onclick="goToPreviousSlide()">&#62;</button>
         `;
 
         return div;
