@@ -20,9 +20,11 @@ body {
     position: absolute;
     color: #901C1C;
     left: 8%;
-    top: 24rem;
+    top: 20rem;
     font-size: 5rem;
     cursor: pointer;
+    border: 0;
+    background: transparent;
 }
 
 .closeModal {
@@ -36,9 +38,11 @@ body {
     position: absolute;
     color: #901C1C;
     right: 8%;
-    top: 24rem;
+    top: 20rem;
     font-size: 5rem;
     cursor: pointer;
+    border: 0;
+    background: transparent;
 }
 
 .figure {
@@ -106,33 +110,54 @@ body {
 }
 
 .dropdown {
-    padding-left: 20px;
+    top: -0.5rem;
+    position: absolute;
+    left: 6rem;
+}
+
+#btnPrimary:hover {
+    background-color: #DB8876;
+    color: black;
+    transition: 0.1s;
 }
 
 #btnPrimary {
     width: 140px;
     padding: 0.6rem;
     border: 0;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
     background-color: #901C1C;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #dropdown_content {
     display: none;
 }
 
+.dropdown_content button:hover {
+    color: black;
+    transition: 0.1s;
+}
+
+.dropdown_content{
+    display: flex;
+    flex-direction: column;
+    background-color: #901C1C;
+    padding: 0.5rem;
+    margin-top: -0.4rem;
+    border-radius: 5px;
+}
+
 .dropdown_content button{
-    display: flex !important;
-    flex-direction: column !important;
-    width: 140px;
     padding: 0.6rem;
     border: 0;
     border-top: solid 1px white;
     background-color: #901C1C;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .contact_button:hover {
