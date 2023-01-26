@@ -1,5 +1,5 @@
 const filter = () => {
-    const option = document.querySelector(".dropdown_content");
+    const option = document.getElementById("dropdown_content");
     
     if (option.style.display === "none") {
         option.style.display = "block";
@@ -9,9 +9,9 @@ const filter = () => {
     }
 }
 
-const dropdown = document.querySelector('.dropdown');
-const btnPrimary = document.getElementById('btnPrimary');
-const dropdownSelected = document.querySelectorAll('.dropdownSelected');
+const dropdown = document.querySelector(".dropdown");
+const btnPrimary = document.getElementById("btnPrimary");
+const dropdownSelected = document.querySelectorAll(".dropdownSelected");
 
 btnPrimary.addEventListener('click', function () {
     dropdown.classList.toggle('active');

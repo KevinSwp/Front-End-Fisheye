@@ -97,26 +97,19 @@ body {
     height: 300px;
 }
 
-/*.filter {
+.filter {
     display: flex;
+    position: absolute;
     margin-top: 20px;
     margin-bottom: 50px;
+    z-index: 1;
 }
 
-.option {
-    display: flex;
-    flex-direction: column;
-}
-
-.divFilter {
+.dropdown {
     padding-left: 20px;
 }
 
-.divOption {
-    display: none;
-}
-
-.selected button {
+#btnPrimary {
     width: 140px;
     padding: 0.6rem;
     border: 0;
@@ -126,7 +119,13 @@ body {
     font-weight: bold;
 }
 
-.option button {
+#dropdown_content {
+    display: none;
+}
+
+.dropdown_content button{
+    display: flex !important;
+    flex-direction: column !important;
     width: 140px;
     padding: 0.6rem;
     border: 0;
@@ -134,14 +133,6 @@ body {
     background-color: #901C1C;
     color: white;
     font-weight: bold;
-}
-
-.option :nth-child(2){
-    border-radius: 0px 0px 5px 5px;
-}*/
-
-.dropdown_content {
-    display: none;
 }
 
 .contact_button:hover {
@@ -265,6 +256,7 @@ form input {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    margin-top: 5rem;
 }
 
 .profilMedia {

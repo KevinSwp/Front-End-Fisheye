@@ -122,24 +122,14 @@ export default class PhotographerCardProfil {
             <div class="dropdown">
                 <button id="btnPrimary" onclick="filter()">Popularité</button>
 
-                <div class="dropdown_content">
-                    <button id="btnPopularity" class="dropdownSelected">Popularité</button>
-                    <button id="btnDate" class="dropdownSelected">Date</button>
-                    <button id="btnTitle" class="dropdownSelected">Titre</button>
-                </div>
-            </div>
-
-            <!--<div class="divFilter">
-                <div class="selected" onclick="filter()">
-                    <button id="" value="popular">Popularité</button>
-                </div>
-                <div class="divOption">
-                    <div class="option">
-                        <button id="" value="date">Date</button>
-                        <button id="" value="title">Titre</button>
+                <div id="dropdown_content">
+                    <div class="dropdown_content">
+                        <button id="btnPopularity" class="dropdownSelected">Popularité</button>
+                        <button id="btnDate" class="dropdownSelected">Date</button>
+                        <button id="btnTitle" class="dropdownSelected">Titre</button>
                     </div>
                 </div>
-            </div>-->
+            </div>
         `;
 
         return div;
