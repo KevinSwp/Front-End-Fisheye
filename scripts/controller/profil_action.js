@@ -5,7 +5,9 @@ import MediaFactory from '../factories/Media_factory.js';
 import {PHOTOGRAPHE_TYPES} from '../factories/Photographer_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
 
-//Select element from DOM
+/**
+ * Select element from DOM
+ */
 const modalLightbox = document.querySelector(".modalLightbox");
 const contactForm = document.getElementById("contact_modal");
 const photographerHeader = document.querySelector(".photograph-header");
@@ -13,6 +15,7 @@ const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
+//Init total likes
 let totalLikes = 0;
 
 /**
@@ -57,7 +60,9 @@ const displayDataPhotographer = (photographerTemplate) => {
     photographerHeader.appendChild(photographerCardDOM);
 }
 
-//Function display filter
+/**
+ * Function display filter
+ */
 const displayfilter = () => {
     /**
     * Display photographer card
@@ -70,7 +75,9 @@ const displayfilter = () => {
     filterMedia.appendChild(filter);
 }
 
-//Function display media
+/**
+ * Function display media
+ */
 const displayDataMedia = (media) => {
     media.forEach((mediaDataFromFile, index) => {
         //Get photographer object from factory
@@ -85,14 +92,16 @@ const displayDataMedia = (media) => {
         //Add as child
         photographerMedia.appendChild(mediaCardDOM);
 
-        // Ajout du nombre de like au total de likes
+        // Add like to total like
 
-        // Listener sur les likes de CE media qui fait +1 ou -1
+        // Listener like +1/-1
 
     })
 }
 
-//Function display total likes & price
+/**
+ * Function display total likes & price
+ */
 const displayTotaleLikes_Price = (photographerTemplate) => {
     //Get content from view
     const price = photographerTemplate.getPrice();

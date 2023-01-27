@@ -2,33 +2,26 @@
 // init position
 let currentLightboxPosition = 0;
 
-// Open the Modal
+/**
+ * Open modal
+ */
 const openLightbox = (position) => {
-  
-// Get the position to use
-currentLightboxPosition = position;
-  
-// Display the right silde
-showSlides(currentLightboxPosition);
+  // Get the position to use
+  currentLightboxPosition = position;
+    
+  // Display the right silde
+  showSlides(currentLightboxPosition);
 
-// Display lightbox
-  document.querySelector(".modalLightbox").style.display = "block";
+  // Display lightbox
+    document.querySelector(".modalLightbox").style.display = "block";
 }
 
-// Close the Modal
+/**
+ * Close modal
+ */
 const closeLightbox = () => {
   document.querySelector(".modalLightbox").style.display = "none";
 }
-
-// // Next/previous controls
-// const plusSlides = (n) => {
-//   showSlides(slideIndex += n);
-// }
-
-// // Thumbnail image controls
-// const currentSlide = (n) => {
-//   showSlides(slideIndex = n);
-// }
 
 /**
  * Previous slide
@@ -50,12 +43,10 @@ const goToNextSlide = () => {
 const showSlides = (newSlidePosition) => {
   const slides = document.getElementsByClassName("lightbox");
 
-  // 
   if (newSlidePosition >= slides.length) {
     currentLightboxPosition = 0;
   }
 
-  //
   if (newSlidePosition < 0) {
     currentLightboxPosition = slides.length - 1;
   }
