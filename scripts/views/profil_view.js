@@ -124,9 +124,9 @@ export default class PhotographerCardProfil {
 
                 <div id="dropdown_content">
                     <div class="dropdown_content">
-                        <button id="btnPopularity" class="dropdownSelected">Popularité</button>
-                        <button id="btnDate" class="dropdownSelected">Date</button>
-                        <button id="btnTitle" class="dropdownSelected">Titre</button>
+                        <button id="btnPopularity" onclick="textReplace()" class="dropdownSelected">Popularité</button>
+                        <button id="btnDate" onclick="textReplace()" class="dropdownSelected">Date</button>
+                        <button id="btnTitle" onclick="textReplace()" class="dropdownSelected">Titre</button>
                     </div>
                 </div>
             </div>
