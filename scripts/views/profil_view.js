@@ -84,7 +84,7 @@ export default class PhotographerCardProfil {
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
                     <div class="likeHeart">
                         <span>${this._photographer.likes}</span>
-                        <button class="likeBtn"><i class="bi bi-heart-fill"></i></button>
+                        <i class="bi bi-heart-fill likeBtn"></i>
                     </div>
                 </div>
             `;
@@ -100,7 +100,7 @@ export default class PhotographerCardProfil {
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
                         <div class="likeHeartVideo">
                             <span>${this._photographer.likes}</span>
-                            <button class="likeBtn"><i class="bi bi-heart-fill"></i></button>
+                            <i class="bi bi-heart-fill likeBtn"></i>
                         </div>
                     </div>
                 </div>

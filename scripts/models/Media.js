@@ -9,7 +9,6 @@ export default class Media {
         this._image = data.image;
         this._video = data.video;
         this._likes = data.likes;
-        this._isLiked = false;
         this._date = data.date;
         this._price = data.price;
     }

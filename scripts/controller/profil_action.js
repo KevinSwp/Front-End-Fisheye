@@ -91,25 +91,25 @@ const displayDataMedia = (media) => {
         //Add as child
         photographerMedia.appendChild(mediaCardDOM);
 
-        // Add like to total like
+        // Add like to total likes
         totalLikes += media.likes;
         document.querySelector(".likes").innerHTML = totalLikes;
+        
+        // If is already liked remove 1 else add 1
+        mediaCardDOM.querySelector(".likeBtn").addEventListener("click", () => {
 
-        // Listener like +1/-1
-        const likeButton = mediaCardDOM.querySelector('.likeBtn');
-        likeButton.addEventListener('click', () => {
-            if (likeButton.classList.contains('liked')) {
-                likeButton.classList.remove('liked');
-                media.likes--;
-                totalLikes--;
+            if(media.isLiked){
+                totalLikes -= 1;
+                media.isLiked = false;
+            }
+            
+            else{
+                totalLikes += 1;
+                media.isLiked = true;
             }
 
-            else {
-                likeButton.classList.add('liked');
-                media.likes++;
-                totalLikes++;
-            }
-        })
+            document.querySelector(".likes").innerHTML = totalLikes;
+        });
     })
 }
 
@@ -183,4 +183,3 @@ const initProfil = () => {
 //Call function
 initProfil();
 displayfilter();
-
