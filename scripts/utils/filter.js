@@ -4,7 +4,7 @@
 const filter = () => {
     const option = document.getElementById("dropdown_content");
     const btnPrimary = document.getElementById("btnPrimary");
-
+    
     if (option.style.display === "none") {
         option.style.display = "block";
     }
@@ -29,9 +29,26 @@ const textReplace = () => {
             btnPrimary.textContent = text;
             option.style.display = "none";
         })
-
-        if (btnPrimary === text) {
-            option.style.display = "none";
-        }
     });
 }
+
+const sortByDate = () => {
+
+    fetch("data/photographers.json")
+    
+    .then(response => response.json())
+    
+    .then(data => {
+        data.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        });
+        console.log(data);
+    })
+    
+    .catch(error => console.error(error));
+}
+
+const sortButton = document.getElementById("btnDate");
+sortButton.addEventListener("click", () => {
+    sortByDate();
+})

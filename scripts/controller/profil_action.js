@@ -15,9 +15,6 @@ const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
-//Init total likes
-let totalLikes = 0;
-
 /**
  * Display modal lightbox
  */
@@ -75,6 +72,8 @@ const displayfilter = () => {
     filterMedia.appendChild(filter);
 }
 
+let totalLikes = 0;
+
 /**
  * Function display media
  */
@@ -93,9 +92,24 @@ const displayDataMedia = (media) => {
         photographerMedia.appendChild(mediaCardDOM);
 
         // Add like to total like
+        totalLikes += media.likes;
+        document.querySelector(".likes").innerHTML = totalLikes;
 
         // Listener like +1/-1
+        const likeButton = mediaCardDOM.querySelector('.likeBtn');
+        likeButton.addEventListener('click', () => {
+            if (likeButton.classList.contains('liked')) {
+                likeButton.classList.remove('liked');
+                media.likes--;
+                totalLikes--;
+            }
 
+            else {
+                likeButton.classList.add('liked');
+                media.likes++;
+                totalLikes++;
+            }
+        })
     })
 }
 
@@ -130,6 +144,7 @@ const findIDbyURL = () => {
  * Fetch and display data photographer
  */
 const initProfil = () => {
+
     //Fetch data json
     fetch("data/photographers.json")
 

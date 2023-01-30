@@ -84,7 +84,7 @@ export default class PhotographerCardProfil {
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
                     <div class="likeHeart">
                         <span>${this._photographer.likes}</span>
-                        <i class="bi bi-heart-fill"></i>
+                        <button class="likeBtn"><i class="bi bi-heart-fill"></i></button>
                     </div>
                 </div>
             `;
@@ -100,7 +100,7 @@ export default class PhotographerCardProfil {
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
                         <div class="likeHeartVideo">
                             <span>${this._photographer.likes}</span>
-                            <i class="bi bi-heart-fill"></i>
+                            <button class="likeBtn"><i class="bi bi-heart-fill"></i></button>
                         </div>
                     </div>
                 </div>
@@ -137,12 +137,13 @@ export default class PhotographerCardProfil {
 
     //Function content total likes
     getTotalLikes = () => {
+
         //Create div element in the DOM
         const div = document.createElement('div');
         div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span>XXX</span>
+            <span class="likes"></span>
             <i class="bi bi-heart-fill"></i>
         `;
 
