@@ -2,7 +2,7 @@
  * Hide/Display filter
 */
 const filter = () => {
-    const option = document.getElementById("dropdown_content");
+    const option = document.querySelector(".dropdown_content");
     const btnPrimary = document.getElementById("btnPrimary");
     
     if (option.style.display === "none") {
@@ -18,37 +18,44 @@ const filter = () => {
     // });
 }
 
+/**
+ * Replace text on click
+ */
+
 const textReplace = () => {
-    const option = document.getElementById("dropdown_content");
-    const btnPrimary = document.getElementById("btnPrimary");
-    const dropdownSelected = document.querySelectorAll(".dropdownSelected");
-    //Replace text on click
-    dropdownSelected.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const text = btn.innerText;
-            btnPrimary.textContent = text;
-            option.style.display = "none";
+    const btn = document.getElementById('selected');
+    const items = document.querySelectorAll('.item');
+
+    items.forEach((item, index) => {
+
+        // On ajoute une classe particulière au tout dernier element
+        // on utilise items.length -1 car on commence calculer un tableu à partir de 0
+        if(index === items.length - 1){
+            item.classList.add('isLast')
+        }
+
+        item.addEventListener('click', () => {
+
+            // On affiche / supprime le doublon
+            items.forEach(newItem => {
+                newItem.classList.remove('hidden');
+                filter();
+            })
+
+            item.classList.add('hidden');
+
+            // On modifie le texte du bouton principale
+            btn.innerHTML = item.innerHTML;
+
+            // On détecte quand on clique sur le dernier élément => on modifie le style
+            document.querySelector('.dropdown_content').classList.remove('isLast')
+            if(item.classList.contains('isLast')){
+                document.querySelector('.dropdown_content').classList.add('isLast')
+            }
         })
-    });
-}
-
-const sortByDate = () => {
-
-    fetch("data/photographers.json")
-    
-    .then(response => response.json())
-    
-    .then(data => {
-        data.sort((a, b) => {
-            return new Date(a.date) - new Date(b.date);
-        });
-        console.log(data);
     })
-    
-    .catch(error => console.error(error));
 }
 
-const sortButton = document.getElementById("btnDate");
-sortButton.addEventListener("click", () => {
-    sortByDate();
-})
+// TODO : 
+// - Au démarrage, il faudrait masquer popularité dans liste du dropdown car il est déjà sélectionné par default
+// - Modifier ton css, pour que les "barre blanche" des btn s'arfichent proprement

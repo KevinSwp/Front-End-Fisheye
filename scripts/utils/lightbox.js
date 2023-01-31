@@ -1,16 +1,16 @@
 
 // init position
-let currentLightboxPosition = 0;
+let currentPosition = 0;
 
 /**
  * Open modal
  */
 const openLightbox = (position) => {
   // Get the position to use
-  currentLightboxPosition = position;
+  currentPosition = position;
     
   // Display the right silde
-  showSlides(currentLightboxPosition);
+  showSlides(currentPosition);
 
   // Display lightbox
     document.querySelector(".modalLightbox").style.display = "block";
@@ -23,18 +23,19 @@ const closeLightbox = () => {
   document.querySelector(".modalLightbox").style.display = "none";
 }
 
+
 /**
  * Previous slide
  */
 const goToPreviousSlide = () => {
-  showSlides(currentLightboxPosition - 1);
+  showSlides(currentPosition - 1);
 }
 
 /**
  * Next slide
  */
 const goToNextSlide = () => {
-  showSlides(currentLightboxPosition + 1);
+  showSlides(currentPosition + 1);
 }
 
 /**
@@ -43,13 +44,21 @@ const goToNextSlide = () => {
 const showSlides = (newSlidePosition) => {
   const slides = document.getElementsByClassName("lightbox");
 
+  // On retourne au début
   if (newSlidePosition >= slides.length) {
-    currentLightboxPosition = 0;
+    currentPosition = 0;
   }
 
+  // On retourne à la fin
   if (newSlidePosition < 0) {
-    currentLightboxPosition = slides.length - 1;
+    currentPosition = slides.length - 1;
   }
+
+  // On modifie normalement le compteur
+  if(newSlidePosition >= 0 && newSlidePosition < slides.length){
+    currentPosition = newSlidePosition
+  }
+
 
   // Hide all others slides
   for (let i = 0; i < slides.length; i++) {
@@ -57,5 +66,5 @@ const showSlides = (newSlidePosition) => {
   }
 
   // Display only the right slide
-  slides[currentLightboxPosition].style.display = "block";
+  slides[currentPosition].style.display = "block";
 }

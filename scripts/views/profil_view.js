@@ -78,13 +78,13 @@ export default class PhotographerCardProfil {
         if (this._photographer.video === undefined) {
             article.innerHTML = `
                 <div class="divImgMedia" >
-                    <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position}); currentSlide(n)" alt="${this._photographer.title}" aria-label="Media"/>
+                    <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Media"/>
                 </div>
                 <div class="legend">
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
                     <div class="likeHeart">
-                        <span>${this._photographer.likes}</span>
-                        <i class="bi bi-heart-fill likeBtn"></i>
+                        <span class="likeCounter">${this._photographer.likes}</span>
+                        <button class="likeBtn bi-heart"></button>
                     </div>
                 </div>
             `;
@@ -94,13 +94,13 @@ export default class PhotographerCardProfil {
                 <div class="div_video">
                     <i class="iconPlay"></i>
                     <video class="profilVideo">
-                        <source src="${this._photographer.video}">
+                        <source src="${this._photographer.video}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Media">
                     </video>
                     <div class="legendVideo">
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
                         <div class="likeHeartVideo">
-                            <span>${this._photographer.likes}</span>
-                            <i class="bi bi-heart-fill likeBtn"></i>
+                            <span class="likeCounter">${this._photographer.likes}</span>
+                            <button class="likeBtn bi-heart"></button>
                         </div>
                     </div>
                 </div>
@@ -120,15 +120,14 @@ export default class PhotographerCardProfil {
             <label>Trier par</label>
 
             <div class="dropdown">
-                <button id="btnPrimary" onclick="filter()">Popularité</button>
+                <button id="selected" onclick="filter()">Popularité</button>
 
-                <div id="dropdown_content">
-                    <div class="dropdown_content">
-                        <button id="btnPopularity" onclick="textReplace()" class="dropdownSelected">Popularité</button>
-                        <button id="btnDate" onclick="textReplace()" class="dropdownSelected">Date</button>
-                        <button id="btnTitle" onclick="textReplace()" class="dropdownSelected">Titre</button>
-                    </div>
+                <div class="dropdown_content">
+                    <button id="btnPopularity" onclick="textReplace()" class="item hidden">Popularité</button>
+                    <button id="btnDate" onclick="textReplace()" class="item">Date</button>
+                    <button id="btnTitle" onclick="textReplace()" class="item">Titre</button>
                 </div>
+                
             </div>
         `;
 
@@ -169,15 +168,29 @@ export default class PhotographerCardProfil {
         const div = document.createElement('div');
         div.classList.add("lightbox");
         //Fill the DOM
-        div.innerHTML = `
-            <button class="previousSlide" onclick="goToNextSlide()">&#60;</button>
-            <figure class="figure">
-                <img src="${this.photographer.image}">
-                <figcaption class="figcaption">${this.photographer.title}</figcaption>
-            </figure>
-            <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
-            <button class="nextSlide" onclick="goToPreviousSlide()">&#62;</button>
-        `;
+        if (this._photographer.video === undefined) {
+            div.innerHTML = `
+                <button class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
+                <figure class="figure">
+                    <img src="${this.photographer.image}">
+                    <figcaption class="figcaption">${this.photographer.title}</figcaption>
+                </figure>
+                <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
+                <button class="nextSlide" onclick="goToNextSlide()">&#62;</button>
+            `;
+        }
+
+        else {
+            div.innerHTML = `
+                <button class="previousSlide" onclick="goToNextSlide()">&#60;</button>
+                <figure class="figure">
+                    <video controls><source src="${this._photographer.video}"></video>
+                    <figcaption class="figcaption">${this.photographer.title}</figcaption>
+                </figure>
+                <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
+                <button class="nextSlide" onclick="goToPreviousSlide()">&#62;</button>
+            `;
+        }
 
         return div;
     }

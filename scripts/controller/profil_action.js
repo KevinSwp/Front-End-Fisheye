@@ -78,6 +78,9 @@ let totalLikes = 0;
  * Function display media
  */
 const displayDataMedia = (media) => {
+    
+    // TODO : Supprimer les média affiché existants
+
     media.forEach((mediaDataFromFile, index) => {
         //Get photographer object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
@@ -97,18 +100,28 @@ const displayDataMedia = (media) => {
         
         // If is already liked remove 1 else add 1
         mediaCardDOM.querySelector(".likeBtn").addEventListener("click", () => {
+            const heartIcon = mediaCardDOM.querySelector(".likeBtn");
+            const likeCounter = mediaCardDOM.querySelector(".likeCounter");
 
             if(media.isLiked){
                 totalLikes -= 1;
                 media.isLiked = false;
+                likeCounter.innerHTML = media.likes
+                heartIcon.classList.remove("bi-heart-fill");
+                heartIcon.classList.add("bi-heart");
             }
             
             else{
                 totalLikes += 1;
                 media.isLiked = true;
+                likeCounter.innerHTML = media.likes + 1
+                heartIcon.classList.remove("bi-heart");
+                heartIcon.classList.add("bi-heart-fill");
             }
 
+            // Mise à jour de l'affichage du compteur total de like
             document.querySelector(".likes").innerHTML = totalLikes;
+
         });
     })
 }
