@@ -44,21 +44,20 @@ const goToNextSlide = () => {
 const showSlides = (newSlidePosition) => {
   const slides = document.getElementsByClassName("lightbox");
 
-  // On retourne au début
+  // Back to start
   if (newSlidePosition >= slides.length) {
     currentPosition = 0;
   }
 
-  // On retourne à la fin
+  // Back to end
   if (newSlidePosition < 0) {
     currentPosition = slides.length - 1;
   }
 
-  // On modifie normalement le compteur
+  // Switch slide
   if(newSlidePosition >= 0 && newSlidePosition < slides.length){
     currentPosition = newSlidePosition
   }
-
 
   // Hide all others slides
   for (let i = 0; i < slides.length; i++) {

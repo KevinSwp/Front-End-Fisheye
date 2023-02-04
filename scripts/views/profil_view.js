@@ -88,13 +88,13 @@ export default class PhotographerCardProfil {
                     </div>
                 </div>
             `;
-        } 
+        }
         else {
             article.innerHTML = `
                 <div class="div_video">
                     <i class="iconPlay"></i>
-                    <video class="profilVideo">
-                        <source src="${this._photographer.video}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Media">
+                    <video class="profilVideo" onclick="openLightbox(${position});">
+                        <source src="${this._photographer.video}" alt="${this._photographer.title}" aria-label="Media">
                     </video>
                     <div class="legendVideo">
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
@@ -127,7 +127,6 @@ export default class PhotographerCardProfil {
                     <button id="btnDate" onclick="textReplace()" class="item">Date</button>
                     <button id="btnTitle" onclick="textReplace()" class="item">Titre</button>
                 </div>
-                
             </div>
         `;
 
@@ -182,13 +181,13 @@ export default class PhotographerCardProfil {
 
         else {
             div.innerHTML = `
-                <button class="previousSlide" onclick="goToNextSlide()">&#60;</button>
+                <button class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
                 <figure class="figure">
                     <video controls><source src="${this._photographer.video}"></video>
                     <figcaption class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
                 <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
-                <button class="nextSlide" onclick="goToPreviousSlide()">&#62;</button>
+                <button class="nextSlide" onclick="goToNextSlide()">&#62;</button>
             `;
         }
 

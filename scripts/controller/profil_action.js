@@ -32,8 +32,6 @@ const displayModalLightbox = (media) => {
         const mediaCardDOM = photographerObject.getLightbox();
         //Add as child
         modalLightbox.appendChild(mediaCardDOM);
-
-        // mettre les listeners sur la modal
     })
 }
 
@@ -78,8 +76,6 @@ let totalLikes = 0;
  * Function display media
  */
 const displayDataMedia = (media) => {
-    
-    // TODO : Supprimer les média affiché existants
 
     media.forEach((mediaDataFromFile, index) => {
         //Get photographer object from factory
@@ -119,7 +115,7 @@ const displayDataMedia = (media) => {
                 heartIcon.classList.add("bi-heart-fill");
             }
 
-            // Mise à jour de l'affichage du compteur total de like
+            // Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
 
         });
