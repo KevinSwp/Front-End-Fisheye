@@ -32,6 +32,7 @@ const textReplace = () => {
             items.forEach(newItem => {
                 newItem.classList.remove('hidden');
                 selected.innerHTML = item.innerHTML;
+                filter();
             })
 
             item.classList.add('hidden');
@@ -47,3 +48,43 @@ const textReplace = () => {
         })
     })
 }
+
+displayMediaSorted = () => {
+    // Delete content section media
+    photographerMedia.innerHTML = "";
+
+    // Display sorted media
+    displayDataMedia(media);
+}
+
+sortByPopularity = () => {
+    media.sort((a, b) => b.likes - a.likes);
+
+    displayMediaSorted();
+};
+
+sortByDate = () => {
+    // sort by ascending order
+    media.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    displayMediaSorted();
+};
+
+sortByTitle = () => {
+    media.sort((a, b) => {
+        if (a.title < b.title) {
+            return -1;
+        }
+        if (a.title > b.title) {
+            return 1;
+        }
+        return 0;
+    });
+
+    displayMediaSorted();
+};
+
+// Add listener on sort button
+document.getElementById("btnPopularity").addEventListener("click", sortByPopularity());
+document.getElementById("btnDate").addEventListener("click", sortByDate());
+document.getElementById("btnTitle").addEventListener("click", sortByTitle());

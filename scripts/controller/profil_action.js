@@ -33,6 +33,17 @@ const displayModalLightbox = (media) => {
         //Add as child
         modalLightbox.appendChild(mediaCardDOM);
     })
+
+    // Use keyboard arrows to slide media
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+            goToPreviousSlide();
+        }
+        
+        else if (event.key === "ArrowRight") {
+            goToNextSlide();
+        }
+    });
 }
 
 /**

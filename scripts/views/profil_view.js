@@ -54,7 +54,7 @@ export default class PhotographerCardProfil {
         article.classList.add("profilHeader");
         //Fill the DOM
         article.innerHTML = `
-            <img class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographer"/>
+            <img class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
 
             <button class="contact_button"  onclick="displayModal()">Contactez-moi</button>
 
@@ -78,7 +78,7 @@ export default class PhotographerCardProfil {
         if (this._photographer.video === undefined) {
             article.innerHTML = `
                 <div class="divImgMedia" >
-                    <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Media"/>
+                    <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
                 </div>
                 <div class="legend">
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
@@ -94,7 +94,7 @@ export default class PhotographerCardProfil {
                 <div class="div_video">
                     <i class="iconPlay"></i>
                     <video class="profilVideo" onclick="openLightbox(${position});">
-                        <source src="${this._photographer.video}" alt="${this._photographer.title}" aria-label="Media">
+                        <source src="${this._photographer.video}" alt="${this._photographer.title}" aria-label="Video ${this._photographer.title}">
                     </video>
                     <div class="legendVideo">
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
@@ -141,7 +141,7 @@ export default class PhotographerCardProfil {
         div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span class="likes"></span>
+            <span class="likes" arial-label="Like"></span>
             <i class="bi bi-heart-fill"></i>
         `;
 
