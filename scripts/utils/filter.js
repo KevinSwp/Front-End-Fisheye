@@ -1,21 +1,28 @@
 /**
  * Hide/Display filter
 */
-const filter = () => {
+export const showFilterDropdown = () => {
     const option = document.querySelector(".dropdown_content");
     
-    if (option.style.display === "none") {
-        option.style.display = "block";
+
+    // TODO : Rempalcer aussi la classe active2 du dropdown
+        // object.classList.contains
+        // object.classList.add
+        // object.classList.remove
+
+
+    if (option.style.display === "block") {
+        option.style.display = "none";
     }
     else {
-        option.style.display = "none";
+        option.style.display = "block";
     }
 }
 
 /**
  * Replace text on click
  */
-const textReplace = () => {
+export const textReplace = () => {
     const selected = document.getElementById('selected');
     const items = document.querySelectorAll('.item');
 
@@ -32,7 +39,7 @@ const textReplace = () => {
             items.forEach(newItem => {
                 newItem.classList.remove('hidden');
                 selected.innerHTML = item.innerHTML;
-                filter();
+                showFilterDropdown();
             })
 
             item.classList.add('hidden');
@@ -49,29 +56,30 @@ const textReplace = () => {
     })
 }
 
-displayMediaSorted = () => {
-    // Delete content section media
-    photographerMedia.innerHTML = "";
-
-    // Display sorted media
-    displayDataMedia(media);
-}
-
-sortByPopularity = () => {
-    media.sort((a, b) => b.likes - a.likes);
-
-    displayMediaSorted();
+/**
+ * 
+ */
+export const sortByPopularity = (medias) => {
+    console.log('call sortByPopularity ')
+    medias.sort((a, b) => b.likes - a.likes);
+    return medias
 };
 
-sortByDate = () => {
-    // sort by ascending order
-    media.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    displayMediaSorted();
+/**
+ * 
+ */
+export const sortByDate = (medias) => {
+    console.log('call sortByDate ')
+    medias.sort((a, b) => new Date(a.date) - new Date(b.date));
+    return medias
 };
 
-sortByTitle = () => {
-    media.sort((a, b) => {
+/**
+ * 
+ */
+export const sortByTitle = (medias) => {
+    console.log('call sortByTitle ')
+    medias.sort((a, b) => {
         if (a.title < b.title) {
             return -1;
         }
@@ -80,11 +88,7 @@ sortByTitle = () => {
         }
         return 0;
     });
-
-    displayMediaSorted();
+    return medias
 };
 
-// Add listener on sort button
-document.getElementById("btnPopularity").addEventListener("click", sortByPopularity());
-document.getElementById("btnDate").addEventListener("click", sortByDate());
-document.getElementById("btnTitle").addEventListener("click", sortByTitle());
+export default sortByPopularity;

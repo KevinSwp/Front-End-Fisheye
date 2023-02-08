@@ -113,6 +113,10 @@ h1 {
     width: 200px;
 }
 
+.paragraph {
+    text-align: center;
+}
+
 .contact_button {
     background-color: #901C1C !important;
     justify-content: center;

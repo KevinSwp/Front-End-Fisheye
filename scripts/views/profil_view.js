@@ -12,33 +12,33 @@ export default class PhotographerCardProfil {
         const div = document.createElement('div');
         //Fill the DOM
         div.innerHTML = `
-            <div class="modal">
+            <div role="dialog" class="modal">
                 <header>
-                    <h2 class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
-                    <img src="assets/icons/close.svg" onclick="closeModal()" />
+                    <h2 role="heading" class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
+                    <img role="button" src="assets/icons/close.svg" onclick="closeModal()" />
                 </header>
                 <form id="modal-form" name="contact" action="messageSuccess.html">
                     <div class="borderInput">
-                        <label for="firstName">Prénom</label>
-                        <input type="text" id="firstName" name="firstName" minlength="2" maxlength="20">
+                        <label role="label" for="firstName">Prénom</label>
+                        <input role="field" type="text" id="firstName" name="firstName" minlength="2" maxlength="20">
                         <p></p>
                     </div>
                     <div class="borderInput">
-                        <label for="lastName">Nom</label>
-                        <input type="text" id="lastName" name="lastName" minlength="2" maxlength="20">
+                        <label role="label" for="lastName">Nom</label>
+                        <input role="field" type="text" id="lastName" name="lastName" minlength="2" maxlength="20">
                         <p></p>
                     </div>
                     <div class="borderInput">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" minlength="5" maxlength="35">
+                        <label role="label" for="email">Email</label>
+                        <input role="field" type="email" id="email" name="email" minlength="5" maxlength="35">
                         <p></p>
                     </div>
                     <div>
-                        <label for="message">Message</label>
-                        <textarea id="textAera" class="textAera" type="text" minlength="50" maxlength="200"></textarea>
+                        <label role="label" for="message">Message</label>
+                        <textarea role="field" id="textAera" class="textAera" type="text" minlength="50" maxlength="200"></textarea>
                         <p id="textAera-p"></p>
                     </div>
-                        <button type="submit" class="contact_button">Envoyer</button>
+                        <button role="button" type="submit" class="contact_button">Envoyer</button>
                 </form>
             </div>
         `;
@@ -54,11 +54,11 @@ export default class PhotographerCardProfil {
         article.classList.add("profilHeader");
         //Fill the DOM
         article.innerHTML = `
-            <img class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
+            <img role="image" class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
 
-            <button class="contact_button"  onclick="displayModal()">Contactez-moi</button>
+            <button role="button" class="contact_button"  onclick="displayModal()">Contactez-moi</button>
 
-            <div class="profil_info">
+            <div role="text" class="profil_info">
                 <h2 class="profilNamePhotographer">${this._photographer.name}</h2>
                 <h3 class="profilLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
                 <p class="profilTagPhotographer">${this._photographer.tagline}</p>
@@ -77,10 +77,10 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             article.innerHTML = `
-                <div class="divImgMedia" >
+                <div role="link" class="divImgMedia">
                     <img class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
                 </div>
-                <div class="legend">
+                <div role="text" class="legend">
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
                     <div class="likeHeart">
                         <span class="likeCounter">${this._photographer.likes}</span>
@@ -91,12 +91,12 @@ export default class PhotographerCardProfil {
         }
         else {
             article.innerHTML = `
-                <div class="div_video">
+                <div role="link" class="div_video">
                     <i class="iconPlay"></i>
                     <video class="profilVideo" onclick="openLightbox(${position});">
                         <source src="${this._photographer.video}" alt="${this._photographer.title}" aria-label="Video ${this._photographer.title}">
                     </video>
-                    <div class="legendVideo">
+                    <div role="text" class="legendVideo">
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
                         <div class="likeHeartVideo">
                             <span class="likeCounter">${this._photographer.likes}</span>
@@ -117,15 +117,15 @@ export default class PhotographerCardProfil {
         div.classList.add("filter");
         //Fill the DOM
         div.innerHTML = `
-            <label>Trier par</label>
+            <label role="label">Trier par</label>
 
-            <div class="dropdown">
-                <button id="selected" onclick="filter()">Popularité</button>
+            <div role="menu" class="dropdown active2">
+                <button id="selected">Popularité</button>
 
                 <div class="dropdown_content">
-                    <button id="btnPopularity" onclick="textReplace()" class="item hidden">Popularité</button>
-                    <button id="btnDate" onclick="textReplace()" class="item">Date</button>
-                    <button id="btnTitle" onclick="textReplace()" class="item">Titre</button>
+                    <button id="btnPopularity" class="item hidden">Popularité</button>
+                    <button id="btnDate" class="item">Date</button>
+                    <button id="btnTitle" class="item">Titre</button>
                 </div>
             </div>
         `;
@@ -141,7 +141,7 @@ export default class PhotographerCardProfil {
         div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span class="likes" arial-label="Like"></span>
+            <span role="rext" class="likes" arial-label="Like"></span>
             <i class="bi bi-heart-fill"></i>
         `;
 
@@ -169,25 +169,25 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             div.innerHTML = `
-                <button class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
+                <button role="link" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
                 <figure class="figure">
-                    <img src="${this.photographer.image}">
-                    <figcaption class="figcaption">${this.photographer.title}</figcaption>
+                    <img role="image" src="${this.photographer.image}">
+                    <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
-                <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
-                <button class="nextSlide" onclick="goToNextSlide()">&#62;</button>
+                <button role="button"><img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()"></button>
+                <button role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
             `;
         }
 
         else {
             div.innerHTML = `
-                <button class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
+                <button role="button" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
                 <figure class="figure">
-                    <video controls><source src="${this._photographer.video}"></video>
-                    <figcaption class="figcaption">${this.photographer.title}</figcaption>
+                    <video role="video" controls><source src="${this._photographer.video}"></video>
+                    <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
-                <img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()">
-                <button class="nextSlide" onclick="goToNextSlide()">&#62;</button>
+                <button role="button"><img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()"></button>
+                <button role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
             `;
         }
 

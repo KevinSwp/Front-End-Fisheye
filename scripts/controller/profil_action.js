@@ -1,9 +1,10 @@
 /**
- * Import object from file
+ * Import from file
  */
 import MediaFactory from '../factories/Media_factory.js';
 import {PHOTOGRAPHE_TYPES} from '../factories/Photographer_factory.js';
 import PhotographersCardProfil from '../views/profil_view.js';
+import {sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace} from '../utils/filter.js';
 
 /**
  * Select element from DOM
@@ -15,6 +16,9 @@ const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
 
+//Init total like
+let totalLikes = 0;
+
 /**
  * Display modal lightbox
  */
@@ -23,9 +27,7 @@ const displayModalLightbox = (media) => {
         //Get media object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
 
-        /**
-         * Display media card
-         */
+        /* Display media card */
         //Get object from view
         const photographerObject = new PhotographersCardProfil(media);
         //Get content from view
@@ -67,21 +69,64 @@ const displayDataPhotographer = (photographerTemplate) => {
 }
 
 /**
+ * Delete section media & total like
+ */
+const resetDisplayMedias = ( ) => {
+    // Reset media
+    photographerMedia.innerHTML = "";
+    
+    // Reset total like
+    totalLikes = 0
+}
+
+/**
+ * Sorted media
+ */
+const displayBySort = (type, medias) => {
+    // Reset first
+    resetDisplayMedias();
+
+    // Sort medias list
+    switch(type){
+        case 'popularity':
+            medias = sortByPopularity(medias);
+            break;
+
+        case 'date':
+            medias = sortByDate(medias);
+            break;
+
+        case 'title':
+            medias = sortByTitle(medias);
+            break;
+    }
+
+    textReplace();
+
+    // Display sorted media
+    displayDataMedia(medias);
+}
+
+/**
  * Function display filter
  */
-const displayfilter = () => {
-    /**
-    * Display photographer card
-    */
+const displayfilter = (medias) => {
+    /* Display filters */
     //Get object from view
     const photographerObject = new PhotographersCardProfil();
     //Get content from view
     const filter = photographerObject.getFilter();
     //Add as child
     filterMedia.appendChild(filter);
-}
 
-let totalLikes = 0;
+    /* Add listeners on filters */
+    //  Ajout les listeners
+    const btnPrimaryFilter = document.getElementById("selected");
+    btnPrimaryFilter.addEventListener("click", showFilterDropdown);
+    document.getElementById("btnPopularity").addEventListener("click", () => displayBySort('popularity', medias));
+    document.getElementById("btnDate").addEventListener("click", () =>displayBySort('date', medias));
+    document.getElementById("btnTitle").addEventListener("click", () => displayBySort('title', medias));
+}
 
 /**
  * Function display media
@@ -179,15 +224,16 @@ const initProfil = () => {
 
                 //Check if same ID
                 const photographer = photographers.find(photographer => photographer.id === findID);
-                const idMedia = media.filter(medias => medias.photographerId === findID);
+                const mediasFromPhotographer = media.filter(medias => medias.photographerId === findID);
 
                 const photographerTemplate = new PhotographersCardProfil(photographer);
 
-                displayModalLightbox(idMedia);
-                manageContactForm(photographerTemplate);
                 displayDataPhotographer(photographerTemplate);
+                manageContactForm(photographerTemplate);
                 displayTotaleLikes_Price(photographerTemplate);
-                displayDataMedia(idMedia);
+                displayDataMedia(mediasFromPhotographer);
+                displayModalLightbox(mediasFromPhotographer);                                         
+                displayfilter(mediasFromPhotographer);
             }
         )
 
@@ -202,4 +248,3 @@ const initProfil = () => {
 
 //Call function
 initProfil();
-displayfilter();

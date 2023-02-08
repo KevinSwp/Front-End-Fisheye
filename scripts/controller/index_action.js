@@ -52,6 +52,10 @@ const init = () => {
             document.querySelector(".photographer_section").innerHTML = "Impossible d'afficher les photographes";
         }
     )
+
+    //Remove focus
+    const linkHome = document.querySelector('.linkHome:nth-child(1)');
+    input.blur(linkHome);
 }
 
 //Call the function

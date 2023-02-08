@@ -6,25 +6,27 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <div id="contact_modal"></div>
-    <header>
+
+    <header role="link">
       <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/></a>
     </header>
+
     <main id="main">
-      <div class="modalLightbox"></div>
-      <div class="photograph-header"></div>
+      <div role="header" class="photograph-header"></div>
       <div class="filterMedia"></div>
       <div class="photograph-media"></div>
       <div class="price"></div>
     </main>
+
+    <div role="dialog" class="modalLightbox"></div>
+    
     <script type="module" src="scripts/controller/profil_action.js"></script>
     <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/utils/modalContactForm.js"></script>
     <script src="scripts/utils/inputContactForm.js"></script>
-    <script src="scripts/utils/filter.js"></script>
-    
   </body>
 </html>
