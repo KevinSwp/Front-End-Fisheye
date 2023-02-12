@@ -1,10 +1,31 @@
-//Function display contact form
+// Function display contact form
 function displayModal() {
+    // Select element from the DOM
     const modal = document.getElementById("contact_modal");
+    const btnContactClose = document.querySelector('.btnContactClose');
+
+    // Display modal contact
 	modal.style.display = "block";
+    document.querySelector(".firstName").focus();
+
+    //escap to close modal
+    document.addEventListener("keyup", (event) => {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+
+    //If focus on button close
+    btnContactClose.addEventListener('focus', () => {
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                modal.style.display = "none";
+            }
+        });
+    })
 }
 
-//Function display off contact form
+// Function display off contact form
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";

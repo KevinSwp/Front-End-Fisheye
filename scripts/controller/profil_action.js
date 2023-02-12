@@ -15,6 +15,7 @@ const photographerHeader = document.querySelector(".photograph-header");
 const filterMedia = document.querySelector(".filterMedia");
 const photographerMedia = document.querySelector(".photograph-media");
 const photographerPrice = document.querySelector(".price");
+const main = document.getElementById('main');
 
 //Init total like
 let totalLikes = 0;
@@ -24,7 +25,7 @@ let totalLikes = 0;
  */
 const displayModalLightbox = (media) => {
     media.forEach((mediaDataFromFile) => {
-        //Get media object from factory
+        // Get media object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
 
         /* Display media card */
@@ -35,17 +36,6 @@ const displayModalLightbox = (media) => {
         //Add as child
         modalLightbox.appendChild(mediaCardDOM);
     })
-
-    // Use keyboard arrows to slide media
-    window.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") {
-            goToPreviousSlide();
-        }
-        
-        else if (event.key === "ArrowRight") {
-            goToNextSlide();
-        }
-    });
 }
 
 /**
@@ -72,10 +62,10 @@ const displayDataPhotographer = (photographerTemplate) => {
  * Delete section media & total like
  */
 const resetDisplayMedias = ( ) => {
-    // Reset media
+    //Reset media
     photographerMedia.innerHTML = "";
     
-    // Reset total like
+    //Reset total like
     totalLikes = 0
 }
 
@@ -83,10 +73,10 @@ const resetDisplayMedias = ( ) => {
  * Sorted media
  */
 const displayBySort = (type, medias) => {
-    // Reset first
+    //Reset first
     resetDisplayMedias();
 
-    // Sort medias list
+    //Sort medias list
     switch(type){
         case 'popularity':
             medias = sortByPopularity(medias);
@@ -120,7 +110,7 @@ const displayfilter = (medias) => {
     filterMedia.appendChild(filter);
 
     /* Add listeners on filters */
-    //  Ajout les listeners
+    //Ajout les listeners
     const btnPrimaryFilter = document.getElementById("selected");
     btnPrimaryFilter.addEventListener("click", showFilterDropdown);
     document.getElementById("btnPopularity").addEventListener("click", () => displayBySort('popularity', medias));
@@ -146,11 +136,11 @@ const displayDataMedia = (media) => {
         //Add as child
         photographerMedia.appendChild(mediaCardDOM);
 
-        // Add like to total likes
+        //Add like to total likes
         totalLikes += media.likes;
         document.querySelector(".likes").innerHTML = totalLikes;
         
-        // If is already liked remove 1 else add 1
+        //If is already liked remove 1 else add 1
         mediaCardDOM.querySelector(".likeBtn").addEventListener("click", () => {
             const heartIcon = mediaCardDOM.querySelector(".likeBtn");
             const likeCounter = mediaCardDOM.querySelector(".likeCounter");
@@ -171,7 +161,7 @@ const displayDataMedia = (media) => {
                 heartIcon.classList.add("bi-heart-fill");
             }
 
-            // Update counter total like
+            //Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
 
         });

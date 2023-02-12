@@ -1,6 +1,6 @@
 body {
     font-family: "DM Sans", sans-serif;
-    margin-top: 18px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -32,6 +32,8 @@ body {
     right: 9%;
     top: 4.5rem;
     cursor: pointer;
+    border: 0;
+    background-color: transparent;
 }
 
 .nextSlide {
@@ -83,9 +85,13 @@ body {
     padding-bottom: 3rem;
 }
 
+.homePage {
+    display: inline-flex;
+    margin-left: 100px;
+}
+
 .logo {
     height: 50px;
-    margin-left: 100px;
 }
 
 #contact_modal {
@@ -493,7 +499,7 @@ form input {
 }
 
 .text-red{
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     background-color: wheat;
     color: red;
     border-radius: 5px;

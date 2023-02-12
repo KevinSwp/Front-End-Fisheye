@@ -1,3 +1,6 @@
+// Select element from the DOM
+const modal = document.querySelector(".modalLightbox");
+const mainContent = document.getElementById('main');
 
 // init position
 let currentPosition = 0;
@@ -8,19 +11,45 @@ let currentPosition = 0;
 const openLightbox = (position) => {
   // Get the position to use
   currentPosition = position;
-    
+
   // Display the right silde
   showSlides(currentPosition);
 
-  // Display lightbox
-    document.querySelector(".modalLightbox").style.display = "block";
+  // Display modal
+  modal.style.display = "block";
+
+  // Hide main
+  mainContent.style.display = "none";
+
+  //Use keyboard arrows to slide media
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+        goToPreviousSlide();
+    }
+    
+    else if (event.key === "ArrowRight") {
+        goToNextSlide();
+    }
+  });
+
+  //escap to close modal
+  document.addEventListener("keyup", (event) => {
+      if (event.key === "Escape") {
+          modal.style.display = "none";
+          mainContent.style.display = "block";
+      }
+  });
 }
 
 /**
  * Close modal
  */
 const closeLightbox = () => {
-  document.querySelector(".modalLightbox").style.display = "none";
+  // Hide modal
+  modal.style.display = "none";
+
+  // Display main
+  mainContent.style.display = "block";
 }
 
 

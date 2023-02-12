@@ -13,7 +13,7 @@ const photographersSection = document.querySelector(".photographer_section");
  */
 const displayPhotographers = (photographers) => {
     photographers.forEach((photographerDataFromFile) => {
-        // Get photographer object from factory
+        //Get photographer object from factory
         const photographer = new PhotographerFactory(photographerDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
         //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
 

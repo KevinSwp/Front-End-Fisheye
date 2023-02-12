@@ -15,11 +15,11 @@ export default class PhotographerCardProfil {
             <div role="dialog" class="modal">
                 <header>
                     <h2 role="heading" class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
-                    <img role="button" src="assets/icons/close.svg" onclick="closeModal()" />
+                    <img class="btnContactClose" tabindex="1" role="button" src="assets/icons/close.svg" onclick="closeModal()" />
                 </header>
                 <form id="modal-form" name="contact" action="messageSuccess.html">
                     <div class="borderInput">
-                        <label role="label" for="firstName">Prénom</label>
+                        <label class="firstName" role="label" for="firstName">Prénom</label>
                         <input role="field" type="text" id="firstName" name="firstName" minlength="2" maxlength="20">
                         <p></p>
                     </div>
@@ -169,25 +169,25 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             div.innerHTML = `
-                <button role="link" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
+                <button tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
                 <figure class="figure">
                     <img role="image" src="${this.photographer.image}">
                     <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
-                <button role="button"><img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()"></button>
-                <button role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
+                <button tabindex="1" role="button" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
+                <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
             `;
         }
 
         else {
             div.innerHTML = `
-                <button role="button" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
+                <button tabindex="2" role="button" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>
                 <figure class="figure">
                     <video role="video" controls><source src="${this._photographer.video}"></video>
                     <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
-                <button role="button"><img class="closeModal" src="assets/icons/close.svg" onclick="closeLightbox()"></button>
-                <button role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
+                <button tabindex="1" role="button" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
+                <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
             `;
         }
 
