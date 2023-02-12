@@ -1,9 +1,9 @@
 /**
  * Import object from file
  */
-import PhotographerFactory from '../factories/Photographer_factory.js';
-import {PHOTOGRAPHE_TYPES} from '../factories/Photographer_factory.js';
-import PhotographerCardIndex from '../views/index_view.js';
+import PhotographerFactory from "../factories/Photographer_factory.js";
+import {PHOTOGRAPHE_TYPES} from "../factories/Photographer_factory.js";
+import PhotographerCardIndex from "../views/index_view.js";
 
 //Select element from DOM
 const photographersSection = document.querySelector(".photographer_section");
@@ -13,16 +13,14 @@ const photographersSection = document.querySelector(".photographer_section");
  */
 const displayPhotographers = (photographers) => {
     photographers.forEach((photographerDataFromFile) => {
-        //Get photographer object from factory
+        // Get photographer object from factory
         const photographer = new PhotographerFactory(photographerDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
-        //const photographers = new PhotographerFactory(photographerData, 'JSON_V2');
-
         /* Display photographer card */
-        //Get object from view
+        // Get object from view
         const photographerCard = new PhotographerCardIndex(photographer);
-        //Get content card from view
+        // Get content card from view
         const photographerCardDOM = photographerCard.getPhotographerCardIndex();
-        //Add "userCardDom" as child
+        // Add "userCardDom" as child
         photographersSection.appendChild(photographerCardDOM);
     })
 }
@@ -31,33 +29,26 @@ const displayPhotographers = (photographers) => {
  * Initialize data of the index page
  */
 const init = () => {
-    //Fetch data json
+    // Fetch data json
     fetch ("data/photographers.json")
-    //fetch ("data/photographersV2.json")
-
-    //Makes response
+    // Makes response
     .then((response) => response.json())
-    
-    //Display property photographers
+    // Display property photographers
     .then(
         (data) => {
             const {photographers} = data;
             displayPhotographers(photographers);
         }
     )
-    //Catch error
+    // Catch error
     .catch(
         (error) => {
             console.error(`Error fetching data : ${error}`);
             document.querySelector(".photographer_section").innerHTML = "Impossible d'afficher les photographes";
         }
     )
-
-    //Remove focus
-    const linkHome = document.querySelector('.linkHome:nth-child(1)');
-    input.blur(linkHome);
 }
 
-//Call the function
+// Call the function
 init();
     

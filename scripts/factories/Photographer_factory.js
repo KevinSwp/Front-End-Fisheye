@@ -1,14 +1,12 @@
 /**
  * Import object from file
  */
-import Photographer from '../models/Photographer.js';
+import Photographer from "../models/Photographer.js";
 
 /**
- * 
+ * Export
  */
-export const PHOTOGRAPHE_TYPES = {
-    JSON_V1 : 'JSON_V1'
- }
+export const PHOTOGRAPHE_TYPES = {JSON_V1 : "JSON_V1"}
 
 /**
  * Get JSON type
@@ -20,7 +18,7 @@ export default class PhotographerFactory {
         }
 
         else {
-            throw 'Unknown type format';
+            throw "Unknown type format";
         }
     }
 }

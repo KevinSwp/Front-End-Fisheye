@@ -1,21 +1,18 @@
 // Function display contact form
-function displayModal() {
+const displayModal = () => {
     // Select element from the DOM
     const modal = document.getElementById("contact_modal");
     const btnContactClose = document.querySelector('.btnContactClose');
-
     // Display modal contact
 	modal.style.display = "block";
     document.querySelector(".firstName").focus();
-
-    //escap to close modal
+    // Escap to close modal
     document.addEventListener("keyup", (event) => {
         if (event.key === "Escape") {
             modal.style.display = "none";
         }
     });
-
-    //If focus on button close
+    // If focus on button close
     btnContactClose.addEventListener('focus', () => {
         document.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
@@ -26,7 +23,7 @@ function displayModal() {
 }
 
 // Function display off contact form
-function closeModal() {
+const closeModal = () => {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }

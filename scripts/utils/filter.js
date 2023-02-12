@@ -3,7 +3,6 @@
 */
 export const showFilterDropdown = () => {
     const option = document.querySelector(".dropdown_content");
-    
 
     // TODO : Rempalcer aussi la classe active2 du dropdown
         // object.classList.contains
@@ -14,6 +13,7 @@ export const showFilterDropdown = () => {
     if (option.style.display === "block") {
         option.style.display = "none";
     }
+    
     else {
         option.style.display = "block";
     }
@@ -23,34 +23,30 @@ export const showFilterDropdown = () => {
  * Replace text on click
  */
 export const textReplace = () => {
-    const selected = document.getElementById('selected');
-    const items = document.querySelectorAll('.item');
+    const selected = document.getElementById("selected");
+    const items = document.querySelectorAll(".item");
 
     items.forEach((item, index) => {
-
-        //Start counter at 0 and add class to the last element
+        // Start counter at 0 and add class to the last element
         if(index === items.length - 1){
-            item.classList.add('isLast')
+            item.classList.add("isLast");
         }
 
-        item.addEventListener('click', () => {
-
+        item.addEventListener("click", () => {
             //Display / Remove twin
             items.forEach(newItem => {
-                newItem.classList.remove('hidden');
+                newItem.classList.remove("hidden");
                 selected.innerHTML = item.innerHTML;
                 showFilterDropdown();
             })
 
-            item.classList.add('hidden');
-
+            item.classList.add("hidden");
             //Replace button text
             selected.innerHTML = item.innerHTML;
-
             //If click on the last element we change the style
-            document.querySelector('.dropdown_content').classList.remove('isLast')
-            if(item.classList.contains('isLast')){
-                document.querySelector('.dropdown_content').classList.add('isLast')
+            document.querySelector(".dropdown_content").classList.remove("isLast");
+            if(item.classList.contains("isLast")){
+                document.querySelector(".dropdown_content").classList.add("isLast");
             }
         })
     })
@@ -60,25 +56,22 @@ export const textReplace = () => {
  * Function sort by popularity
  */
 export const sortByPopularity = (medias) => {
-    console.log('call sortByPopularity ')
     medias.sort((a, b) => b.likes - a.likes);
-    return medias
+    return medias;
 };
 
 /**
  * Function sort by date
  */
 export const sortByDate = (medias) => {
-    console.log('call sortByDate ')
     medias.sort((a, b) => new Date(a.date) - new Date(b.date));
-    return medias
+    return medias;
 };
 
 /**
  * Function sort by title
  */
 export const sortByTitle = (medias) => {
-    console.log('call sortByTitle ')
     medias.sort((a, b) => {
         if (a.title < b.title) {
             return -1;
@@ -88,7 +81,7 @@ export const sortByTitle = (medias) => {
         }
         return 0;
     });
-    return medias
+    return medias;
 };
 
 export default sortByPopularity;
