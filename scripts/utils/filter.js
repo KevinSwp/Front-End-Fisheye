@@ -5,17 +5,14 @@ export const showFilterDropdown = () => {
     const option = document.querySelector(".dropdown_content");
     const selected = document.getElementById("selected");
 
-    if (option.style.display === "block") {
-        option.style.display = "none";
-    }
-
-    else if (option.style.display === "none") {
-        selected.classList.remove("selectedActive2");
+    if (option.style.display === "none") {
+        option.style.display = "block";
+        selected.classList.remove = "selectedActive";
     }
     
     else {
-        option.style.display = "block";
-        selected.classList.add("selectedActive2");
+        option.style.display = "none";
+        selected.classList.add("selectedActive");
     }
 }
 

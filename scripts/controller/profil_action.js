@@ -5,7 +5,6 @@ import MediaFactory from "../factories/Media_factory.js";
 import {PHOTOGRAPHE_TYPES} from "../factories/Photographer_factory.js";
 import PhotographersCardProfil from "../views/profil_view.js";
 import {sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace} from "../utils/filter.js";
-// import {openLightbox} from "../utils/lightbox.js";
 
 /**
  * Select element from DOM
@@ -61,19 +60,27 @@ const displayDataPhotographer = (photographerTemplate) => {
 /**
  * Delete section media & total like
  */
-const resetDisplayMedias = ( ) => {
-    // Reset media
+const resetDisplayMedias = () => {
     photographerMedia.innerHTML = "";
-    // Reset total like
-    totalLikes = 0
+}
+
+/**
+ * Delete lightBox
+ */
+const resetPosition = () => {
+    modalLightbox.innerHTML ="";
 }
 
 /**
  * Sorted media
  */
 const displayBySort = (type, medias) => {
-    // Reset first
+    // Reset total like
+    totalLikes = 0
+    // Reset medias
     resetDisplayMedias();
+    // Reset position
+    resetPosition();
     // Sort medias list
     switch(type){
         case "popularity":
@@ -92,6 +99,8 @@ const displayBySort = (type, medias) => {
     textReplace();
     // Display sorted media
     displayDataMedia(medias);
+    // Display sorted position media
+    displayModalLightbox(medias);
 }
 
 /**
@@ -138,7 +147,7 @@ const displayDataMedia = (media) => {
             if(media.isLiked){
                 totalLikes -= 1;
                 media.isLiked = false;
-                likeCounter.innerHTML = media.likes
+                likeCounter.innerHTML = media.likes;
                 heartIcon.classList.remove("bi-heart-fill");
                 heartIcon.classList.add("bi-heart");
             }
@@ -146,24 +155,24 @@ const displayDataMedia = (media) => {
             else{
                 totalLikes += 1;
                 media.isLiked = true;
-                likeCounter.innerHTML = media.likes + 1
+                likeCounter.innerHTML = media.likes + 1;
                 heartIcon.classList.remove("bi-heart");
                 heartIcon.classList.add("bi-heart-fill");
             }
             // Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
         });
-       /* //  Select element fromDOM
-        const imgMedia = document.querySelector(".imgMedia");
-        const videoMedia = document.querySelector(".profilVideo");
+       //  Select element from DOM
+        const imgMedia = mediaCardDOM.querySelector(".imgMedia");
+        // const videoMedia = document.querySelector(".profilVideo");
         // Display media with "Enter" if focus on it
-        imgMedia.addEventListener('focus', () => {
-            document.addEventListener("keydown", (event) => {
+        imgMedia?.addEventListener('focus', () => {
+            mediaCardDOM.addEventListener("keydown", (event) => {
                 if (event.key === "Enter") {
-                   openLightbox();
+                   openLightbox(position);
                 }
             });
-        })*/
+        })
     })
 }
 

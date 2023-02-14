@@ -120,9 +120,6 @@ body {
     height: 300px;
 }
 
-.active {
-    display: none;
-}
 
 .filter {
     display: flex;
@@ -138,11 +135,11 @@ body {
     left: 6rem;
 }
 
-.dropdown.active2 .selectedActive2{
+.dropdown.active1 .selectedActive{
     border-radius: 5px 5px 0 0 !important;
 }
 
-.dropdown.active2 .selectedActive2::before{
+.dropdown.active1 .selectedActive::before{
     content:'';
     width: 180px;
     height:1.5px;

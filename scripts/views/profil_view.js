@@ -78,7 +78,7 @@ export default class PhotographerCardProfil {
         if (this._photographer.video === undefined) {
             article.innerHTML = `
                 <div role="link" class="divImgMedia">
-                    <img tabindex="0" class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
+                    <img tabindex="0" data-position="${position}" class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
                 </div>
                 <div role="text" class="legend">
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
@@ -119,8 +119,8 @@ export default class PhotographerCardProfil {
         div.innerHTML = `
             <label role="label">Trier par</label>
 
-            <div role="menu" class="dropdown active2 active1">
-                <button id="selected" class="selectedActive1">Popularité</button>
+            <div role="menu" class="dropdown active1">
+                <button id="selected">Popularité</button>
 
                 <div class="dropdown_content">
                     <button id="btnPopularity" class="item hidden">Popularité</button>
