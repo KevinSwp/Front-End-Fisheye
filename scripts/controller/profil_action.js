@@ -58,6 +58,80 @@ const displayDataPhotographer = (photographerTemplate) => {
 }
 
 /**
+ * Function display filter
+ */
+const displayfilter = (medias) => {
+    /* Display filters */
+    // Get object from view
+    const photographerObject = new PhotographersCardProfil();
+    // Get content from view
+    const filter = photographerObject.getFilter();
+    // Add as child
+    filterMedia.appendChild(filter);
+    // Add listeners on filters
+    document.getElementById("selected").addEventListener("click", showFilterDropdown);
+    document.getElementById("btnPopularity").addEventListener("click", () => displayBySort("popularity", medias));
+    document.getElementById("btnDate").addEventListener("click", () =>displayBySort("date", medias));
+    document.getElementById("btnTitle").addEventListener("click", () => displayBySort("title", medias));
+}
+
+/**
+ * Function display media
+ */
+const displayDataMedia = (media) => {
+    media.forEach((mediaDataFromFile, index) => {
+        // Get photographer object from factory
+        const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
+        /* Display media card */
+        // Get object from view
+        const photographerObject = new PhotographersCardProfil(media);
+        // Get content from view
+        const mediaCardDOM = photographerObject.getPhotographerMedia(index);
+        // Add as child
+        photographerMedia.appendChild(mediaCardDOM);
+
+        // Add like to total likes
+        totalLikes += media.likes;
+        document.querySelector(".likes").innerHTML = totalLikes;
+        // If is already liked remove 1 else add 1
+        mediaCardDOM.querySelector(".likeBtn").addEventListener("click", () => {
+            // Select element form DOM
+            const heartIcon = mediaCardDOM.querySelector(".likeBtn");
+            const likeCounter = mediaCardDOM.querySelector(".likeCounter");
+            // Remove like if liked
+            if(media.isLiked){
+                totalLikes -= 1;
+                media.isLiked = false;
+                likeCounter.innerHTML = media.likes;
+                heartIcon.classList.remove("bi-heart-fill");
+                heartIcon.classList.add("bi-heart");
+            }
+            // Add like 
+            else{
+                totalLikes += 1;
+                media.isLiked = true;
+                likeCounter.innerHTML = media.likes + 1;
+                heartIcon.classList.remove("bi-heart");
+                heartIcon.classList.add("bi-heart-fill");
+            }
+            // Update counter total like
+            document.querySelector(".likes").innerHTML = totalLikes;
+        });
+       //  Select element from DOM
+        const imgMedia = mediaCardDOM.querySelector(".imgMedia");
+        // const videoMedia = document.querySelector(".profilVideo");
+        // Display media with "Enter" if focus on it
+        imgMedia?.addEventListener('focus', () => {
+            mediaCardDOM.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                   openLightbox(position);
+                }
+            });
+        })
+    })
+}
+
+/**
  * Delete section media & total like
  */
 const resetDisplayMedias = () => {
@@ -101,79 +175,6 @@ const displayBySort = (type, medias) => {
     displayDataMedia(medias);
     // Display sorted position media
     displayModalLightbox(medias);
-}
-
-/**
- * Function display filter
- */
-const displayfilter = (medias) => {
-    /* Display filters */
-    // Get object from view
-    const photographerObject = new PhotographersCardProfil();
-    // Get content from view
-    const filter = photographerObject.getFilter();
-    // Add as child
-    filterMedia.appendChild(filter);
-    // Add listeners on filters
-    document.getElementById("selected").addEventListener("click", showFilterDropdown);
-    document.getElementById("btnPopularity").addEventListener("click", () => displayBySort("popularity", medias));
-    document.getElementById("btnDate").addEventListener("click", () =>displayBySort("date", medias));
-    document.getElementById("btnTitle").addEventListener("click", () => displayBySort("title", medias));
-}
-
-/**
- * Function display media
- */
-const displayDataMedia = (media) => {
-    media.forEach((mediaDataFromFile, index) => {
-        // Get photographer object from factory
-        const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
-        /* Display media card */
-        // Get object from view
-        const photographerObject = new PhotographersCardProfil(media);
-        // Get content from view
-        const mediaCardDOM = photographerObject.getPhotographerMedia(index);
-        // Add as child
-        photographerMedia.appendChild(mediaCardDOM);
-        // Add like to total likes
-        totalLikes += media.likes;
-        document.querySelector(".likes").innerHTML = totalLikes;
-        // If is already liked remove 1 else add 1
-        mediaCardDOM.querySelector(".likeBtn").addEventListener("click", () => {
-            // Select element form DOM
-            const heartIcon = mediaCardDOM.querySelector(".likeBtn");
-            const likeCounter = mediaCardDOM.querySelector(".likeCounter");
-            // Remove like if liked
-            if(media.isLiked){
-                totalLikes -= 1;
-                media.isLiked = false;
-                likeCounter.innerHTML = media.likes;
-                heartIcon.classList.remove("bi-heart-fill");
-                heartIcon.classList.add("bi-heart");
-            }
-            // Else add like 
-            else{
-                totalLikes += 1;
-                media.isLiked = true;
-                likeCounter.innerHTML = media.likes + 1;
-                heartIcon.classList.remove("bi-heart");
-                heartIcon.classList.add("bi-heart-fill");
-            }
-            // Update counter total like
-            document.querySelector(".likes").innerHTML = totalLikes;
-        });
-       //  Select element from DOM
-        const imgMedia = mediaCardDOM.querySelector(".imgMedia");
-        // const videoMedia = document.querySelector(".profilVideo");
-        // Display media with "Enter" if focus on it
-        imgMedia?.addEventListener('focus', () => {
-            mediaCardDOM.addEventListener("keydown", (event) => {
-                if (event.key === "Enter") {
-                   openLightbox(position);
-                }
-            });
-        })
-    })
 }
 
 /**

@@ -57,7 +57,7 @@ const goToNextSlide = () => {
 /**
  * Open modal
  */
-/*export*/ const openLightbox = (position) => {
+const openLightbox = (position) => {
     // Get the position to use
     currentPosition = position;
     // Display the right silde

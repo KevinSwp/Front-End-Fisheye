@@ -18,9 +18,9 @@ export default class PhotographerCardIndex {
             </a>
 
             <div role="paragraph" class="paragraph">
-                <h3 class="indexLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
-                <p class="indexTagPhotographer">${this._photographer.tagline}</p>
-                <span class="indexPricePhotographer">${this._photographer.price}€/jour</span>
+                <h3 tabindex="0" class="indexLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
+                <p tabindex="0" class="indexTagPhotographer">${this._photographer.tagline}</p>
+                <span tabindex="0" aria-label="truc par jour" class="indexPricePhotographer">${this._photographer.price}€/jour</span>
             </div>
         `;
 

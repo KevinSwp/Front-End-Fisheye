@@ -23,11 +23,11 @@ const displayModal = () => {
     // Hide contact modal with "Enter" if focus on it
     btnContactClose.addEventListener("focus", () => {
         document.addEventListener("keydown", btnClose);
-    })
+    });
     // Do nothing when losing focus on it
     btnContactClose.addEventListener("focusout", () => {
         document.removeEventListener("keydown", btnClose);
-    })
+    });
     // Focus by default
     document.querySelector(".btnContactClose").focus();
 }

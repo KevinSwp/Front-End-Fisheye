@@ -15,12 +15,12 @@ export default class PhotographerCardProfil {
             <div role="dialog" class="modal">
                 <header>
                     <h2 role="heading" class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
-                    <img class="btnContactClose" tabindex="1" role="button" src="assets/icons/close.svg" onclick="closeModal()" />
+                    <img class="btnContactClose" tabindex="0" role="button" src="assets/icons/close.svg" onclick="closeModal()" />
                 </header>
                 <form id="modal-form" name="contact" action="messageSuccess.html">
                     <div class="borderInput">
-                        <label class="firstName" role="label" for="firstName">Prénom</label>
-                        <input role="field" type="text" id="firstName" name="firstName" minlength="2" maxlength="20">
+                        <label role="label" for="firstName">Prénom</label>
+                        <input class="firstName" role="field" type="text" id="firstName" name="firstName" minlength="2" maxlength="20">
                         <p></p>
                     </div>
                     <div class="borderInput">
@@ -54,14 +54,14 @@ export default class PhotographerCardProfil {
         article.classList.add("profilHeader");
         //Fill the DOM
         article.innerHTML = `
-            <img role="image" class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
+            <img tabindex="5" role="image" class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
 
             <button role="button" class="contact_button"  onclick="displayModal()">Contactez-moi</button>
 
             <div role="text" class="profil_info">
-                <h2 class="profilNamePhotographer">${this._photographer.name}</h2>
-                <h3 class="profilLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
-                <p class="profilTagPhotographer">${this._photographer.tagline}</p>
+                <h2 tabindex="2" class="profilNamePhotographer">${this._photographer.name}</h2>
+                <h3 tabindex="3" class="profilLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
+                <p tabindex="4" class="profilTagPhotographer">${this._photographer.tagline}</p>
             </div>
         `;
 
@@ -117,7 +117,7 @@ export default class PhotographerCardProfil {
         div.classList.add("filter");
         //Fill the DOM
         div.innerHTML = `
-            <label role="label">Trier par</label>
+            <label tabindex="0" role="label">Trier par</label>
 
             <div role="menu" class="dropdown active1">
                 <button id="selected">Popularité</button>
