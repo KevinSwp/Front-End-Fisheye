@@ -12,8 +12,8 @@ const displayModal = () => {
             modal.style.display = "none";
         }
     });
-    // If focus on button close
-    btnContactClose.addEventListener('focus', () => {
+    // Hide contact modal with "Enter" if focus on it
+    btnContactClose.addEventListener("focus", () => {
         document.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
                 modal.style.display = "none";

@@ -5,6 +5,7 @@ import MediaFactory from "../factories/Media_factory.js";
 import {PHOTOGRAPHE_TYPES} from "../factories/Photographer_factory.js";
 import PhotographersCardProfil from "../views/profil_view.js";
 import {sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace} from "../utils/filter.js";
+// import {openLightbox} from "../utils/lightbox.js";
 
 /**
  * Select element from DOM
@@ -130,9 +131,10 @@ const displayDataMedia = (media) => {
         document.querySelector(".likes").innerHTML = totalLikes;
         // If is already liked remove 1 else add 1
         mediaCardDOM.querySelector(".likeBtn").addEventListener("click", () => {
+            // Select element form DOM
             const heartIcon = mediaCardDOM.querySelector(".likeBtn");
             const likeCounter = mediaCardDOM.querySelector(".likeCounter");
-
+            // Remove like if liked
             if(media.isLiked){
                 totalLikes -= 1;
                 media.isLiked = false;
@@ -140,7 +142,7 @@ const displayDataMedia = (media) => {
                 heartIcon.classList.remove("bi-heart-fill");
                 heartIcon.classList.add("bi-heart");
             }
-            
+            // Else add like 
             else{
                 totalLikes += 1;
                 media.isLiked = true;
@@ -151,6 +153,17 @@ const displayDataMedia = (media) => {
             // Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
         });
+       /* //  Select element fromDOM
+        const imgMedia = document.querySelector(".imgMedia");
+        const videoMedia = document.querySelector(".profilVideo");
+        // Display media with "Enter" if focus on it
+        imgMedia.addEventListener('focus', () => {
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                   openLightbox();
+                }
+            });
+        })*/
     })
 }
 

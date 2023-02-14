@@ -7,6 +7,10 @@ body {
     margin-right: auto;
 }
 
+body :focus {
+    outline: red solid 3px;
+    border-radius: 5px;
+}
 
 header {
     display: flex;

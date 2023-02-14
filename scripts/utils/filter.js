@@ -3,19 +3,19 @@
 */
 export const showFilterDropdown = () => {
     const option = document.querySelector(".dropdown_content");
-
-    // TODO : Rempalcer aussi la classe active2 du dropdown
-        // object.classList.contains
-        // object.classList.add
-        // object.classList.remove
-
+    const selected = document.getElementById("selected");
 
     if (option.style.display === "block") {
         option.style.display = "none";
     }
+
+    else if (option.style.display === "none") {
+        selected.classList.remove("selectedActive2");
+    }
     
     else {
         option.style.display = "block";
+        selected.classList.add("selectedActive2");
     }
 }
 

@@ -6,37 +6,6 @@ const mainContent = document.getElementById('main');
 let currentPosition = 0;
 
 /**
- * Open modal
- */
-const openLightbox = (position) => {
-    // Get the position to use
-    currentPosition = position;
-    // Display the right silde
-    showSlides(currentPosition);
-    // Display modal
-    modal.style.display = "block";
-    // Hide main
-    mainContent.style.display = "none";
-    //Use keyboard arrows to slide media
-    window.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") {
-            goToPreviousSlide();
-        }
-        
-        else if (event.key === "ArrowRight") {
-            goToNextSlide();
-        }
-    });
-    //escap to close modal
-    document.addEventListener("keyup", (event) => {
-        if (event.key === "Escape") {
-            modal.style.display = "none";
-            mainContent.style.display = "block";
-        }
-    });
-}
-
-/**
  * Close modal
  */
 const closeLightbox = () => {
@@ -44,21 +13,6 @@ const closeLightbox = () => {
     modal.style.display = "none";
     // Display main
     mainContent.style.display = "block";
-}
-
-
-/**
- * Previous slide
- */
-const goToPreviousSlide = () => {
-    showSlides(currentPosition - 1);
-}
-
-/**
- * Next slide
- */
-const goToNextSlide = () => {
-    showSlides(currentPosition + 1);
 }
 
 /**
@@ -84,4 +38,48 @@ const showSlides = (newSlidePosition) => {
     }
     // Display only the right slide
     slides[currentPosition].style.display = "block";
+}
+
+/**
+ * Previous slide
+ */
+const goToPreviousSlide = () => {
+    showSlides(currentPosition - 1);
+}
+
+/**
+ * Next slide
+ */
+const goToNextSlide = () => {
+    showSlides(currentPosition + 1);
+}
+
+/**
+ * Open modal
+ */
+/*export*/ const openLightbox = (position) => {
+    // Get the position to use
+    currentPosition = position;
+    // Display the right silde
+    showSlides(currentPosition);
+    // Display modal
+    modal.style.display = "block";
+    // Hide main
+    mainContent.style.display = "none";
+    //Use keyboard arrows to slide media
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+            goToPreviousSlide();
+        }
+        
+        else if (event.key === "ArrowRight") {
+            goToNextSlide();
+        }
+    });
+    //escap to close modal
+    document.addEventListener("keyup", (event) => {
+        if (event.key === "Escape") {
+            closeLightbox();
+        }
+    });
 }
