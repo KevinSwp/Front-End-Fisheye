@@ -229,6 +229,7 @@ const initProfil = () => {
                 displayDataMedia(mediasFromPhotographer);
                 displayModalLightbox(mediasFromPhotographer);                                         
                 displayfilter(mediasFromPhotographer);
+                textReplace();
             }
         )
         // Catch error

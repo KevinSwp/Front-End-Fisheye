@@ -590,6 +590,11 @@ form input {
 }
 
 @media screen and (max-width: 600px) {
+    body {
+        margin-left: -10%;
+        margin-right: -10%;
+    }
+
     .modal {
         width: 58%;
         margin-left: 10%;
@@ -597,5 +602,14 @@ form input {
 
     .modal header {
         height: 0%;
+    }
+
+    .dropdown {
+        top: 2.5rem;
+        left: 0rem;
+    }
+
+    .photograph-media {
+        margin-top: 8rem;
     }
 }

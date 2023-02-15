@@ -16,6 +16,11 @@ export const showFilterDropdown = () => {
     }
 }
 
+const hideFilterDropdown = () => {
+    const option = document.querySelector(".dropdown_content");
+    option.style.display = "none";
+}
+
 /**
  * Replace text on click
  */
@@ -34,7 +39,7 @@ export const textReplace = () => {
             items.forEach(newItem => {
                 newItem.classList.remove("hidden");
                 selected.innerHTML = item.innerHTML;
-                showFilterDropdown();
+                hideFilterDropdown();
             })
 
             item.classList.add("hidden");
