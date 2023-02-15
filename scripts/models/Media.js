@@ -2,7 +2,7 @@
  * Properties media
  */
 export default class Media {
-    constructor(data){
+    constructor(data) {
         this._id = data.id;
         this._photographerId = data.photographerId;
         this._title = data.title;
@@ -13,7 +13,7 @@ export default class Media {
         this._price = data.price;
     }
 
-    //get & set
+    // get & set
     get id() {
         return this._id;
     }
@@ -22,7 +22,7 @@ export default class Media {
         return this._photographerId;
     }
 
-    set photographerId(value){
+    set photographerId(value) {
         this._photographerId = value;
     }
 
@@ -30,12 +30,12 @@ export default class Media {
         return this._title;
     }
 
-    set title(value){
+    set title(value) {
         this._title = value;
     }
 
     get image() {
-        if(this._image === undefined ){
+        if (this._image === undefined ) {
             return undefined
         }
 
@@ -43,7 +43,7 @@ export default class Media {
     }
 
     get video() {
-        if(this._video === undefined ){
+        if (this._video === undefined ) {
             return undefined
         }
         return `/assets/samplePhotos/${this._video}`;
@@ -53,7 +53,7 @@ export default class Media {
         return this._likes;
     }
 
-    set likes(value){
+    set likes(value) {
         this._likes = value;
     }
     
@@ -61,7 +61,7 @@ export default class Media {
         return this._date;
     }
 
-    set date(value){
+    set date(value) {
         this._date = value;
     }
     
@@ -69,7 +69,7 @@ export default class Media {
         return this._price;
     }
 
-    set price(value){
+    set price(value) {
         this._price = value;
     }
 }

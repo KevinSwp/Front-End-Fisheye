@@ -29,7 +29,7 @@ const showSlides = (newSlidePosition) => {
       currentPosition = slides.length - 1;
     }
     // Switch slide
-    if(newSlidePosition >= 0 && newSlidePosition < slides.length){
+    if (newSlidePosition >= 0 && newSlidePosition < slides.length) {
       currentPosition = newSlidePosition
     }
     // Hide all others slides
@@ -66,7 +66,7 @@ const openLightbox = (position) => {
     modal.style.display = "block";
     // Hide main
     mainContent.style.display = "none";
-    //Use keyboard arrows to slide media
+    // Use keyboard arrows to slide media
     window.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft") {
             goToPreviousSlide();
@@ -76,7 +76,7 @@ const openLightbox = (position) => {
             goToNextSlide();
         }
     });
-    //escap to close modal
+    // Escap to close modal
     document.addEventListener("keyup", (event) => {
         if (event.key === "Escape") {
             closeLightbox();

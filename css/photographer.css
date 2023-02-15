@@ -5,10 +5,10 @@ body {
     margin-right: auto;
 }
 
-/* body :focus {
+body :focus {
     outline: red solid 3px;
     border-radius: 5px;
-} */
+}
 
 .modalLightbox {
     display: none;
@@ -72,14 +72,14 @@ body {
 
 .lightbox figure img{
     width: 75%;
-    height: 100%;
+    height: 85vh;
     border-radius: 5px;
     object-fit: cover;
 }
 
 .lightbox figure video{
     width: 75%;
-    height: 100%;
+    height: 85vh;
     border-radius: 5px;
     object-fit: cover;
 }
@@ -120,6 +120,13 @@ body {
     height: 300px;
 }
 
+.pictureAndBtnContact {
+    width: 57%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
 
 .filter {
     display: flex;
@@ -526,4 +533,69 @@ form input {
 
 .pricePerDay {
     padding-left: 5rem;
+}
+
+@media screen  and (max-width: 1200px) {
+    .modal {
+        width: 45%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .photograph-header {
+        height: 100%;
+    }
+
+    .pictureAndBtnContact {
+        flex-direction: column;
+    }
+
+    .profilMedia {
+        width: calc(100% / 2 - 60px);
+    }
+
+    .previousSlide {
+        left: 4%;
+    }
+    
+    .closeModal {
+        right: 6%;
+    }
+    
+    .nextSlide {
+        right: 4%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .modal header {
+        height: 0%;
+    }
+
+    .modal header h2 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profilHeader {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .profilMedia {
+        width: calc(100% / 1 - 0px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        width: 58%;
+        margin-left: 10%;
+      }
+
+    .modal header {
+        height: 0%;
+    }
 }

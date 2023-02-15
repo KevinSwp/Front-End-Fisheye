@@ -2,15 +2,15 @@
  * Photographers card
  */
 export default class PhotographerCardIndex {
-    constructor(photographer){
+    constructor(photographer) {
         this._photographer = photographer;
     }
 
     //Function content home page
     getPhotographerCardIndex = () => {
-        //Create article element in the DOM
+        // Create article element in the DOM
         const article = document.createElement('article');
-        //Fill the DOM
+        // Fill the DOM
         article.innerHTML = `
             <a role="link" class="photographerBloc" href="photographer.html?id=${this._photographer.id}" aria-label="photographe ${this._photographer.name}">
                 <img src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
@@ -27,7 +27,7 @@ export default class PhotographerCardIndex {
         return article;
     }
 
-    //get & set
+    // get & set
     get photographer() {
         return this._photographer;
     }

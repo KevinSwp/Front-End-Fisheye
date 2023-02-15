@@ -2,7 +2,7 @@
  * Properties photographer
  */
 export default class Photographer {
-    constructor(data){
+    constructor(data) {
         this._id = data.id;
         this._name = data.name;
         this._city = data.city;
@@ -12,7 +12,7 @@ export default class Photographer {
         this._portrait = data.portrait;
     }
 
-    //get & set
+    // get & set
     get id () {
         return this._id;
     }
@@ -21,7 +21,7 @@ export default class Photographer {
         return this._name;
     }
 
-    set name(value){
+    set name(value) {
         this._name = value;
     }
 

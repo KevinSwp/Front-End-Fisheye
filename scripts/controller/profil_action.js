@@ -99,7 +99,7 @@ const displayDataMedia = (media) => {
             const heartIcon = mediaCardDOM.querySelector(".likeBtn");
             const likeCounter = mediaCardDOM.querySelector(".likeCounter");
             // Remove like if liked
-            if(media.isLiked){
+            if (media.isLiked) {
                 totalLikes -= 1;
                 media.isLiked = false;
                 likeCounter.innerHTML = media.likes;
@@ -107,7 +107,7 @@ const displayDataMedia = (media) => {
                 heartIcon.classList.add("bi-heart");
             }
             // Add like 
-            else{
+            else {
                 totalLikes += 1;
                 media.isLiked = true;
                 likeCounter.innerHTML = media.likes + 1;
@@ -117,18 +117,18 @@ const displayDataMedia = (media) => {
             // Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
         });
-       //  Select element from DOM
+        // Select element from DOM
         const imgMedia = mediaCardDOM.querySelector(".imgMedia");
-        // const videoMedia = document.querySelector(".profilVideo");
+        const videoMedia = document.querySelector(".profilVideo");
         // Display media with "Enter" if focus on it
-        imgMedia?.addEventListener('focus', () => {
+        if (imgMedia || videoMedia != undefined) {
             mediaCardDOM.addEventListener("keydown", (event) => {
                 if (event.key === "Enter") {
                    openLightbox(position);
                 }
             });
-        })
-    })
+        }
+    });
 }
 
 /**
@@ -156,7 +156,7 @@ const displayBySort = (type, medias) => {
     // Reset position
     resetPosition();
     // Sort medias list
-    switch(type){
+    switch(type) {
         case "popularity":
             medias = sortByPopularity(medias);
             break;

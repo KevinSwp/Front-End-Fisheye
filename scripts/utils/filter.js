@@ -25,12 +25,12 @@ export const textReplace = () => {
 
     items.forEach((item, index) => {
         // Start counter at 0 and add class to the last element
-        if(index === items.length - 1){
+        if (index === items.length - 1) {
             item.classList.add("isLast");
         }
 
         item.addEventListener("click", () => {
-            //Display / Remove twin
+            // Display / Remove twin
             items.forEach(newItem => {
                 newItem.classList.remove("hidden");
                 selected.innerHTML = item.innerHTML;
@@ -38,11 +38,11 @@ export const textReplace = () => {
             })
 
             item.classList.add("hidden");
-            //Replace button text
+            // Replace button text
             selected.innerHTML = item.innerHTML;
-            //If click on the last element we change the style
+            // If click on the last element we change the style
             document.querySelector(".dropdown_content").classList.remove("isLast");
-            if(item.classList.contains("isLast")){
+            if (item.classList.contains("isLast")) {
                 document.querySelector(".dropdown_content").classList.add("isLast");
             }
         })

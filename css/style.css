@@ -1,5 +1,3 @@
-/* @import url("photographer.css"); */
-
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -128,4 +126,28 @@ h1 {
     background-color: #901C1C !important;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        flex-direction: column;
+    }
+
+    .homePage {
+        margin-left: 0;
+    }
+
+    h1 {
+        padding-left: 90px;
+    }
+
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
 }
