@@ -164,6 +164,7 @@ body :focus {
     left: 6rem;
 }
 
+
 .dropdown.active1 .selectedActive{
     border-radius: 5px 5px 0 0 !important;
 }
@@ -179,7 +180,7 @@ body :focus {
     left:0;
 }
 
-#selected {
+.btnDropdown {
     width: 200px;
     height: 40px;
     background-color: #901C1C;
@@ -200,6 +201,32 @@ body :focus {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+
+
+
+.dropdown .btnDropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dropdown .btnDropdown span {
+    display: block;
+} 
+.dropdown .btnDropdown span:nth-child(1){}
+.dropdown .btnDropdown span:nth-child(2) svg{
+    width:20px;
+    height:20px;
+    fill:#fff;
+    transform: rotate(180deg);
+}
+
+.dropdown .btnDropdown span:nth-child(2) svg:nth-child(2){
+    fill:black;
+}
+
+
+.dropdown .btnDropdown[data-type="2"] > .dropdown_content .item-date:before{ display: none;}
+
 
 .item {
     width: 200px;
@@ -229,10 +256,6 @@ body :focus {
 }
 
 .item:last-child:before{
-    display: none;
-}
-
-.content.isLast .item:nth-last-child(2):before{
     display: none;
 }
 

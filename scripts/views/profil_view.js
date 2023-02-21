@@ -84,8 +84,8 @@ export default class PhotographerCardProfil {
                 <div role="text" class="legend">
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
                     <div class="likeHeart">
-                        <span class="likeCounter">${this._photographer.likes}</span>
-                        <button class="likeBtn bi-heart"></button>
+                        <span arial-label="nombre de j'aime" class="likeCounter">${this._photographer.likes}</span>
+                        <button arial-label="mention j'aime" class="likeBtn bi-heart"></button>
                     </div>
                 </div>
             `;
@@ -100,8 +100,8 @@ export default class PhotographerCardProfil {
                     <div role="text" class="legendVideo">
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
                         <div class="likeHeartVideo">
-                            <span class="likeCounter">${this._photographer.likes}</span>
-                            <button class="likeBtn bi-heart"></button>
+                            <span arial-label="nombre de j'aime" class="likeCounter">${this._photographer.likes}</span>
+                            <button arial-label="mention j'aime" class="likeBtn bi-heart"></button>
                         </div>
                     </div>
                 </div>
@@ -121,14 +121,23 @@ export default class PhotographerCardProfil {
             <label tabindex="0" role="label">Trier par</label>
 
             <div role="menu" class="dropdown active1">
-                <button id="selected">Popularité</button>
-                <i class="arrowUp"><</i>
-                <i class="arrowDown">></i>
+                <button id="selected" class="btnDropdown">
+                    <span id="selectedText" >Popularité</span>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">                    
+                            <path d="M201.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 173.3 54.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/>
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">                    
+                            <path d="M201.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 173.3 54.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/>
+                        </svg>
+                    </span>
+                </button>
 
                 <div class="dropdown_content">
-                    <button id="btnPopularity" class="item hidden">Popularité</button>
-                    <button id="btnDate" class="item">Date</button>
-                    <button id="btnTitle" class="item">Titre</button>
+                    <button id="btnPopularity" class="item item-popularity hidden">Popularité</button>
+                    <button id="btnDate" class="item item-date">Date</button>
+                    <button id="btnTitle" class="item item-titre">Titre</button>
                 </div>
             </div>
         `;
@@ -144,8 +153,8 @@ export default class PhotographerCardProfil {
         div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span role="rext" class="likes" arial-label="Like"></span>
-            <i class="bi bi-heart-fill"></i>
+            <span role="rext" class="likes" arial-label="nombre total de j'aime"></span>
+            <i arial-label="mention j'aime" class="bi bi-heart-fill"></i>
         `;
 
         return div;
@@ -158,7 +167,7 @@ export default class PhotographerCardProfil {
         div.classList.add("profilPrice");
         //Fill the DOM
         div.innerHTML = `
-            <span class="pricePerDay">${this._photographer.price} € / jour</span>
+            <span tabindex="0"class="pricePerDay">${this._photographer.price} € / jour</span>
         `;
 
         return div;
@@ -177,7 +186,7 @@ export default class PhotographerCardProfil {
                     <img role="image" src="${this.photographer.image}">
                     <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
-                <button tabindex="1" role="button" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
+                <button tabindex="1" role="button" id="btnCloseLightboxModal" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
                 <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>
             `;
         }

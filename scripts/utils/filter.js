@@ -5,12 +5,10 @@ export const showFilterDropdown = () => {
     const option = document.querySelector(".dropdown_content");
     const selected = document.getElementById("selected");
 
-    if (option.style.display === "none") {
+    if (option.style.display != "block") {
         option.style.display = "block";
         selected.classList.remove = "selectedActive";
-    }
-    
-    else {
+    } else {
         option.style.display = "none";
         selected.classList.add("selectedActive");
     }
@@ -24,34 +22,25 @@ const hideFilterDropdown = () => {
 /**
  * Replace text on click
  */
-export const textReplace = () => {
+export const textReplace = (textToReplace) => {
     const selected = document.getElementById("selected");
+    const selectedText = document.getElementById("selectedText");
     const items = document.querySelectorAll(".item");
 
+    selected.setAttribute('data-type', textToReplace);
+
     items.forEach((item, index) => {
-        // Start counter at 0 and add class to the last element
-        if (index === items.length - 1) {
-            item.classList.add("isLast");
-        }
 
-        item.addEventListener("click", () => {
-            // Display / Remove twin
-            items.forEach(newItem => {
-                newItem.classList.remove("hidden");
-                selected.innerHTML = item.innerHTML;
-                hideFilterDropdown();
-            })
+         // On affiche tous les boutons
+         item.classList.remove("hidden");
 
+         // Lorsque c'est le bouton qui est cliqué
+         if(index === textToReplace){
+            selectedText.innerHTML = item.innerHTML;
             item.classList.add("hidden");
-            // Replace button text
-            selected.innerHTML = item.innerHTML;
-            // If click on the last element we change the style
-            document.querySelector(".dropdown_content").classList.remove("isLast");
-            if (item.classList.contains("isLast")) {
-                document.querySelector(".dropdown_content").classList.add("isLast");
-            }
-        })
+         }
     })
+
 }
 
 /**

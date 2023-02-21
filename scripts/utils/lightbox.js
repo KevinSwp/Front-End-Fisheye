@@ -44,14 +44,14 @@ const showSlides = (newSlidePosition) => {
  * Previous slide
  */
 const goToPreviousSlide = () => {
-    showSlides(currentPosition - 1);
+    showSlides(parseInt(currentPosition) - 1);
 }
 
 /**
  * Next slide
  */
 const goToNextSlide = () => {
-    showSlides(currentPosition + 1);
+    showSlides(parseInt(currentPosition) + 1);
 }
 
 /**
@@ -66,6 +66,11 @@ const openLightbox = (position) => {
     modal.style.display = "block";
     // Hide main
     mainContent.style.display = "none";
+
+
+    const btnCloseLightboxModal = document.querySelector('#btnCloseLightboxModal');
+    btnCloseLightboxModal.focus();
+
     // Use keyboard arrows to slide media
     window.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft") {

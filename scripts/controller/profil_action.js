@@ -19,6 +19,13 @@ const photographerPrice = document.querySelector(".price");
 // Init total like
 let totalLikes = 0;
 
+
+const ENUM_FILTRES = {
+    popularity : 0,
+    date : 1,
+    title :2
+}
+
 /**
  * Display modal lightbox
  */
@@ -69,27 +76,30 @@ const displayfilter = (medias) => {
     // Add as child
     filterMedia.appendChild(filter);
     // Add listeners on filters
+
+
     document.getElementById("selected").addEventListener("click", showFilterDropdown);
+
     document.getElementById("btnPopularity").addEventListener("click", () => displayBySort("popularity", medias));
-    document.getElementById("btnDate").addEventListener("click", () =>displayBySort("date", medias));
+    document.getElementById("btnDate").addEventListener("click", () => displayBySort("date", medias));
     document.getElementById("btnTitle").addEventListener("click", () => displayBySort("title", medias));
 
     // Récupérer l'élément de dropdown
     const dropdown = document.querySelector('.dropdown');
 
     // Récupérer les éléments avec les classes arrowDown et arrowUp
-    const arrowDown = dropdown.querySelector('.arrowDown');
-    const arrowUp = dropdown.querySelector('.arrowUp');
+    //const arrowDown = dropdown.querySelector('.arrowDown');
+    //const arrowUp = dropdown.querySelector('.arrowUp');
 
     // Si le dropdown est affiché, afficher la flèche vers le bas et masquer la flèche vers le haut
     if (dropdown.classList.contains('.dropdown_content')) {
-        arrowDown.style.display = 'inline';
-        arrowUp.style.display = 'none';
+       // arrowDown.style.display = 'inline';
+       // arrowUp.style.display = 'none';
     }
     // Sinon, afficher la flèche vers le haut et masquer la flèche vers le bas
     else {
-        arrowDown.style.display = 'none';
-        arrowUp.style.display = 'inline';
+       // arrowDown.style.display = 'none';
+       // arrowUp.style.display = 'inline';
     }
 }
 
@@ -136,13 +146,18 @@ const displayDataMedia = (media) => {
             // Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
         });
+        
         // Select element from DOM
         const imgMedia = mediaCardDOM.querySelector(".imgMedia");
         const videoMedia = mediaCardDOM.querySelector(".profilVideo");
+            
         // Display media with "Enter" if focus on it
         if (imgMedia || videoMedia != undefined) {
-            addEventListener("keydown", (event) => {
-                if (event.key === "Enter") {
+    
+            mediaCardDOM.addEventListener("keydown", (event) => {
+                const position = imgMedia.getAttribute('data-position');
+
+                if (event.key === "Enter") {                          
                    openLightbox(position);
                 }
             });
@@ -175,21 +190,28 @@ const displayBySort = (type, medias) => {
     // Reset position
     resetPosition();
     // Sort medias list
+    let text = ''
+
     switch(type) {
         case "popularity":
             medias = sortByPopularity(medias);
+            text = ENUM_FILTRES.popularity
             break;
 
         case "date":
             medias = sortByDate(medias);
+            text = ENUM_FILTRES.date
             break;
 
         case "title":
             medias = sortByTitle(medias);
+            text = ENUM_FILTRES.title
             break;
     }
 
-    textReplace();
+    // 0: Popularité 1: Date  2:Titre
+    textReplace(text);
+
     // Display sorted media
     displayDataMedia(medias);
     // Display sorted position media
@@ -248,7 +270,7 @@ const initProfil = () => {
                 displayDataMedia(mediasFromPhotographer);
                 displayModalLightbox(mediasFromPhotographer);                                         
                 displayfilter(mediasFromPhotographer);
-                textReplace();
+                textReplace(ENUM_FILTRES.popularity);
             }
         )
         // Catch error
