@@ -73,12 +73,31 @@ const displayfilter = (medias) => {
     document.getElementById("btnPopularity").addEventListener("click", () => displayBySort("popularity", medias));
     document.getElementById("btnDate").addEventListener("click", () =>displayBySort("date", medias));
     document.getElementById("btnTitle").addEventListener("click", () => displayBySort("title", medias));
+
+    // Récupérer l'élément de dropdown
+    const dropdown = document.querySelector('.dropdown');
+
+    // Récupérer les éléments avec les classes arrowDown et arrowUp
+    const arrowDown = dropdown.querySelector('.arrowDown');
+    const arrowUp = dropdown.querySelector('.arrowUp');
+
+    // Si le dropdown est affiché, afficher la flèche vers le bas et masquer la flèche vers le haut
+    if (dropdown.classList.contains('.dropdown_content')) {
+        arrowDown.style.display = 'inline';
+        arrowUp.style.display = 'none';
+    }
+    // Sinon, afficher la flèche vers le haut et masquer la flèche vers le bas
+    else {
+        arrowDown.style.display = 'none';
+        arrowUp.style.display = 'inline';
+    }
 }
 
 /**
  * Function display media
  */
 const displayDataMedia = (media) => {
+    
     media.forEach((mediaDataFromFile, index) => {
         // Get photographer object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
@@ -220,9 +239,9 @@ const initProfil = () => {
                 // Check if same ID
                 const photographer = photographers.find(photographer => photographer.id === findID);
                 const mediasFromPhotographer = media.filter(medias => medias.photographerId === findID);
-
+                // Object
                 const photographerTemplate = new PhotographersCardProfil(photographer);
-
+                // Call function
                 displayDataPhotographer(photographerTemplate);
                 manageContactForm(photographerTemplate);
                 displayTotaleLikes_Price(photographerTemplate);

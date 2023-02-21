@@ -136,6 +136,28 @@ body :focus {
     z-index: 1;
 }
 
+.arrowUp {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    font-size: 1.3rem;
+    transform: rotate(90deg);
+    font-family: initial;
+    font-weight: bold;
+    color: white;
+}
+
+.arrowDown {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 1.3rem;
+    transform: rotate(90deg);
+    font-family: initial;
+    font-weight: bold;
+    color: white;
+}
+
 .dropdown {
     top: -0.5rem;
     position: absolute;
@@ -542,7 +564,7 @@ form input {
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
     .photograph-header {
         height: 100%;
     }
@@ -585,6 +607,7 @@ form input {
     }
 
     .profilMedia {
+        margin-top: 5%;
         width: calc(100% / 1 - 0px);
     }
 }

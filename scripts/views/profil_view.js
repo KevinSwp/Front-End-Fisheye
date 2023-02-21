@@ -15,26 +15,26 @@ export default class PhotographerCardProfil {
             <div role="dialog" class="modal">
                 <header>
                     <h2 role="heading" class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
-                    <img class="btnContactClose" tabindex="0" role="button" src="assets/icons/close.svg" onclick="closeModal()" />
+                    <img class="btnContactClose" tabindex="0" role="button" src="assets/icons/close.svg" onclick="closeModal()"/>
                 </header>
                 <form id="modal-form" name="contact" action="messageSuccess.html">
                     <div class="borderInput">
-                        <label role="label" for="firstName">Prénom</label>
+                        <label role="label" arial-label="prénom" tabindex="0" for="firstName">Prénom</label>
                         <input class="firstName" role="field" type="text" id="firstName" name="firstName" minlength="2" maxlength="20">
                         <p></p>
                     </div>
                     <div class="borderInput">
-                        <label role="label" for="lastName">Nom</label>
+                        <label role="label" arial-label="nom de famille" tabindex="0" for="lastName">Nom</label>
                         <input role="field" type="text" id="lastName" name="lastName" minlength="2" maxlength="20">
                         <p></p>
                     </div>
                     <div class="borderInput">
-                        <label role="label" for="email">Email</label>
+                        <label role="label" arial-label="address mail" tabindex="0" for="email">Email</label>
                         <input role="field" type="email" id="email" name="email" minlength="5" maxlength="35">
                         <p></p>
                     </div>
                     <div>
-                        <label role="label" for="message">Message</label>
+                        <label role="label" arial-label="message pour le photographe" tabindex="0" for="message">Message</label>
                         <textarea role="field" id="textAera" class="textAera" type="text" minlength="50" maxlength="200"></textarea>
                         <p id="textAera-p"></p>
                     </div>
@@ -122,6 +122,8 @@ export default class PhotographerCardProfil {
 
             <div role="menu" class="dropdown active1">
                 <button id="selected">Popularité</button>
+                <i class="arrowUp"><</i>
+                <i class="arrowDown">></i>
 
                 <div class="dropdown_content">
                     <button id="btnPopularity" class="item hidden">Popularité</button>
