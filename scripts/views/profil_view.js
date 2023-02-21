@@ -94,7 +94,7 @@ export default class PhotographerCardProfil {
             article.innerHTML = `
                 <div role="link" class="div_video">
                     <i class="iconPlay"></i>
-                    <video tabindex="0" class="profilVideo" onclick="openLightbox(${position});">
+                    <video tabindex="0" data-position="${position}" class="profilVideo" onclick="openLightbox(${position});">
                         <source src="${this._photographer.video}" alt="${this._photographer.title}" aria-label="Video ${this._photographer.title}">
                     </video>
                     <div role="text" class="legendVideo">

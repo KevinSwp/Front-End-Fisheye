@@ -138,10 +138,10 @@ const displayDataMedia = (media) => {
         });
         // Select element from DOM
         const imgMedia = mediaCardDOM.querySelector(".imgMedia");
-        const videoMedia = document.querySelector(".profilVideo");
+        const videoMedia = mediaCardDOM.querySelector(".profilVideo");
         // Display media with "Enter" if focus on it
         if (imgMedia || videoMedia != undefined) {
-            mediaCardDOM.addEventListener("keydown", (event) => {
+            addEventListener("keydown", (event) => {
                 if (event.key === "Enter") {
                    openLightbox(position);
                 }
