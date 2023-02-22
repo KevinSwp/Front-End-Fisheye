@@ -57,7 +57,7 @@ export default class PhotographerCardProfil {
             <div class="pictureAndBtnContact">
                 <img tabindex="5" role="image" class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
 
-                <button role="button" class="contact_button"  onclick="displayModal()">Contactez-moi</button>
+                <button role="button" class="contact_button" onclick="displayModal()">Contactez-moi</button>
             </div>
             <div role="text" class="profil_info">
                 <h2 tabindex="2" class="profilNamePhotographer">${this._photographer.name}</h2>
@@ -122,12 +122,8 @@ export default class PhotographerCardProfil {
 
             <div role="menu" class="dropdown active1">
                 <button id="selected" class="btnDropdown">
-                    <span id="selectedText" >Popularité</span>
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">                    
-                            <path d="M201.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 173.3 54.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/>
-                        </svg>
-
+                    <span id="selectedText">Popularité</span>
+                    <span class="svgIcon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">                    
                             <path d="M201.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 173.3 54.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/>
                         </svg>
@@ -147,7 +143,6 @@ export default class PhotographerCardProfil {
 
     //Function content total likes
     getTotalLikes = () => {
-
         //Create div element in the DOM
         const div = document.createElement('div');
         div.classList.add("totalLikes");

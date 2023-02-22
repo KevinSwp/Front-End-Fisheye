@@ -5,10 +5,10 @@ body {
     margin-right: auto;
 }
 
-body :focus {
+/* body :focus {
     outline: red solid 3px;
     border-radius: 5px;
-}
+} */
 
 .modalLightbox {
     display: none;
@@ -166,7 +166,7 @@ body :focus {
 
 
 .dropdown.active1 .selectedActive{
-    border-radius: 5px 5px 0 0 !important;
+    border-radius: 5px 5px 0 0;
 }
 
 .dropdown.active1 .selectedActive::before{
@@ -202,31 +202,35 @@ body :focus {
     border-bottom-left-radius: 5px;
 }
 
-
-
 .dropdown .btnDropdown {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .dropdown .btnDropdown span {
     display: block;
 } 
-.dropdown .btnDropdown span:nth-child(1){}
-.dropdown .btnDropdown span:nth-child(2) svg{
+/* .dropdown .btnDropdown span:nth-child(1){} */
+.svgIcon .svgDisable{
     width:20px;
     height:20px;
     fill:#fff;
     transform: rotate(180deg);
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+.svgIcon .svgEnable{
+    width:20px;
+    height:20px;
+    fill:#fff;
+    position: absolute;
+    top: 10px;
+    right: 15px;
 }
 
-.dropdown .btnDropdown span:nth-child(2) svg:nth-child(2){
-    fill:black;
+.dropdown .btnDropdown[data-type="2"] > .dropdown_content .item-date:before { 
+    display: none;
 }
-
-
-.dropdown .btnDropdown[data-type="2"] > .dropdown_content .item-date:before{ display: none;}
-
 
 .item {
     width: 200px;

@@ -75,32 +75,14 @@ const displayfilter = (medias) => {
     const filter = photographerObject.getFilter();
     // Add as child
     filterMedia.appendChild(filter);
+    // Init svg
+    const svg = document.querySelector(".svgIcon svg");
+    svg.classList.add("svgDisable");
     // Add listeners on filters
-
-
     document.getElementById("selected").addEventListener("click", showFilterDropdown);
-
     document.getElementById("btnPopularity").addEventListener("click", () => displayBySort("popularity", medias));
     document.getElementById("btnDate").addEventListener("click", () => displayBySort("date", medias));
     document.getElementById("btnTitle").addEventListener("click", () => displayBySort("title", medias));
-
-    // Récupérer l'élément de dropdown
-    const dropdown = document.querySelector('.dropdown');
-
-    // Récupérer les éléments avec les classes arrowDown et arrowUp
-    //const arrowDown = dropdown.querySelector('.arrowDown');
-    //const arrowUp = dropdown.querySelector('.arrowUp');
-
-    // Si le dropdown est affiché, afficher la flèche vers le bas et masquer la flèche vers le haut
-    if (dropdown.classList.contains('.dropdown_content')) {
-       // arrowDown.style.display = 'inline';
-       // arrowUp.style.display = 'none';
-    }
-    // Sinon, afficher la flèche vers le haut et masquer la flèche vers le bas
-    else {
-       // arrowDown.style.display = 'none';
-       // arrowUp.style.display = 'inline';
-    }
 }
 
 /**
@@ -118,7 +100,8 @@ const displayDataMedia = (media) => {
         const mediaCardDOM = photographerObject.getPhotographerMedia(index);
         // Add as child
         photographerMedia.appendChild(mediaCardDOM);
-
+        // Sort by popularity by default
+        mediaCardDOM.addEventListener('click', sortByPopularity);
         // Add like to total likes
         totalLikes += media.likes;
         document.querySelector(".likes").innerHTML = totalLikes;

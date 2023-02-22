@@ -54,6 +54,18 @@ const goToNextSlide = () => {
     showSlides(parseInt(currentPosition) + 1);
 }
 
+/* 
+* Touch "Enter" to close modal
+*/
+const btnClose = (event) => {
+    const modal = document.querySelector(".modalLightbox");
+
+    if (event.key === "Enter") {
+        modal.style.display = "none";
+        mainContent.style.display = "block";
+    }
+}
+
 /**
  * Open modal
  */
@@ -68,7 +80,7 @@ const openLightbox = (position) => {
     mainContent.style.display = "none";
 
 
-    const btnCloseLightboxModal = document.querySelector('#btnCloseLightboxModal');
+    const btnCloseLightboxModal = document.getElementById("btnCloseLightboxModal");
     btnCloseLightboxModal.focus();
 
     // Use keyboard arrows to slide media
@@ -86,5 +98,13 @@ const openLightbox = (position) => {
         if (event.key === "Escape") {
             closeLightbox();
         }
+    });
+    // Hide lightbox modal with "Enter" if focus on it
+    btnCloseLightboxModal.addEventListener("focus", () => {
+        document.addEventListener("keydown", btnClose);
+    });
+    // Do nothing when losing focus on it
+    btnCloseLightboxModal.addEventListener("focusout", () => {
+        document.removeEventListener("keydown", btnClose);
     });
 }

@@ -2,15 +2,22 @@
  * Hide/Display filter
 */
 export const showFilterDropdown = () => {
-    const option = document.querySelector(".dropdown_content");
     const selected = document.getElementById("selected");
+    const svg = document.querySelector(".svgIcon svg");
+    const option = document.querySelector(".dropdown_content");
 
     if (option.style.display != "block") {
         option.style.display = "block";
-        selected.classList.remove = "selectedActive";
-    } else {
-        option.style.display = "none";
         selected.classList.add("selectedActive");
+        svg.classList.add("svgEnable");
+        svg.classList.remove("svgDisable");
+    }
+    
+    else {
+        option.style.display = "none";
+        selected.classList.remove("selectedActive");
+        svg.classList.add("svgDisable");
+        svg.classList.remove("svgEnable");
     }
 }
 
@@ -30,17 +37,15 @@ export const textReplace = (textToReplace) => {
     selected.setAttribute('data-type', textToReplace);
 
     items.forEach((item, index) => {
-
-         // On affiche tous les boutons
+         // Display all buttons
          item.classList.remove("hidden");
-
-         // Lorsque c'est le bouton qui est cliqué
+         // If selected button add hidden
          if(index === textToReplace){
             selectedText.innerHTML = item.innerHTML;
             item.classList.add("hidden");
+            // hideFilterDropdown();
          }
     })
-
 }
 
 /**
