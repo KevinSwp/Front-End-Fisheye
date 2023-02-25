@@ -25,7 +25,7 @@ const hideMain = () => {
 /* 
 * Touch "Enter" to close modal
 */
-const btnClose = (event) => {
+const enterKeyToClose = (event) => {
     const modal = document.getElementById("contact_modal");
 
     if (event.key === "Enter") {
@@ -56,11 +56,11 @@ const displayModal = () => {
     });
     // Hide contact modal with "Enter" if focus on it
     btnContactClose.addEventListener("focus", () => {
-        document.addEventListener("keydown", btnClose);
+        document.addEventListener("keydown", enterKeyToClose);
     });
     // Do nothing when losing focus on it
     btnContactClose.addEventListener("focusout", () => {
-        document.removeEventListener("keydown", btnClose);
+        document.removeEventListener("keydown", enterKeyToClose);
     });
     // Focus by default
     document.querySelector(".btnContactClose").focus();

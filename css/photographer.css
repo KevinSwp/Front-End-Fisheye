@@ -101,10 +101,8 @@ body {
 
 #contact_modal {
     display: none;
-    position: fixed;
     margin-top: -18px;
     margin-left: 5%;
-    width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.627);
     z-index: 1000;
@@ -147,10 +145,17 @@ body {
     border-radius: 5px 5px 0 0;
 }
 
+/* .dropdown.active1 .selectedActive:hover {
+    background-color: #DB8876;
+    color: black;
+    transition: 0.3s;
+    cursor: pointer;
+  } */
+
 .dropdown.active1 .selectedActive::before{
     content:'';
-    width: 180px;
-    height:1.5px;
+    width: 163px;
+    height:1px;
     margin-left: 0.5rem;
     background:white;
     position: absolute;
@@ -159,7 +164,7 @@ body {
 }
 
 .btnDropdown {
-    width: 200px;
+    width: 180px;
     height: 40px;
     background-color: #901C1C;
     border: 0;
@@ -169,7 +174,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    padding: 25px;
+    cursor: pointer;
 }
+/* 
+.btnDropdown:hover {
+    background-color: #DB8876;
+    color: black;
+    transition: 0.3s;
+    cursor: pointer;
+} */
 
 .dropdown_content {
     display: none;
@@ -187,7 +202,7 @@ body {
     fill:#fff;
     transform: rotate(180deg);
     position: absolute;
-    top: 10px;
+    top: 14px;
     right: 15px;
 }
 .svgIcon .svgEnable{
@@ -195,7 +210,7 @@ body {
     height:20px;
     fill:#fff;
     position: absolute;
-    top: 10px;
+    top: 14px;
     right: 15px;
 }
 
@@ -205,7 +220,7 @@ body {
 }
 
 .item {
-    width: 200px;
+    width: 180px;
     height: 40px;
     background-color: #901C1C;
     border: 0;
@@ -214,6 +229,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    padding: 1.5rem;
+}
+
+.item:hover {
+    background-color: #DB8876;
+    color: black;
+    transition: 0.3s;
+    cursor: pointer;
 }
 
 .item.hidden{
@@ -222,8 +246,8 @@ body {
 
 .item:before{
     content:'';
-    width: 180px;
-    height:1.5px;
+    width: 163px;
+    height:1px;
     margin-left: 0.5rem;
     background:white;
     position: absolute;
@@ -264,6 +288,7 @@ body {
     width: 30%;
     margin-top: 55px;
     margin-left: 30%;
+    margin-bottom: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -530,11 +555,12 @@ form input {
 }
 
 .text-red{
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     background-color: wheat;
     color: red;
     border-radius: 5px;
-    padding-left: 7px;
+    padding-right: 7px;
+    text-align: end;
 }
 
 .price{
