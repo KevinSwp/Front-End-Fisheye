@@ -58,8 +58,7 @@ const goToNextSlide = () => {
 * Touch "Enter" to close modal
 */
 const btnClose = (event) => {
-    const modal = document.querySelector(".modalLightbox");
-
+    
     if (event.key === "Enter") {
         modal.style.display = "none";
         mainContent.style.display = "block";

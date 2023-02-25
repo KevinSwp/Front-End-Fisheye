@@ -148,7 +148,7 @@ export default class PhotographerCardProfil {
         div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span role="rext" class="likes" arial-label="nombre total de j'aime"></span>
+            <span tabindex="0" role="rext" class="likes" arial-label="nombre total de j'aime"></span>
             <i arial-label="mention j'aime" class="bi bi-heart-fill"></i>
         `;
 

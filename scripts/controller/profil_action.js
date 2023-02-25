@@ -2,9 +2,9 @@
  * Import from file
  */
 import MediaFactory from "../factories/Media_factory.js";
-import {PHOTOGRAPHE_TYPES} from "../factories/Photographer_factory.js";
+import { PHOTOGRAPHE_TYPES } from "../factories/Photographer_factory.js";
 import PhotographersCardProfil from "../views/profil_view.js";
-import {sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace} from "../utils/filter.js";
+import { sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace } from "../utils/filter.js";
 
 /**
  * Select element from DOM
@@ -19,8 +19,7 @@ const photographerPrice = document.querySelector(".price");
 // Init total like
 let totalLikes = 0;
 
-
-const ENUM_FILTRES = {
+const ENUM_FILTER = {
     popularity : 0,
     date : 1,
     title :2
@@ -100,8 +99,6 @@ const displayDataMedia = (media) => {
         const mediaCardDOM = photographerObject.getPhotographerMedia(index);
         // Add as child
         photographerMedia.appendChild(mediaCardDOM);
-        // Sort by popularity by default
-        mediaCardDOM.addEventListener('click', sortByPopularity);
         // Add like to total likes
         totalLikes += media.likes;
         document.querySelector(".likes").innerHTML = totalLikes;
@@ -129,23 +126,41 @@ const displayDataMedia = (media) => {
             // Update counter total like
             document.querySelector(".likes").innerHTML = totalLikes;
         });
-        
         // Select element from DOM
         const imgMedia = mediaCardDOM.querySelector(".imgMedia");
         const videoMedia = mediaCardDOM.querySelector(".profilVideo");
-            
-        // Display media with "Enter" if focus on it
-        if (imgMedia || videoMedia != undefined) {
-    
+        // Display image media with "Enter" if focus on it
+        if (imgMedia != undefined) {
+
             mediaCardDOM.addEventListener("keydown", (event) => {
-                const position = imgMedia.getAttribute('data-position');
+                const imgPosition = imgMedia.getAttribute('data-position');
 
                 if (event.key === "Enter") {                          
-                   openLightbox(position);
+                    openLightbox(imgPosition);
+                }
+            });
+        }
+        // Display video media with "Enter" if focus on it
+        else if (videoMedia != undefined) {
+            mediaCardDOM.addEventListener("keydown", (event) => {
+                const videoPosition = videoMedia.getAttribute('data-position');
+
+                if (event.key === "Enter") {                          
+                   openLightbox(videoPosition);
                 }
             });
         }
     });
+}
+
+/**
+ * Function display sorted media
+ */
+const displayDataMediaSorted = (media) => {
+    // Sort media by number of likes
+    media.sort((a, b) => b.likes - a.likes);
+    // Call function
+    displayDataMedia(media);
 }
 
 /**
@@ -178,23 +193,22 @@ const displayBySort = (type, medias) => {
     switch(type) {
         case "popularity":
             medias = sortByPopularity(medias);
-            text = ENUM_FILTRES.popularity
+            text = ENUM_FILTER.popularity
             break;
 
         case "date":
             medias = sortByDate(medias);
-            text = ENUM_FILTRES.date
+            text = ENUM_FILTER.date
             break;
 
         case "title":
             medias = sortByTitle(medias);
-            text = ENUM_FILTRES.title
+            text = ENUM_FILTER.title
             break;
     }
 
-    // 0: Popularité 1: Date  2:Titre
+    // 0:Popularité, 1:Date, 2:Titre
     textReplace(text);
-
     // Display sorted media
     displayDataMedia(medias);
     // Display sorted position media
@@ -250,10 +264,10 @@ const initProfil = () => {
                 displayDataPhotographer(photographerTemplate);
                 manageContactForm(photographerTemplate);
                 displayTotaleLikes_Price(photographerTemplate);
-                displayDataMedia(mediasFromPhotographer);
+                displayDataMediaSorted(mediasFromPhotographer);
                 displayModalLightbox(mediasFromPhotographer);                                         
                 displayfilter(mediasFromPhotographer);
-                textReplace(ENUM_FILTRES.popularity);
+                textReplace(ENUM_FILTER.popularity);
             }
         )
         // Catch error
