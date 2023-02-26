@@ -143,8 +143,10 @@ const initEventListeners = () => {
         messageValidity(textAera,textAeraError);
 
         if (validForm()) {
-            console.log("Message envoyé");
-            console.log({'Prénom': firstName, 'Nom': lastName, 'Email': email, 'Message': textAera})
+            console.log("Prénom: ", firstName.value);
+            console.log("Nom: ", lastName.value);
+            console.log("Email: ", email.value);
+            console.log("Message: ", textAera.value);
         }
     };
 }
