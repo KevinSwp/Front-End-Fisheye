@@ -214,11 +214,6 @@ body {
     right: 15px;
 }
 
-.dropdown .btnDropdown[data-type="2"] > .dropdown_content .item-date:before { 
-    display: none;
-    border-bottom: 5px solid;
-}
-
 .item {
     width: 180px;
     height: 40px;
@@ -253,6 +248,10 @@ body {
     position: absolute;
     bottom:0;
     left:0;
+}
+
+.btnDropdown[data-type="2"] > .item-date:before { 
+    display: none;
 }
 
 .item:last-child:before{
@@ -424,8 +423,8 @@ form input {
 .likeHeart .likeBtn:hover{
     font-size: x-large;
     transition: 0.2s;
-    margin-left: -3px;
-    margin-top: -5px;
+    margin-left: -5px;
+    margin-top: -7px;
     transition: 0.15s;
 }
 

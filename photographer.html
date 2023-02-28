@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <title>Fisheye - photographe</title>
+    <link href="css/photographer.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <title>Fisheye - photographe</title>
   </head>
   <body>
-    <div id="contact_modal"></div>
-
-    <header class="header" role="link" aria-label="Accueil">
-      <a tabindex="1" class="homePage" href="index.html"><img src="assets/images/logo.png" class="logo" alt="Logo Fisheye accueil"/></a>
+    <div id="contact_modal" role="dialog"></div>
+    <header class="header" aria-label="Accueil">
+      <a tabindex="1" class="homePage" href="index.html"><img src="assets/images/logo.png" class="logo" alt="Logo Fisheye accueil"></a>
     </header>
-
+    
     <main id="main">
-      <div role="header" class="photograph-header"></div>
+      <header class="photograph-header"></header>
       <div class="filterMedia"></div>
       <div class="photograph-media"></div>
       <div class="price"></div>
     </main>
-
-    <div role="dialog" class="modalLightbox"></div>
+    
+    <div class="modalLightbox" role="dialog"></div>
     
     <script type="module" src="scripts/controller/profil_action.js"></script>
     <script src="scripts/utils/lightbox.js"></script>
