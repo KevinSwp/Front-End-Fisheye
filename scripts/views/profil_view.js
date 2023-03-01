@@ -69,7 +69,9 @@ export default class PhotographerCardProfil {
         return article;
     }
 
-    //Function content media
+    /**
+     * Function content media
+     */
     getPhotographerMedia = (position) => {
         //Create article element in the DOM
         const article = document.createElement('article');

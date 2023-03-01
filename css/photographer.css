@@ -250,8 +250,15 @@ body {
     left:0;
 }
 
-.btnDropdown[data-type="2"] > .item-date:before { 
+.btnDropdown[data-type="2"] ~ .dropdown_content .item-date:before { 
     display: none;
+}
+
+.btnDropdown[data-type="0"] ~ .dropdown_content .item-titre,
+.btnDropdown[data-type="1"] ~ .dropdown_content .item-titre,
+.btnDropdown[data-type="2"] ~ .dropdown_content .item-date{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .item:last-child:before{

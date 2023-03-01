@@ -88,7 +88,6 @@ const displayfilter = (medias) => {
  * Function display media
  */
 const displayDataMedia = (media) => {
-    
     media.forEach((mediaDataFromFile, index) => {
         // Get photographer object from factory
         const media = new MediaFactory(mediaDataFromFile, PHOTOGRAPHE_TYPES.JSON_V1);
@@ -131,12 +130,13 @@ const displayDataMedia = (media) => {
         const videoMedia = mediaCardDOM.querySelector(".profilVideo");
         // Display image media with "Enter" if focus on it
         if (imgMedia != undefined) {
-
             mediaCardDOM.addEventListener("keydown", (event) => {
                 const imgPosition = imgMedia.getAttribute('data-position');
-
-                if (event.key === "Enter") {                          
-                    openLightbox(imgPosition);
+                // If focus on image
+                if (!mediaCardDOM.querySelector('.likeBtn').contains(event.target)) {
+                    if (event.key === "Enter") {                        
+                        openLightbox(imgPosition);
+                    }
                 }
             });
         }
@@ -144,9 +144,11 @@ const displayDataMedia = (media) => {
         else if (videoMedia != undefined) {
             mediaCardDOM.addEventListener("keydown", (event) => {
                 const videoPosition = videoMedia.getAttribute('data-position');
-
-                if (event.key === "Enter") {                          
-                   openLightbox(videoPosition);
+                // If focus on image
+                if (!mediaCardDOM.querySelector('.likeBtn').contains(event.target)) {
+                    if (event.key === "Enter") {                          
+                        openLightbox(videoPosition);
+                    }
                 }
             });
         }
@@ -188,22 +190,22 @@ const displayBySort = (type, medias) => {
     // Reset position
     resetPosition();
     // Sort medias list
-    let text = ''
+    let text = "";
 
     switch(type) {
         case "popularity":
             medias = sortByPopularity(medias);
-            text = ENUM_FILTER.popularity
+            text = ENUM_FILTER.popularity;
             break;
 
         case "date":
             medias = sortByDate(medias);
-            text = ENUM_FILTER.date
+            text = ENUM_FILTER.date;
             break;
 
         case "title":
             medias = sortByTitle(medias);
-            text = ENUM_FILTER.title
+            text = ENUM_FILTER.title;
             break;
     }
 

@@ -58,7 +58,6 @@ const goToNextSlide = () => {
 * Touch "Enter" to close modal
 */
 const btnClose = (event) => {
-    
     if (event.key === "Enter") {
         modal.style.display = "none";
         mainContent.style.display = "block";
@@ -70,7 +69,7 @@ const btnClose = (event) => {
  */
 const openLightbox = (position) => {
     // Get the position to use
-    currentPosition = position;
+    const currentPosition = position;
     // Display the right silde
     showSlides(currentPosition);
     // Display modal
@@ -78,16 +77,18 @@ const openLightbox = (position) => {
     // Hide main
     mainContent.style.display = "none";
 
-
-    const btnCloseLightboxModal = document.getElementById("btnCloseLightboxModal");
-    btnCloseLightboxModal.focus();
+    // const btnCloseLightboxModal = document.getElementById("btnCloseLightboxModal");
+    const btnCloseLightboxModal = document.querySelector(".closeModal");
+    // Focus by default
+    document.querySelector(".closeModal").focus();
 
     // Use keyboard arrows to slide media
     window.addEventListener("keydown", (event) => {
+        // Slide to left
         if (event.key === "ArrowLeft") {
             goToPreviousSlide();
         }
-        
+        // Slide to right
         else if (event.key === "ArrowRight") {
             goToNextSlide();
         }
@@ -98,6 +99,7 @@ const openLightbox = (position) => {
             closeLightbox();
         }
     });
+
     // Hide lightbox modal with "Enter" if focus on it
     btnCloseLightboxModal.addEventListener("focus", () => {
         document.addEventListener("keydown", btnClose);

@@ -36,9 +36,16 @@ export const showFilterDropdown = () => {
     // }
 }
 
+/**
+ * Hide filter
+ */
 const hideFilterDropdown = () => {
+    const selected = document.getElementById("selected");
+    const svg = document.querySelector(".svgIcon svg");
     const option = document.querySelector(".dropdown_content");
     option.style.display = "none";
+    selected.classList.remove("selectedActive");
+    svg.classList.add("svgDisable");
 }
 
 /**
@@ -58,7 +65,7 @@ export const textReplace = (textToReplace) => {
          if(index === textToReplace){
             selectedText.innerHTML = item.innerHTML;
             item.classList.add("hidden");
-            // hideFilterDropdown();
+            hideFilterDropdown();
          }
     })
 }
