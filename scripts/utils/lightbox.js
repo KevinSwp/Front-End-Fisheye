@@ -6,6 +6,20 @@ const mainContent = document.getElementById('main');
 let currentPosition = 0;
 
 /**
+ * Function go to previous or next
+ */
+const arrowKeySwitchSlide = (event) => {
+    // Slide to left
+    if (event.key === "ArrowLeft") {
+        goToPreviousSlide();
+    }
+    // Slide to right
+    else if (event.key === "ArrowRight") {
+        goToNextSlide();
+    }
+}
+
+/**
  * Close modal
  */
 const closeLightbox = () => {
@@ -13,6 +27,8 @@ const closeLightbox = () => {
     modal.style.display = "none";
     // Display main
     mainContent.style.display = "block";
+    // Delete event listener
+    window.removeEventListener("keydown", arrowKeySwitchSlide);
 }
 
 /**
@@ -38,6 +54,9 @@ const showSlides = (newSlidePosition) => {
     }
     // Display only the right slide
     slides[currentPosition].style.display = "block";
+
+    // Ajouter le focus sur le bouton "fermer"
+    slides[currentPosition].querySelector(".closeModal").focus();
 }
 
 /**
@@ -68,31 +87,18 @@ const btnClose = (event) => {
  * Open modal
  */
 const openLightbox = (position) => {
-    // Get the position to use
-    const currentPosition = position;
-    // Display the right silde
-    showSlides(currentPosition);
     // Display modal
     modal.style.display = "block";
     // Hide main
     mainContent.style.display = "none";
-
-    // const btnCloseLightboxModal = document.getElementById("btnCloseLightboxModal");
-    const btnCloseLightboxModal = document.querySelector(".closeModal");
-    // Focus by default
-    document.querySelector(".closeModal").focus();
-
+    // Get the position to use
+    const currentPosition = position;
+    // Display the right silde
+    showSlides(currentPosition);
+    // Select button
+    const btnCloseLightboxModal = document.querySelectorAll(".closeModal");
     // Use keyboard arrows to slide media
-    window.addEventListener("keydown", (event) => {
-        // Slide to left
-        if (event.key === "ArrowLeft") {
-            goToPreviousSlide();
-        }
-        // Slide to right
-        else if (event.key === "ArrowRight") {
-            goToNextSlide();
-        }
-    });
+    window.addEventListener("keydown", arrowKeySwitchSlide);
     // Escap to close modal
     document.addEventListener("keyup", (event) => {
         if (event.key === "Escape") {
@@ -101,11 +107,7 @@ const openLightbox = (position) => {
     });
 
     // Hide lightbox modal with "Enter" if focus on it
-    btnCloseLightboxModal.addEventListener("focus", () => {
-        document.addEventListener("keydown", btnClose);
-    });
-    // Do nothing when losing focus on it
-    btnCloseLightboxModal.addEventListener("focusout", () => {
-        document.removeEventListener("keydown", btnClose);
-    });
+    btnCloseLightboxModal.forEach((btn) => {
+        btn.addEventListener("keydown",btnClose);
+    })
 }
