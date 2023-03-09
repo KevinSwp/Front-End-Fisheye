@@ -23,19 +23,19 @@ body {
 
 .previousSlide {
     position: absolute;
-    color: #901C1C;
-    left: 8%;
+    left: 7rem;
     top: 20rem;
-    font-size: 5rem;
     cursor: pointer;
+    width: 40px;
+    fill: #901C1C;
+    background-color: transparent;
     border: 0;
-    background: transparent;
 }
 
 .closeModal {
     position: absolute;
-    right: 9%;
-    top: 4.5rem;
+    right: 6.3rem;
+    top: 2.5rem;
     cursor: pointer;
     border: 0;
     background-color: transparent;
@@ -43,13 +43,13 @@ body {
 
 .nextSlide {
     position: absolute;
-    color: #901C1C;
-    right: 8%;
+    right: 7rem;
     top: 20rem;
-    font-size: 5rem;
     cursor: pointer;
+    width: 40px;
+    fill: #901C1C;
+    background-color: transparent;
     border: 0;
-    background: transparent;
 }
 
 .figure {
@@ -68,6 +68,7 @@ body {
 .lightbox {
     display: flex;
     text-align: center;
+    position: relative;
 }
 
 .lightbox figure img{
