@@ -39,14 +39,14 @@ export default class Media {
             return undefined
         }
 
-        return `/assets/samplePhotos/${this._image}`;
+        return `${this._image}`;
     }
 
     get video() {
         if (this._video === undefined ) {
             return undefined
         }
-        return `/assets/samplePhotos/${this._video}`;
+        return `${this._video}`;
     }
     
     get likes() {

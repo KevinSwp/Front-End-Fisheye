@@ -178,17 +178,17 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             div.innerHTML = `
-                <button type="button" tabindex="4" role="link" class="previousSlide" onclick="goToPreviousSlide()" aria-label="Media précédent">
+                <button type="button" tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()" aria-label="Media précédent">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
                     </svg>
                 </button>
                 <figure class="figure">
-                    <img tabindex="2" role="image" src="${this.photographer.image}">
-                    <figcaption tabindex="3" role="text" class="figcaption">${this.photographer.title}</figcaption>
+                    <img tabindex="5" role="image" src="assets/samplePhotos/${this.photographer.image}">
+                    <figcaption tabindex="4" role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
                 <button tabindex="1" role="button" id="btnCloseLightboxModal" class="closeModal" aria-label="Fermer"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
-                <button tabindex="5" role="link" class="nextSlide" onclick="goToNextSlide()" aria-label="Media suivant">
+                <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()" aria-label="Media suivant">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
                     </svg>
@@ -204,8 +204,8 @@ export default class PhotographerCardProfil {
                     </svg>
                 </button>
                 <figure class="figure">
-                    <video role="video" controls><source src="${this._photographer.video}"></video>
-                    <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
+                    <video tabindex="5" role="video" controls><source src="assets/samplePhotos/${this._photographer.video}"></video>
+                    <figcaption tabindex="4" role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
                 <button tabindex="1" role="button" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
                 <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">
