@@ -81,7 +81,7 @@ export default class PhotographerCardProfil {
         if (this._photographer.video === undefined) {
             article.innerHTML = `
                 <div role="link" class="divImgMedia">
-                    <img tabindex="0" data-position="${position}" class="imgMedia" src="${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
+                    <img tabindex="0" data-position="${position}" class="imgMedia" src="assets/samplePhotos/${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
                 </div>
                 <div role="text" class="legend">
                     <h2 class="profilTitleMedia">${this._photographer.title}</h2>
@@ -97,7 +97,7 @@ export default class PhotographerCardProfil {
                 <div role="link" class="div_video">
                     <i class="iconPlay"></i>
                     <video tabindex="0" data-position="${position}" class="profilVideo" onclick="openLightbox(${position});">
-                        <source src="${this._photographer.video}" alt="${this._photographer.title}" aria-label="Video ${this._photographer.title}">
+                        <source src="assets/samplePhotos/${this._photographer.video}" alt="${this._photographer.title}" aria-label="Video ${this._photographer.title}">
                     </video>
                     <div role="text" class="legendVideo">
                         <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
@@ -150,7 +150,7 @@ export default class PhotographerCardProfil {
         div.classList.add("totalLikes");
         //Fill the DOM
         div.innerHTML = `
-            <span tabindex="0" role="rext" class="likes" arial-label="nombre total de j'aime"></span>
+            <span tabindex="0" role="rext" class="likes" alt="nombre total de j'aime" aria-label="nombre total de j'aime"></span>
             <i arial-label="mention j'aime" class="bi bi-heart-fill"></i>
         `;
 
@@ -178,19 +178,17 @@ export default class PhotographerCardProfil {
         //Fill the DOM
         if (this._photographer.video === undefined) {
             div.innerHTML = `
-                <!--<button tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>-->
-                <button type="button" tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()">
+                <button type="button" tabindex="4" role="link" class="previousSlide" onclick="goToPreviousSlide()" aria-label="Media précédent">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
                     </svg>
                 </button>
                 <figure class="figure">
-                    <img role="image" src="${this.photographer.image}">
-                    <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
+                    <img tabindex="2" role="image" src="${this.photographer.image}">
+                    <figcaption tabindex="3" role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
-                <button tabindex="1" role="button" id="btnCloseLightboxModal" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
-                <!--<button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>-->
-                <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">
+                <button tabindex="1" role="button" id="btnCloseLightboxModal" class="closeModal" aria-label="Fermer"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
+                <button tabindex="5" role="link" class="nextSlide" onclick="goToNextSlide()" aria-label="Media suivant">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>
                     </svg>
@@ -200,7 +198,6 @@ export default class PhotographerCardProfil {
 
         else {
             div.innerHTML = `
-                <!--<button tabindex="2" role="button" class="previousSlide" onclick="goToPreviousSlide()">&#60;</button>-->
                 <button type="button" tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
@@ -211,7 +208,6 @@ export default class PhotographerCardProfil {
                     <figcaption role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
                 <button tabindex="1" role="button" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
-                <!--<button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">&#62;</button>-->
                 <button tabindex="3" role="link" class="nextSlide" onclick="goToNextSlide()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/>

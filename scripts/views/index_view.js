@@ -13,13 +13,13 @@ export default class PhotographerCardIndex {
         // Fill the DOM
         article.innerHTML = `
             <a role="link" class="photographerBloc" href="photographer.html?id=${this._photographer.id}" aria-label="photographe ${this._photographer.name}">
-                <img src="${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
+                <img src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
                 <h2 class="indexNamePhotographer">${this._photographer.name}</h2>
             </a>
 
             <div role="paragraph" class="paragraph">
                 <h3 tabindex="0" class="indexLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
-                <p tabindex="0" class="indexTagPhotographer">${this._photographer.tagline}</p>
+                <p tabindex="0" class="indexTagPhotographer" aria-label="tag de ${this._photographer.name}">${this._photographer.tagline}</p>
                 <span tabindex="0" aria-label="truc par jour" class="indexPricePhotographer">${this._photographer.price}€/jour</span>
             </div>
         `;
