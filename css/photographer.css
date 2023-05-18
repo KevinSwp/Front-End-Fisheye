@@ -132,6 +132,7 @@ body {
     position: absolute;
     margin-top: 20px;
     margin-bottom: 50px;
+    font-weight: bold;
     z-index: 1;
 }
 
@@ -171,6 +172,7 @@ body {
     font-weight: bold;
     padding: 25px;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .dropdown_content {
@@ -213,6 +215,7 @@ body {
     justify-content: center;
     font-weight: bold;
     padding: 1.5rem;
+    font-size: 1rem;
 }
 
 .item:hover {
@@ -374,7 +377,7 @@ form input {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 
 .profilMedia {
@@ -554,6 +557,10 @@ form input {
     border-radius: 5px;
     padding-right: 7px;
     text-align: end;
+}
+
+.totalLikes span {
+    font-weight: bold;
 }
 
 .price{
