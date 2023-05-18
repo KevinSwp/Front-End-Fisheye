@@ -20,20 +20,6 @@ export const showFilterDropdown = () => {
         svg.classList.add("svgDisable");
         svg.classList.remove("svgEnable");
     }
-
-    // else {
-    //     // Add listener
-    //     document.addEventListener("click", (event) => {
-    //         // Check if the clicked element is the dropdown or a child element of it
-    //         if (!option.contains(event.target) && event.target != selected) {
-    //             // Close dropdown
-    //             option.style.display = "none";
-    //             selected.classList.remove("selectedActive");
-    //             svg.classList.add("svgDisable");
-    //             svg.classList.remove("svgEnable");
-    //         }
-    //     });  
-    // }
 }
 
 /**

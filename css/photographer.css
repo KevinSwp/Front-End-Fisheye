@@ -146,13 +146,6 @@ body {
     border-radius: 5px 5px 0 0;
 }
 
-/* .dropdown.active1 .selectedActive:hover {
-    background-color: #DB8876;
-    color: black;
-    transition: 0.3s;
-    cursor: pointer;
-  } */
-
 .dropdown.active1 .selectedActive::before{
     content:'';
     width: 163px;
@@ -166,7 +159,7 @@ body {
 
 .btnDropdown {
     width: 180px;
-    height: 40px;
+    height: 60px;
     background-color: #901C1C;
     border: 0;
     border-radius: 5px;
@@ -179,13 +172,6 @@ body {
     padding: 25px;
     cursor: pointer;
 }
-/* 
-.btnDropdown:hover {
-    background-color: #DB8876;
-    color: black;
-    transition: 0.3s;
-    cursor: pointer;
-} */
 
 .dropdown_content {
     display: none;
@@ -203,7 +189,7 @@ body {
     fill:#fff;
     transform: rotate(180deg);
     position: absolute;
-    top: 14px;
+    top: 19px;
     right: 15px;
 }
 .svgIcon .svgEnable{
@@ -211,13 +197,13 @@ body {
     height:20px;
     fill:#fff;
     position: absolute;
-    top: 14px;
+    top: 19px;
     right: 15px;
 }
 
 .item {
     width: 180px;
-    height: 40px;
+    height: 55px;
     background-color: #901C1C;
     border: 0;
     position: relative;
