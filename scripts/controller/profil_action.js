@@ -4,7 +4,7 @@
 import MediaFactory from "../factories/Media_factory.js";
 import { PHOTOGRAPHE_TYPES } from "../factories/Photographer_factory.js";
 import PhotographersCardProfil from "../views/profil_view.js";
-import { sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace } from "../utils/filter.js";
+import { sortByPopularity, sortByDate, sortByTitle, showFilterDropdown, textReplace, hideFilterDropdown } from "../utils/filter.js";
 
 /**
  * Select element from DOM
@@ -82,6 +82,24 @@ const displayfilter = (medias) => {
     document.getElementById("btnPopularity").addEventListener("click", () => displayBySort("popularity", medias));
     document.getElementById("btnDate").addEventListener("click", () => displayBySort("date", medias));
     document.getElementById("btnTitle").addEventListener("click", () => displayBySort("title", medias));
+}
+
+/**
+ * Hide dropdown on click outside
+ */
+const hideDropdownOnClickOutside = () => {
+    // Add this after all your other event listeners
+    document.addEventListener('click', (event) => {
+        const dropdown = document.querySelector('.dropdown_content');
+        const selected = document.getElementById("selected");
+        const svg = document.querySelector(".svgIcon svg");
+
+        // This checks if the click was inside your dropdown
+        if (!dropdown.contains(event.target) && !selected.contains(event.target) && !svg.contains(event.target)) {
+            hideFilterDropdown();
+        }
+    });
+
 }
 
 /**
@@ -269,6 +287,7 @@ const initProfil = () => {
                 displayDataMediaSorted(mediasFromPhotographer);
                 displayModalLightbox(mediasFromPhotographer);                                         
                 displayfilter(mediasFromPhotographer);
+                hideDropdownOnClickOutside();
                 textReplace(ENUM_FILTER.popularity);
             }
         )

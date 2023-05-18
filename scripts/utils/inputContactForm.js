@@ -147,6 +147,12 @@ const initEventListeners = () => {
             console.log("Nom: ", lastName.value);
             console.log("Email: ", email.value);
             console.log("Message: ", textAera.value);
+
+            // Clear form fields after successful submission
+            firstName.value = '';
+            lastName.value = '';
+            email.value = '';
+            textAera.value = '';
         }
     };
 }

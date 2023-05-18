@@ -25,7 +25,7 @@ export const showFilterDropdown = () => {
 /**
  * Hide filter
  */
-const hideFilterDropdown = () => {
+export const hideFilterDropdown = () => {
     const selected = document.getElementById("selected");
     const svg = document.querySelector(".svgIcon svg");
     const option = document.querySelector(".dropdown_content");
