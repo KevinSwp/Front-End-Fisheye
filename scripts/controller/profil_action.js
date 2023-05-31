@@ -83,7 +83,6 @@ const resetPosition = () => {
  * Sorted media
  */
 const displayBySort = (type, medias) => {
-  let newMedias = [];
   // Reset total like
   totalLikes = 0;
   // Reset medias
@@ -95,8 +94,7 @@ const displayBySort = (type, medias) => {
 
   switch (type) {
     case 'popularity':
-      newMedias = sortByPopularity(medias);
-      //medias = sortByPopularity(medias);
+      medias = sortByPopularity(medias);
       text = ENUM_FILTER.popularity;
       break;
 
@@ -117,7 +115,7 @@ const displayBySort = (type, medias) => {
   // 0:Popularité, 1:Date, 2:Titre
   textReplace(text);
   // Display sorted media
-  displayDataMedia(newMedias);
+  displayDataMedia(medias);
   // Display sorted position media
   displayModalLightbox(medias);
 };

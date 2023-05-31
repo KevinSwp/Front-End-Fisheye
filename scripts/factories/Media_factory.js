@@ -8,8 +8,6 @@ import Media from '../models/Media.js';
  */
 export default class MediaFactory {
   constructor(data, type) {
-    this.objData = data;
-    this.objType = type;
     if (type === 'JSON_V1') {
     return new Media(data);
     }
