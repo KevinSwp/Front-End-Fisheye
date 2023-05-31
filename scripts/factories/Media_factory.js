@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 /**
  * Import object from file
  */
@@ -16,13 +15,4 @@ export default class MediaFactory {
     }
   throw 'Unknown type format';
   }
-
-  // create() {
-  //   if (this.objType === 'JSON_V1') {
-  //     return new Media(this.objData);
-  //   }
-  //   return null;
-  // }
 }
-
-// let object = (new MediaFactory(null, null)).create();

@@ -1,5 +1,3 @@
-//const firstName = document.getElementById('firstName');
-
 // ################## MESSAGE IF ERRORS ##################
 const messageName = '2 lettres minimum. Chiffre, espace, caractère spécial non autorisé. ';
 const messageEmail = 'Adresse E-mail invalide (exemple@domain.com).';
@@ -139,10 +137,6 @@ const initEventListeners = () => {
     messageValidity(textAera, textAeraError);
 
     if (validForm()) {
-
-     // console.log({
-     //   'firstname' : firstName.value
-     // });
 
       console.log('Prénom: ', firstName.value);
       console.log('Nom: ', lastName.value);
