@@ -2,74 +2,74 @@
  * Properties media
  */
 export default class Media {
-    constructor(data) {
-        this._id = data.id;
-        this._photographerId = data.photographerId;
-        this._title = data.title;
-        this._image = data.image;
-        this._video = data.video;
-        this._likes = data.likes;
-        this._date = data.date;
-        this._price = data.price;
+  constructor(data) {
+    this.this_id = data.id;
+    this.this_photographerId = data.photographerId;
+    this.this_title = data.title;
+    this.this_image = data.image;
+    this.this_video = data.video;
+    this.this_likes = data.likes;
+    this.this_date = data.date;
+    this.this_price = data.price;
+  }
+
+  // get & set
+  get id() {
+    return this.this_id;
+  }
+
+  get photographerId() {
+    return this.this_photographerId;
+  }
+
+  set photographerId(value) {
+    this.this_photographerId = value;
+  }
+
+  get title() {
+    return this.this_title;
+  }
+
+  set title(value) {
+    this.this_title = value;
+  }
+
+  get image() {
+    if (this.this_image === undefined) {
+      return undefined;
     }
 
-    // get & set
-    get id() {
-        return this._id;
-    }
+    return `${this.this_image}`;
+  }
 
-    get photographerId() {
-        return this._photographerId;
+  get video() {
+    if (this.this_video === undefined) {
+      return undefined;
     }
+    return `${this.this_video}`;
+  }
 
-    set photographerId(value) {
-        this._photographerId = value;
-    }
+  get likes() {
+    return this.this_likes;
+  }
 
-    get title() {
-        return this._title;
-    }
+  set likes(value) {
+    this.this_likes = value;
+  }
 
-    set title(value) {
-        this._title = value;
-    }
+  get date() {
+    return this.this_date;
+  }
 
-    get image() {
-        if (this._image === undefined ) {
-            return undefined
-        }
+  set date(value) {
+    this.this_date = value;
+  }
 
-        return `${this._image}`;
-    }
+  get price() {
+    return this.this_price;
+  }
 
-    get video() {
-        if (this._video === undefined ) {
-            return undefined
-        }
-        return `${this._video}`;
-    }
-    
-    get likes() {
-        return this._likes;
-    }
-
-    set likes(value) {
-        this._likes = value;
-    }
-    
-    get date() {
-        return this._date;
-    }
-
-    set date(value) {
-        this._date = value;
-    }
-    
-    get price() {
-        return this._price;
-    }
-
-    set price(value) {
-        this._price = value;
-    }
+  set price(value) {
+    this.this_price = value;
+  }
 }

@@ -2,62 +2,62 @@
  * Properties photographer
  */
 export default class Photographer {
-    constructor(data) {
-        this._id = data.id;
-        this._name = data.name;
-        this._city = data.city;
-        this._country = data.country;
-        this._tagline = data.tagline;
-        this._price = data.price;
-        this._portrait = data.portrait;
-    }
+  constructor(data) {
+    this.this_id = data.id;
+    this.this_name = data.name;
+    this.this_city = data.city;
+    this.this_country = data.country;
+    this.this_tagline = data.tagline;
+    this.this_price = data.price;
+    this.this_portrait = data.portrait;
+  }
 
-    // get & set
-    get id () {
-        return this._id;
-    }
+  // get & set
+  get id() {
+    return this.this_id;
+  }
 
-    get name() {
-        return this._name;
-    }
+  get name() {
+    return this.this_name;
+  }
 
-    set name(value) {
-        this._name = value;
-    }
+  set name(value) {
+    this.this_name = value;
+  }
 
-    get city() {
-        return this._city;
-    }
+  get city() {
+    return this.this_city;
+  }
 
-    set city (value) {
-        this._city = value;
-    }
+  set city(value) {
+    this.this_city = value;
+  }
 
-    get country() {
-        return this._country;
-    }
+  get country() {
+    return this.this_country;
+  }
 
-    set country (value) {
-        this._country = value;
-    }
+  set country(value) {
+    this.this_country = value;
+  }
 
-    get tagline() {
-        return this._tagline;
-    }
+  get tagline() {
+    return this.this_tagline;
+  }
 
-    set tagline (value) {
-        this._tagline = value;
-    }
+  set tagline(value) {
+    this.this_tagline = value;
+  }
 
-    get price() {
-        return this._price;
-    }
+  get price() {
+    return this.this_price;
+  }
 
-    set price (value) {
-        this._price = value;
-    }
+  set price(value) {
+    this.this_price = value;
+  }
 
-    get portrait() {
-        return `${this._portrait}`;
-    }
+  get portrait() {
+    return `${this.this_portrait}`;
+  }
 }

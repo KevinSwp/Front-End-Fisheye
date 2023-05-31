@@ -2,19 +2,19 @@
  * Photographer card
  */
 export default class PhotographerCardProfil {
-    constructor(photographer) {
-        this._photographer = photographer;
-    }
+  constructor(photographer) {
+    this.this_photographer = photographer;
+  }
 
-    //Function manage contact form
-    getManageContactForm = () => {
-        //Create div element in the DOM
-        const div = document.createElement('div');
-        //Fill the DOM
-        div.innerHTML = `
+  // Function manage contact form
+  getManageContactForm = () => {
+    // Create div element in the DOM
+    const div = document.createElement('div');
+    // Fill the DOM
+    div.innerHTML = `
             <div role="dialog" class="modal">
                 <header>
-                    <h2 role="heading" class="h2FormContactName">Contactez-moi<br><span>${this._photographer.name}</span></h2>
+                    <h2 role="heading" class="h2FormContactName">Contactez-moi<br><span>${this.this_photographer.name}</span></h2>
                     <img class="btnContactClose" tabindex="0" role="button" src="assets/icons/close.svg" onclick="closeModal()"/>
                 </header>
                 <form id="modal-form" name="contact" action="messageSuccess.html">
@@ -43,83 +43,82 @@ export default class PhotographerCardProfil {
             </div>
         `;
 
-        return div;
-    }
+    return div;
+  };
 
-    //Function content header
-    getPhotographerHeader = () => {
-        //Create article element in the DOM
-        const article = document.createElement('article');
-        //Add class to article
-        article.classList.add("profilHeader");
-        //Fill the DOM
-        article.innerHTML = `
+  // Function content header
+  getPhotographerHeader = () => {
+    // Create article element in the DOM
+    const article = document.createElement('article');
+    // Add class to article
+    article.classList.add('profilHeader');
+    // Fill the DOM
+    article.innerHTML = `
             <div class="pictureAndBtnContact">
-                <img tabindex="5" role="image" class="profilPicture" src="assets/photographers/${this._photographer.portrait}" alt="${this._photographer.name}" aria-label="photographe ${this._photographer.name}"/>
+                <img tabindex="5" role="image" class="profilPicture" src="assets/photographers/${this.this_photographer.portrait}" alt="${this.this_photographer.name}" aria-label="photographe ${this.this_photographer.name}"/>
 
                 <button role="button" class="contact_button" onclick="displayModal()">Contactez-moi</button>
             </div>
             <div role="text" class="profil_info">
-                <h2 tabindex="2" class="profilNamePhotographer">${this._photographer.name}</h2>
-                <h3 tabindex="3" class="profilLocationPhotographer">${this._photographer.city}, ${this._photographer.country}</h3>
-                <p tabindex="4" class="profilTagPhotographer">${this._photographer.tagline}</p>
+                <h2 tabindex="2" class="profilNamePhotographer">${this.this_photographer.name}</h2>
+                <h3 tabindex="3" class="profilLocationPhotographer">${this.this_photographer.city}, ${this.this_photographer.country}</h3>
+                <p tabindex="4" class="profilTagPhotographer">${this.this_photographer.tagline}</p>
             </div>
         `;
 
-        return article;
-    }
+    return article;
+  };
 
-    /**
+  /**
      * Function content media
      */
-    getPhotographerMedia = (position) => {
-        //Create article element in the DOM
-        const article = document.createElement('article');
-        article.classList.add("profilMedia");
+  getPhotographerMedia = (position) => {
+    // Create article element in the DOM
+    const article = document.createElement('article');
+    article.classList.add('profilMedia');
 
-        //Fill the DOM
-        if (this._photographer.video === undefined) {
-            article.innerHTML = `
+    // Fill the DOM
+    if (this.this_photographer.video === undefined) {
+      article.innerHTML = `
                 <div role="link" class="divImgMedia">
-                    <img tabindex="0" data-position="${position}" class="imgMedia" src="assets/samplePhotos/${this._photographer.image}" onclick="openLightbox(${position});" alt="${this._photographer.title}" aria-label="Photo ${this._photographer.title}"/>
+                    <img tabindex="0" data-position="${position}" class="imgMedia" src="assets/samplePhotos/${this.this_photographer.image}" onclick="openLightbox(${position});" alt="${this.this_photographer.title}" aria-label="Photo ${this.this_photographer.title}"/>
                 </div>
                 <div role="text" class="legend">
-                    <h2 class="profilTitleMedia">${this._photographer.title}</h2>
+                    <h2 class="profilTitleMedia">${this.this_photographer.title}</h2>
                     <div class="likeHeart">
-                        <span arial-label="nombre de j'aime" class="likeCounter">${this._photographer.likes}</span>
+                        <span arial-label="nombre de j'aime" class="likeCounter">${this.this_photographer.likes}</span>
                         <button arial-label="mention j'aime" class="likeBtn bi-heart"></button>
                     </div>
                 </div>
             `;
-        }
-        else {
-            article.innerHTML = `
+    } else {
+      article.innerHTML = `
                 <div role="link" class="div_video">
                     <i class="iconPlay"></i>
                     <video tabindex="0" data-position="${position}" class="profilVideo" onclick="openLightbox(${position});">
-                        <source src="assets/samplePhotos/${this._photographer.video}" alt="${this._photographer.title}" aria-label="Video ${this._photographer.title}">
+                        <source src="assets/samplePhotos/${this.this_photographer.video}" alt="${this.this_photographer.title}" aria-label="Video ${this.this_photographer.title}">
                     </video>
                     <div role="text" class="legendVideo">
-                        <h2 class="profilTitleMedia mp4">${this._photographer.title}</h2>
+                        <h2 class="profilTitleMedia mp4">${this.this_photographer.title}</h2>
                         <div class="likeHeartVideo">
-                            <span arial-label="nombre de j'aime" class="likeCounter">${this._photographer.likes}</span>
+                            <span arial-label="nombre de j'aime" class="likeCounter">${this.this_photographer.likes}</span>
                             <button arial-label="mention j'aime" class="likeBtn bi-heart"></button>
                         </div>
                     </div>
                 </div>
             `;
-        }
-
-        return article;
     }
 
-    //Function content filter
-    getFilter = () => {
-        //Create div element in the DOM
-        const div = document.createElement('div');
-        div.classList.add("filter");
-        //Fill the DOM
-        div.innerHTML = `
+    return article;
+  };
+
+  // Function content filter
+  getFilter = () => {
+    // Create div element in the DOM
+    const div = document.createElement('div');
+    div.classList.add('filter');
+    // Fill the DOM
+    div.innerHTML = `
             <label tabindex="0" role="label">Trier par</label>
 
             <div role="menu" class="dropdown active1">
@@ -140,44 +139,44 @@ export default class PhotographerCardProfil {
             </div>
         `;
 
-        return div;
-    }
+    return div;
+  };
 
-    //Function content total likes
-    getTotalLikes = () => {
-        //Create div element in the DOM
-        const div = document.createElement('div');
-        div.classList.add("totalLikes");
-        //Fill the DOM
-        div.innerHTML = `
+  // Function content total likes
+  getTotalLikes = () => {
+    // Create div element in the DOM
+    const div = document.createElement('div');
+    div.classList.add('totalLikes');
+    // Fill the DOM
+    div.innerHTML = `
             <span tabindex="0" role="rext" class="likes" alt="nombre total de j'aime" aria-label="nombre total de j'aime"></span>
             <i arial-label="mention j'aime" class="bi bi-heart-fill"></i>
         `;
 
-        return div;
-    }
+    return div;
+  };
 
-    //Function content price
-    getPrice = () => {
-        //Create div element in the DOM
-        const div = document.createElement('div');
-        div.classList.add("profilPrice");
-        //Fill the DOM
-        div.innerHTML = `
-            <span tabindex="0"class="pricePerDay">${this._photographer.price} € / jour</span>
+  // Function content price
+  getPrice = () => {
+    // Create div element in the DOM
+    const div = document.createElement('div');
+    div.classList.add('profilPrice');
+    // Fill the DOM
+    div.innerHTML = `
+            <span tabindex="0"class="pricePerDay">${this.this_photographer.price} € / jour</span>
         `;
 
-        return div;
-    }
+    return div;
+  };
 
-    //Function content lightbox
-    getLightbox = () => {
-        //Create div element in the DOM
-        const div = document.createElement('div');
-        div.classList.add("lightbox");
-        //Fill the DOM
-        if (this._photographer.video === undefined) {
-            div.innerHTML = `
+  // Function content lightbox
+  getLightbox = () => {
+    // Create div element in the DOM
+    const div = document.createElement('div');
+    div.classList.add('lightbox');
+    // Fill the DOM
+    if (this.this_photographer.video === undefined) {
+      div.innerHTML = `
                 <button type="button" tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()" aria-label="Media précédent">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
@@ -194,17 +193,15 @@ export default class PhotographerCardProfil {
                     </svg>
                 </button>
             `;
-        }
-
-        else {
-            div.innerHTML = `
+    } else {
+      div.innerHTML = `
                 <button type="button" tabindex="2" role="link" class="previousSlide" onclick="goToPreviousSlide()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
                     </svg>
                 </button>
                 <figure class="figure">
-                    <video tabindex="5" role="video" controls><source src="assets/samplePhotos/${this._photographer.video}"></video>
+                    <video tabindex="5" role="video" controls><source src="assets/samplePhotos/${this.this_photographer.video}"></video>
                     <figcaption tabindex="4" role="text" class="figcaption">${this.photographer.title}</figcaption>
                 </figure>
                 <button tabindex="1" role="button" class="closeModal"><img src="assets/icons/close.svg" onclick="closeLightbox()"></button>
@@ -214,34 +211,33 @@ export default class PhotographerCardProfil {
                     </svg>
                 </button>
             `;
-        }
-
-        return div;
     }
 
-    //get & set
-    get photographer() {
-        return this._photographer;
-    }
+    return div;
+  };
 
-    set photographer(value) {
-        this._photographer = value;
-    }
+  // get & set
+  get photographer() {
+    return this.this_photographer;
+  }
+
+  set photographer(value) {
+    this.this_photographer = value;
+  }
 }
 
-/*//function add multiple attribute
+/* //function add multiple attribute
 function setAttributes(element, value) {
     for (const key in value) {
         element.setAttribute(key, value[key]);
     }
-}*/
+} */
 
-/*//Display media
+/* //Display media
 function photographerFactoryMedia(data) {
     const {title, image, video, date} = data;
     const photo = `assets/samplePhotos/${image}`;
     const clip = `assets/samplePhotos/${video}`;
-    
 
     function getMediaCardDOM() {
 
@@ -250,14 +246,13 @@ function photographerFactoryMedia(data) {
         const img = document.createElement("img");
 
         const mp4 = document.createElement("video");
-        
+
         mp4.src = clip;
         mp4.controls = true;
 
-        
         setAttributes(img, {"class" : "photo", "src" : photo, "alt" : title, "aria-label" : "Photo"});
         setAttributes(mp4, {"class" : "video", "alt" : title, "aria-label" : "Video"});
-       
+
         const h2 = document.createElement("h2");
         h2.textContent = title;
 
@@ -268,6 +263,6 @@ function photographerFactoryMedia(data) {
 
         return (article);
     }
-    
+
     return {title, photo, clip, date, getMediaCardDOM}
-}*/
+} */
